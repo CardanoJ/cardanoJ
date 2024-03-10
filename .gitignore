@@ -38,13 +38,8 @@ build/
 .DS_Store
 
 ### Project Files ###
-src/main/java/org/cardanoJ/Main.java
-src/main/resources/bin/
-
 
 .idea/
 src/main/java/org/cardanoJ/utils/Main.java
-
 .github/
 
-./resources/bin/cardano-cli

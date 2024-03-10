@@ -39,10 +39,10 @@ public class CreateWallet {
         os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
             // Windows path
-            cliPath = "src/main/resources/bin/cardano-address.exe";
+            cliPath = "src/main/resources/bin/cardano-address.exe";  //copy path from resources/bin/cardano-address
         } else {
             // Unix/Linux/MacOS command
-            cliPath = "src/main/resources/bin/cardano-address"; // Assuming the executable for Unix/Linux doesn't have '.exe'
+            cliPath = "src/main/resources/bin/cardano-address";// Assuming the executable for Unix/Linux doesn't have '.exe'
         }
         resourcePath = getResourcePath();
 
