@@ -43,7 +43,7 @@ src/main/resources/bin/
 
 
 .idea/
-src/main/java/org/cardanoJ/Main.java
+src/main/java/org/cardanoJ/utils/Main.java
 
 .github/
 
