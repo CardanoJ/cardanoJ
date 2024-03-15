@@ -1,0 +1,14 @@
+{
+  "constructor": 0,
+  "fields": [
+    {
+      "int": 123
+    },
+    {
+      "string": "Hello, Datum!"
+    },
+    {
+      "bytes": "0x0123456789ABCDEF"
+    }
+  ]
+}
