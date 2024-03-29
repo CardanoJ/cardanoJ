@@ -18,3 +18,4 @@ CardanoJ promotes interoperability with other Java libraries and frameworks, ena
 
 - Community-driven Development:
 As an open-source project, CardanoJ thrives on community collaboration. Developers can contribute to the library, report issues, and engage in discussions to improve the overall ecosystem for Java-based Cardano DApp development.
+
