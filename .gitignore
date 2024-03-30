@@ -40,6 +40,6 @@ build/
 ### Project Files ###
 
 .idea/
-src/main/java/org/cardanoJ/utils/Main.java
+java/com/cardanoj/Main.java
 .github/
 
