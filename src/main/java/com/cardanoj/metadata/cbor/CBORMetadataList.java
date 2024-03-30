@@ -1,0 +1,165 @@
+package com.cardanoj.metadata.cbor;
+
+import co.nstant.in.cbor.model.*;
+import com.cardanoj.metadata.MetadataList;
+import com.cardanoj.metadata.MetadataMap;
+import com.cardanoj.util.JsonUtil;
+import com.cardanoj.util.StringUtils;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.cardanoj.metadata.cbor.MetadataHelper.*;
+
+public class CBORMetadataList implements MetadataList {
+    Array array;
+
+    public CBORMetadataList() {
+        array = new Array();
+    }
+
+    public CBORMetadataList(Array array) {
+        this.array = array;
+    }
+
+    @Override
+    public CBORMetadataList add(BigInteger value) {
+        array.add(new UnsignedInteger(value));
+        return this;
+    }
+
+    @Override
+    public CBORMetadataList addNegative(BigInteger value) {
+        array.add(new NegativeInteger(value));
+        return this;
+    }
+
+    @Override
+    public CBORMetadataList add(String value) {
+        if (checkLength(value) > 64) {
+            CBORMetadataList cborMetadataList = new CBORMetadataList();
+            cborMetadataList.addAll(StringUtils.splitStringEveryNCharacters(value, 64));
+            array.add(cborMetadataList.getArray());
+        } else {
+            array.add(new UnicodeString(value));
+        }
+        return this;
+    }
+
+    @Override
+    public CBORMetadataList addAll(String[] value) {
+        for (String str : value) {
+            if (checkLength(str) > 64) {
+                CBORMetadataList cborMetadataList = new CBORMetadataList();
+                cborMetadataList.addAll(StringUtils.splitStringEveryNCharacters(str, 64));
+                array.add(cborMetadataList.getArray());
+            } else {
+                array.add(new UnicodeString(str));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public CBORMetadataList add(byte[] value) {
+        array.add(new ByteString(value));
+        return this;
+    }
+
+    @Override
+    public CBORMetadataList add(MetadataMap map) {
+        if(map != null)
+            array.add(map.getMap());
+        return this;
+    }
+
+    @Override
+    public CBORMetadataList add(MetadataList list) {
+        if(list != null)
+            array.add(list.getArray());
+        return this;
+    }
+
+    @Override
+    public void replaceAt(int index, BigInteger value) {
+        replaceAt(index, objectToDataItem(value));
+    }
+
+    @Override
+    public void replaceAt(int index, String value) {
+        replaceAt(index, objectToDataItem(value));
+    }
+
+    @Override
+    public void replaceAt(int index, byte[] value) {
+        replaceAt(index, objectToDataItem(value));
+    }
+
+    @Override
+    public void replaceAt(int index, MetadataMap map) {
+        replaceAt(index, objectToDataItem(map));
+    }
+
+    @Override
+    public void replaceAt(int index, MetadataList list) {
+        replaceAt(index, objectToDataItem(list));
+    }
+
+    @Override
+    public void removeItem(Object value) {
+        array.getDataItems().remove(objectToDataItem(value));
+    }
+
+    @Override
+    public void removeItemAt(int index) {
+        if(index != -1 && index < array.getDataItems().size()) {
+            array.getDataItems().remove(index);
+        }
+    }
+
+    @Override
+    public Object getValueAt(int index) {
+        if(index != -1 && index < array.getDataItems().size()) {
+            DataItem dataItem = array.getDataItems().get(index);
+            return extractActualValue(dataItem);
+        }
+
+        return null;
+    }
+
+    @Override
+    public int size() {
+        if(array.getDataItems() != null)
+            return array.getDataItems().size();
+        else
+            return 0;
+    }
+
+    @Override
+    public Array getArray() {
+        return array;
+    }
+
+    private void replaceAt(int index, DataItem value) {
+        if(index == -1)
+            return;
+        array.getDataItems().remove(index);
+        array.getDataItems().add(index, value);
+    }
+
+    public String toJson() {
+        List<DataItem> dataItemList = array.getDataItems();
+        List list = new ArrayList();
+
+        for (DataItem di: dataItemList) {
+            list.add(extractActualValue(di));
+        }
+
+        return JsonUtil.getPrettyJson(list);
+    }
+
+
+
+
+}
