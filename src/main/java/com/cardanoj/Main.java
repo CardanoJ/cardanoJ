@@ -15,7 +15,7 @@ public class Main {
         Account account = new Account(Networks.testnet());
         String baseAddress = account.baseAddress();
         String mnemonic = account.mnemonic();
-        System.out.println(mnemonic);
+        System.out.println("The Mnemonics is: " + mnemonic);
 
         //Blockfrost Backend Service
         BackendService backendService =
