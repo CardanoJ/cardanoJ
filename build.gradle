@@ -40,7 +40,13 @@ dependencies {
     implementation 'org.bouncycastle:bcprov-jdk18on:1.77'
 
     // SLF4J API
-    implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
+//    implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation 'org.slf4j:slf4j-api:2.0.11'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j
+    testImplementation 'org.slf4j:slf4j-reload4j:2.0.11'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j
+    testImplementation 'org.slf4j:slf4j-reload4j:1.7.36'
 
     // EdDSA
     implementation 'net.i2p.crypto:eddsa:0.3.0'
@@ -55,6 +61,14 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+    testImplementation('org.assertj:assertj-core:3.23.1')
+// https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testImplementation 'org.mockito:mockito-core:5.10.0'
+// https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.10.0'
+// https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+
 
 }
 
