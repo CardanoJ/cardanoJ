@@ -43,3 +43,5 @@ build/
 java/com/cardanoj/Main.java
 .github/
 
+/src/main/java/com/client/
+

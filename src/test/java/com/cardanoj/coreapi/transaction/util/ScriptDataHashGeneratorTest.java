@@ -1,7 +1,6 @@
 package com.cardanoj.coreapi.transaction.util;
 
 import co.nstant.in.cbor.CborException;
-import com.cardanoj.coreapi.util.CostModelUtil;
 import com.cardanoj.exception.CborSerializationException;
 import com.cardanoj.plutus.spec.*;
 import com.cardanoj.plutus.util.ScriptDataHashGenerator;
