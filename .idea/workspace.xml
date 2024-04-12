@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="cardanoj:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0d78f26c-e3ec-474c-80d8-9393c853a139" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="cardanoJ" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="cardanoJ" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2eOdTRmYWJlacg16scj4PEy50wQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Gradle.ADAConversionUtilTest.executor": "Run",
+    "Gradle.AccountExTest.testGetBaseAddressFromMnemonicIndex_0.executor": "Run",
+    "Gradle.AccountTest.testBaseAddressHasSamePrefixForAllTestnets.executor": "Run",
+    "Gradle.Build cardanoJ.executor": "Run",
+    "Gradle.DefaultUtxoSelectionStrategyImplTest.executor": "Run",
+    "Gradle.DefaultUtxoSelectionStrategyImplTest.selectUtxos_returnUtxosWithoutDataHashWhenIgnoreUtxoDataHashIsTrue.executor": "Run",
+    "Gradle.DefaultUtxoSelectorTest.executor": "Run",
+    "Gradle.ExcludeUtxoSelectionStrategyTest.executor": "Run",
+    "Gradle.ExcludeUtxoSelectorTest.executor": "Run",
+    "Gradle.LargestFirstUtxoSelectionStrategyImplTest.executor": "Run",
+    "Gradle.OSUtilTest.executor": "Run",
+    "Gradle.PointerAddressTest.executor": "Run",
+    "Gradle.PointerAddressTest.getPointer.executor": "Run",
+    "Gradle.RandomImproveUtxoSelectionStrategyTest.coinSelectionSingleMultiAsset.executor": "Run",
+    "Gradle.StringUtilsTest.executor": "Run",
+    "Gradle.Tests in 'cardanoj'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.address'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.backend'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coinselection.impl'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.common'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.account'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.address'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.common'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.config'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.helper'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.transaction'.executor": "Run",
+    "Gradle.Tests in 'com.cardanoj.coreapi.util'.executor": "Run",
+    "Gradle.TransactionBuilderTest.createSignedTransaction_sameSender_shouldHaveOneWitness.executor": "Run",
+    "Gradle.TransactionBuilderTest.executor": "Run",
+    "Gradle.TransactionExTest.executor": "Run",
+    "Gradle.UtxoTest.executor": "Run",
+    "Gradle.UtxoTest.toValue_whenOneMultiAsset.executor": "Run",
+    "Gradle.UtxoUtilTest.executor": "Run",
+    "Gradle.cardanoJ [:CBORTest.main()].executor": "Run",
+    "Gradle.cardanoJ [:ClientExceution.main()].executor": "Run",
+    "Gradle.cardanoJ [:Main.main()].executor": "Run",
+    "Gradle.cardanoJ [:SimpleTransfer.main()].executor": "Run",
+    "Gradle.cardanoJ [:TestRun.main()].executor": "Run",
+    "Gradle.cardanoJ [compileJava].executor": "Run",
+    "Gradle.cardanoJ [dependencies].executor": "Run",
+    "JUnit.AdaTransactionTest.transfer.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/tarachand/Pictures/cardanoJ/src/main/java/com/org/cardanocli/backend",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend" />
+      <recent name="$PROJECT_DIR$/src/main/resources/bin" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/cardanoj/transaction/model" />
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/bin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.client.cardanoj" />
+      <recent name="com.cardanoj.address" />
+      <recent name="com.cardanoj.coreapi" />
+      <recent name="com.cardanoj.backend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.org.cardanoJ.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.org.cardano.client.jni.Main" />
+      <module name="cardanoJ.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.org.cardano.client.jni.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleTransfer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cardanoj.SimpleTransfer" />
+      <module name="cardanoj.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cardanoj.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.cardanoJ.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.cardanoJ.Main" />
+      <module name="cardanoJ.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.cardanoJ.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests in 'cardanoj'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="cardanoJ [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="cardanoJ [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="AdaTransactionTest.transfer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cardanoj.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.client.cardanoj.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.client.cardanoj" />
+      <option name="MAIN_CLASS_NAME" value="com.client.cardanoj.AdaTransactionTest" />
+      <option name="METHOD_NAME" value="transfer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.org.cardanoJ.Main" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.SimpleTransfer" />
+      <item itemvalue="Gradle.cardanoJ [dependencies]" />
+      <item itemvalue="Gradle.cardanoJ [compileJava]" />
+      <item itemvalue="Gradle.Tests in 'cardanoj'" />
+      <item itemvalue="JUnit.AdaTransactionTest.transfer" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.org.cardanoJ.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SimpleTransfer" />
+        <item itemvalue="Gradle.Tests in 'cardanoj'" />
+        <item itemvalue="JUnit.AdaTransactionTest.transfer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-f00315f9" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0d78f26c-e3ec-474c-80d8-9393c853a139" name="Changes" comment="" />
+      <created>1711779565908</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711779565908</updated>
+    </task>
+    <servers />
+  </component>
+</project>
