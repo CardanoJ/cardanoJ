@@ -9,7 +9,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d78f26c-e3ec-474c-80d8-9393c853a139" name="Changes" comment="" />
+    <list default="true" id="0d78f26c-e3ec-474c-80d8-9393c853a139" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functionalities-doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/getTransactionDetails.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/getTransactionDetails.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/tarachand.tx" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/tarachand.tx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/tarachand.txbody" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/tarachand.txbody" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/unit.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/unit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CLIOprations.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CreateWallet.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/RootPrivateKey.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/JNAInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/JNAInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/unit.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/unit.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,8 +141,9 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "rust",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/tarachand/Pictures/cardanoJ/src/main/java/com/org/cardanocli/backend",
+    "last_opened_file_path": "/home/tarachand/Pictures/cardanoJ/src/main/resources/bin",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -129,8 +151,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend" />
       <recent name="$PROJECT_DIR$/src/main/resources/bin" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/com/cardanoj/transaction/model" />
       <recent name="$PROJECT_DIR$/src/test/resources" />
@@ -305,5 +327,41 @@
       <updated>1711779565908</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="b9ee0fec-364b-4175-a7b7-94c201079bfe" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="b9ee0fec-364b-4175-a7b7-94c201079bfe">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
