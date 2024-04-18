@@ -1,0 +1,5 @@
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+4b2c2b24a5145e1853adbb588ef2492c4f26d97a3ac14e60f21866f13f3c6e6e     1        9968336146 lovelace + TxOutDatumNone
+d6ec833defe2dd2a218d6045ee25186281f3c0bf5aca7c00cea0408d135ca1ae     0        3000000 lovelace + TxOutDatumInline BabbageEraOnwardsBabbage (HashableScriptData "\216y\159X \CAN_\141\179\"q\254%\245a\166\252\147\139.&C\ACK\236\&0N\218Q\128\a\209vH&8\EMi\ESC\NUL\NUL\SOH\134\194\193f`\255" (ScriptDataConstructor 0 [ScriptDataBytes "\CAN_\141\179\"q\254%\245a\166\252\147\139.&C\ACK\236\&0N\218Q\128\a\209vH&8\EMi",ScriptDataNumber 1678304700000]))
+dd466933786c9743fd708c98bfba2252ba303d88cedc9ddecd0c9ba2d6aedbe1     1        9939833613 lovelace + TxOutDatumNone

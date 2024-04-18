@@ -23,10 +23,7 @@
 hs_err_pid*
 replay_pid*
 build/resources/main/bin/cardano-cli
-<<<<<<< HEAD
 /.gradle/
 /.idea/
 /build/
 /src/main/resources/bin/cardano-cli
-=======
->>>>>>> 97bbb283147899781d0e7a3b02d31515c2124519

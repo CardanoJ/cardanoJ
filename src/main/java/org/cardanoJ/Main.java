@@ -11,5 +11,6 @@ public class Main {
 
         BuildTransaction buildTransaction= new BuildTransaction();  // Build Transaction
         buildTransaction.transact();
+//        buildTransaction.query();
     }
 }

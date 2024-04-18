@@ -98,7 +98,7 @@ public class Transaction {
                     "--babbage-era", network, "2",
                     "--tx-in", txINN,
                     "--tx-out", tot,
-                    "--tx-out-inline-datum-file", "src/main/resources/assets/unit.json",
+                    "--tx-out-inline-datum-file", "src/main/resources/assets/units.json",
                     "--change-address", address,
                     "--out-file", bodyPath
             );
@@ -164,14 +164,30 @@ public class Transaction {
             reader.readLine();
             reader.readLine();
             String line;
+
+            long maxLovelace = 0;
+            String maxTransactionHash = null;
+            String maxTransactionIx = null;
+
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.trim().split("\\s+");
-                return parts[0] + "#" + parts[1];
+                long lovelace = parseLovelace(parts[2]);
+
+                if (lovelace > maxLovelace){
+                    maxLovelace = lovelace;
+                    maxTransactionHash = parts[0];
+                    maxTransactionIx = parts[1];
+                }
             }
-            return null;
+                return maxTransactionHash + "#" + maxTransactionIx;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
+    private static long parseLovelace(String amount) {
+        String[] tokens = amount.split("\\s+");
+        return Long.parseLong(tokens[0]);
+    }
+
 }

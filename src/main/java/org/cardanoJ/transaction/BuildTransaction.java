@@ -10,6 +10,35 @@ public class BuildTransaction {
     public static String caddrPath;
     public static String os;
     public static String resourcePath;
+    public void query() {
+        String network = "";
+        long result = 0;
+        setCliPath();
+        resourcePath = getResourcePath();
+        QueryAddress q = new QueryAddress();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Address: ");
+        String address = scanner.nextLine();
+        System.out.println("Choose the Network. \n1. Testnet-magic \n2. Mainnet \n3. Exit");
+        int a = scanner.nextInt();
+        switch (a) {
+            case 1:
+                network = "--testnet-magic";
+                result = q.queryAddress(cliPath, address, network);
+                break;
+            case 2:
+                network = "--mainnet";
+                result = q.queryAddress(cliPath, address, network);
+//                result = q.queryAddress(cliPath, resourcePath, address, network);
+                break;
+            case 3:
+                exit(0);
+            default:
+                System.out.println("You Have to choose the network");
+
+        }
+        System.out.println("Total : " + result + " Lovelace ( " + (result/1000000) + " ADA)");
+    }
 
     public void transactionSession(){
         String network = "";
@@ -68,6 +97,18 @@ public class BuildTransaction {
 
     }
 
+    private static void setCliPath(){
+        // Initialize cliPath and os
+        os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win")) {
+            // Windows path
+            cliPath = "src/main/resources/bin/cardano-address.exe";
+        } else {
+            // Unix/Linux/MacOS command
+            cliPath = "src/main/resources/bin/cardano-cli"; // Assuming the executable for Unix/Linux doesn't have '.exe'
+            givingPermissionToCAcli();
+        }
+    }
     private static String getResourcePath() {
         return BuildTransaction.class.getClassLoader().getResource("").getPath();
     }
