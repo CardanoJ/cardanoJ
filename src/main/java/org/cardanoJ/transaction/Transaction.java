@@ -84,7 +84,7 @@ public class Transaction {
         }
     }
 
-    public String buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace,String senderName) {
+    public String buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace,String senderName, String datumValue) {
         String txINN = getTransactionDetails(cliPath, resourcePath, address, network);
         String tot = receiver + "+" + lovelace+" lovelace";
         String bodyPath = resourcePath + senderName+".txbody";
@@ -98,7 +98,8 @@ public class Transaction {
                     "--babbage-era", network, "2",
                     "--tx-in", txINN,
                     "--tx-out", tot,
-                    "--tx-out-inline-datum-file", "src/main/resources/assets/units.json",
+//                    "--tx-out-inline-datum-file", "src/main/resources/assets/units.json",
+                    "--tx-out-inline-datum-value", datumValue,
                     "--change-address", address,
                     "--out-file", bodyPath
             );

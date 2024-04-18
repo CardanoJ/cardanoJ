@@ -54,18 +54,21 @@ public class BuildTransaction {
         System.out.print("Enter the Lovelace (3 ADA = 3_000_000lovelace): ");
         int lovelace = scanner.nextInt();
 
+        CreateDatum dat = new CreateDatum();
+        String datum = dat.create(senderAddress,receiverAddress,lovelace,resourcePath);
+
         System.out.println("Choose the Network. \n1. Testnet-magic \n2. Mainnet \n3. Exit");
         int a = scanner.nextInt();
         switch (a){
             case 1:
                 network = "--testnet-magic";
-                tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName);
+                tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
                 tr.signTransaction(cliPath,resourcePath,network,senderName);
                 result = tr.submitTransaction(cliPath,resourcePath,network,senderName);
                 break;
             case 2:
                 network = "--mainnet";
-                tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName);
+                tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
                 tr.signTransaction(cliPath,resourcePath,network,senderName);
                 result = tr.submitTransaction(cliPath,resourcePath,network,senderName);
                 break;
