@@ -1,0 +1,29 @@
+{
+  "constructor": 0,
+  "fields": [
+    {
+      "list": [
+        {
+          "int": 42
+        },
+        {
+          "int": 3
+        }
+      ]
+    },
+    {
+      "constructor": 1,
+      "fields": []
+    },
+    {
+      "list": [
+        {
+          "int": 32
+        },
+        {
+          "int": 4
+        }
+      ]
+    }
+  ]
+}
