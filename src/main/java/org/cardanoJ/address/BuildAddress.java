@@ -21,7 +21,7 @@ public class BuildAddress {
         // Path to the user's .skey file
         String skeyFilePath = "src/main/resources/assets/" + userName + ".skey";    // set path accordingly
 
-        // Path to store the address file (.addr file)
+        // Path to store the address file (.addr)
         String addrFilePath = "src/main/resources/test/" + userName + ".addr";      // set path accordingly
 
         // Initialize cliPath and os

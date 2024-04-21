@@ -12,7 +12,7 @@ public class Main {
         BuildTransaction buildTransaction= new BuildTransaction();  // Build Transaction
         buildTransaction.transact();
 
-        BuildAddress buildAddress = new BuildAddress(); // Address File Generation (.addr file)
+        BuildAddress buildAddress = new BuildAddress(); // Address File Generation (.addr)
         // buildAddress.addressGen();
     }
 }
