@@ -29,7 +29,7 @@ public interface PlutusData {
 //    big_nint = #6.3(bounded_bytes) ; New
     static PlutusData unit() {
         return ConstrPlutusData.builder()
-//                .build()plutusDataList(unit())
+                .data(ListPlutusData.of())
                 .build();
     }
 

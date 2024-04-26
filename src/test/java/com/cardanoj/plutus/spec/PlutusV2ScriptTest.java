@@ -1,0 +1,50 @@
+package com.cardanoj.plutus.spec;
+
+import co.nstant.in.cbor.model.ByteString;
+import com.cardanoj.exception.CborDeserializationException;
+import com.cardanoj.exception.CborSerializationException;
+import com.cardanoj.util.HexUtil;
+import com.cardanoj.util.JsonUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class PlutusV2ScriptTest {
+    @Test
+    void serializeDeserializePlutusV2Script() throws CborSerializationException, CborDeserializationException {
+        PlutusV2Script plutusV2Script = PlutusV2Script.builder()
+                .type("PlutusScriptV2")
+                .cborHex("4e4d01000033222220051200120011")
+                .build();
+
+        byte[] bytes = plutusV2Script.serialize();
+        System.out.println("Bytes: " + HexUtil.encodeHexString(bytes));
+
+        ByteString bs = plutusV2Script.serializeAsDataItem();
+        System.out.println("Bytes from Bytestring: " + HexUtil.encodeHexString(bs.getBytes()));
+
+        PlutusV2Script deSerPlutusScript = PlutusV2Script.deserialize(bs);
+
+        assertThat(deSerPlutusScript).isEqualTo(plutusV2Script);
+    }
+
+    @Test
+    void printJson() throws JsonProcessingException {
+        PlutusV2Script plutusScript = PlutusV2Script.builder()
+                .type("PlutusScriptV2")
+                .description("Test description")
+                .cborHex("4e4d01000033222220051200120011")
+                .build();
+
+        String json = JsonUtil.getPrettyJson(plutusScript);
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node = mapper.readTree(json);
+
+        assertThat(node.get("type").asText()).isEqualTo(plutusScript.getType());
+        assertThat(node.get("description").asText()).isEqualTo(plutusScript.getDescription());
+        assertThat(node.get("cborHex").asText()).isEqualTo(plutusScript.getCborHex());
+    }
+}
