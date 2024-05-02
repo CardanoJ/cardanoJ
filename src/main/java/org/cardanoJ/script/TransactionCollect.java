@@ -1,11 +1,46 @@
-package org.cardanoJ.transaction;
+package org.cardanoJ.script;
 
 import java.io.*;
+import java.nio.file.Files;
 
-public class Transaction {
+public class TransactionCollect {
+
+    //  Query the protocol parameters
+    private String queryProtocolParam(String cliPath, String resourcePath, String network, String socketPath){
+        String protocolParam = resourcePath + "protocol-parameters.json";
+        socketPath = "/home/tarachand/preview/node.socket";
+
+        try{
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    cliPath, "query", "protocol-parameters",
+                    network, "2",
+                    "--socket-path", socketPath,
+                    "--out-file",protocolParam
+            );
+
+            System.out.println("command: "+processBuilder.command());
+            processBuilder.redirectErrorStream(true);
+            Process process = processBuilder.start();
+            process.waitFor();
+
+            File txFile = new File(protocolParam);
+            if (txFile.exists()) {
+                System.out.println("protocol parameters generated");
+            } else {
+                System.err.println("Error: Failed to generate protocol parameters.");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    return protocolParam;
+    }
+
+
     public String submitTransaction(String cliPath, String resourcePath, String network,String senderName){
         String tx = "";
-        String txPath = (resourcePath + senderName+".tx").toString();
+//        String txPath = (resourcePath + senderName+".tx").toString();
+        String txPath = (resourcePath + "collectgift"+".tx");
         String socketPath = "/home/tarachand/preview/node.socket";  //define your own Cardano Node path
 
         try{
@@ -54,10 +89,11 @@ public class Transaction {
         return tx;
     }
 
-    public void signTransaction(String cliPath, String resourcePath, String network, String name ){
-        String bodyPath = resourcePath + name+".txbody";
-        String txPath = resourcePath + name+".tx";
-        String signKeyPath = "src/main/resources/assets/"+name+".skey";
+    //    # Sign the transaction
+    public void signTransaction(String cliPath, String resourcePath, String network, String reciverName ){
+        String bodyPath = resourcePath + "collectgift"+".txbody";
+        String txPath = resourcePath + "collectgift"+".tx";
+        String signKeyPath = "src/main/resources/assets/"+reciverName+".skey";
         String socketPath = "/home/tarachand/preview/node.socket";  // define your own cardano Node path
         try{
             ProcessBuilder processBuilder = new ProcessBuilder(
@@ -85,26 +121,49 @@ public class Transaction {
         }
     }
 
-    public String buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace,String senderName, String datumValue) {
+
+    //    # Build the transaction
+    public String buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace,String senderName, String datumValue,String socketPath) {
+        String paymentScriptFileAddress = queryProtocolParam(cliPath,resourcePath,network,socketPath);
         String txINN = getTransactionDetails(cliPath, resourcePath, address, network);
         String tot = receiver + "+" + lovelace+" lovelace";
-        String bodyPath = resourcePath + senderName+".txbody";
-        String socketPath = "/home/tarachand/preview/node.socket";    //define your own cardano Node path
+        String bodyPath = resourcePath + "collectgift"+".txbody";
+        socketPath = "/home/tarachand/preview/node.socket";    //define your own cardano Node path
+        String paymentScriptFile = "src/main/resources/assets/gift.plutus";
+        String pp = queryProtocolParam(cliPath,resourcePath,network,socketPath);
+        String collateral = "9550578843772c5ac311be85e90e9d673039dfc356e2fe8d79c4f5d6be5aaa7e#0";
+
+        String scriptAddress = "";
+        try (BufferedReader br = new BufferedReader(new FileReader(paymentScriptFileAddress))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                scriptAddress = line;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        scriptAddress = scriptAddress + "+" + lovelace+" lovelace";
 
 
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "build",
-                    "--socket-path", socketPath,
-                    "--babbage-era", network, "2",
+                    cliPath, "transaction", "build-raw",
+//                    "--socket-path", socketPath,
+                    "--babbage-era",
                     "--tx-in", txINN,
-                    "--tx-out", tot,
-//                    "--tx-out-inline-datum-file", "src/main/resources/assets/units.json",
-                    "--tx-out-inline-datum-value", datumValue,
-                    "--change-address", address,
+                    "--tx-in-script-file", paymentScriptFile,
+                    "--tx-in-inline-datum-present",
+//                    "--tx-out", scriptAddress,
+                    "--tx-in-redeemer-file", "src/main/resources/assets/units.json",
+//                    "--tx-out-inline-datum-value", datumValue,
+                    "--tx-in-collateral", collateral,
+//                    "--change-address", receiver,
+                    "--tx-out", receiver + "+" + lovelace,
+                    "--protocol-params-file", pp,
+                    "--tx-in-execution-units (INT, INT)",
                     "--out-file", bodyPath
             );
-            System.out.println("command: "+processBuilder.command());
+            System.out.println("Build Transaction command: "+processBuilder.command());
 
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
@@ -138,6 +197,7 @@ public class Transaction {
             return null;
         }
     }
+
 
     private String getTransactionDetails(String cliPath, String resourcePath, String address, String network) {
         try {
@@ -181,7 +241,7 @@ public class Transaction {
                     maxTransactionIx = parts[1];
                 }
             }
-                return maxTransactionHash + "#" + maxTransactionIx;
+            return maxTransactionHash + "#" + maxTransactionIx;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -191,5 +251,7 @@ public class Transaction {
         String[] tokens = amount.split("\\s+");
         return Long.parseLong(tokens[0]);
     }
+
+
 
 }

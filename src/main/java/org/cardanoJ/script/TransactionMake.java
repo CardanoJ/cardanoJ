@@ -1,11 +1,48 @@
-package org.cardanoJ.transaction;
+package org.cardanoJ.script;
 
 import java.io.*;
+import java.nio.file.Files;
 
-public class Transaction {
+public class TransactionMake {
+
+    //  Build gift address
+    public String addressBuild(String cliPath, String resourcePath, String network){
+        String paymentScriptFile = "src/main/resources/assets/gift.plutus";
+        String paymentScriptFileAddress = resourcePath + "gift.addr";
+
+        try{
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    cliPath, "address", "build",
+                    "--payment-script-file",paymentScriptFile,
+                    network, "2",
+                    "--out-file",paymentScriptFileAddress
+            );
+
+            System.out.println("command: "+processBuilder.command());
+            processBuilder.redirectErrorStream(true);
+            Process process = processBuilder.start();
+            process.waitFor();
+
+            File txFile = new File(paymentScriptFileAddress);
+            if (txFile.exists()) {
+                System.out.println("Payment Script Address generated");
+                return paymentScriptFileAddress;
+            } else {
+                System.err.println("Error: Failed to generate Payment Script Address.");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+
+    }
+
+
     public String submitTransaction(String cliPath, String resourcePath, String network,String senderName){
         String tx = "";
-        String txPath = (resourcePath + senderName+".tx").toString();
+//        String txPath = (resourcePath + senderName+".tx").toString();
+        String txPath = (resourcePath + "gift"+".tx");
         String socketPath = "/home/tarachand/preview/node.socket";  //define your own Cardano Node path
 
         try{
@@ -54,9 +91,10 @@ public class Transaction {
         return tx;
     }
 
+//    # Sign the transaction
     public void signTransaction(String cliPath, String resourcePath, String network, String name ){
-        String bodyPath = resourcePath + name+".txbody";
-        String txPath = resourcePath + name+".tx";
+        String bodyPath = resourcePath + "gift"+".txbody";
+        String txPath = resourcePath + "gift"+".tx";
         String signKeyPath = "src/main/resources/assets/"+name+".skey";
         String socketPath = "/home/tarachand/preview/node.socket";  // define your own cardano Node path
         try{
@@ -85,11 +123,24 @@ public class Transaction {
         }
     }
 
+
+//    # Build the transaction
     public String buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace,String senderName, String datumValue) {
+        String paymentScriptFileAddress = addressBuild(cliPath,resourcePath,network);
         String txINN = getTransactionDetails(cliPath, resourcePath, address, network);
         String tot = receiver + "+" + lovelace+" lovelace";
-        String bodyPath = resourcePath + senderName+".txbody";
+        String bodyPath = resourcePath + "gift"+".txbody";
         String socketPath = "/home/tarachand/preview/node.socket";    //define your own cardano Node path
+        String scriptAddress = "";
+        try (BufferedReader br = new BufferedReader(new FileReader(paymentScriptFileAddress))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                scriptAddress = line;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        scriptAddress = scriptAddress + "+" + lovelace+" lovelace";
 
 
         try {
@@ -98,13 +149,13 @@ public class Transaction {
                     "--socket-path", socketPath,
                     "--babbage-era", network, "2",
                     "--tx-in", txINN,
-                    "--tx-out", tot,
-//                    "--tx-out-inline-datum-file", "src/main/resources/assets/units.json",
-                    "--tx-out-inline-datum-value", datumValue,
+                    "--tx-out", scriptAddress,
+                    "--tx-out-inline-datum-file", "src/main/resources/assets/units.json",
+//                    "--tx-out-inline-datum-value", datumValue,
                     "--change-address", address,
                     "--out-file", bodyPath
             );
-            System.out.println("command: "+processBuilder.command());
+            System.out.println("Build Transaction command: "+processBuilder.command());
 
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
@@ -181,7 +232,7 @@ public class Transaction {
                     maxTransactionIx = parts[1];
                 }
             }
-                return maxTransactionHash + "#" + maxTransactionIx;
+            return maxTransactionHash + "#" + maxTransactionIx;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -191,5 +242,7 @@ public class Transaction {
         String[] tokens = amount.split("\\s+");
         return Long.parseLong(tokens[0]);
     }
+
+
 
 }
