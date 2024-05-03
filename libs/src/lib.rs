@@ -1,3 +1,10 @@
+extern crate jni;
+extern crate cardano_serialization_lib;
+extern crate serde;
+extern crate serde_json;
+extern crate rand;
+extern crate bip39;
+extern crate cbor_event;
 // This is the interface to the JVM that we'll call the majority of our
 // methods on.
 use jni::JNIEnv;
@@ -384,15 +391,9 @@ fn printPointer(pointer: *const c_char) {
     println!("Print pointer >>> {}", to_string(pointer));
 }
 
-#[no_mangle]
-pub extern "C" fn add_numbers(a: i32, b: i32) -> i32 {
-    a + b
-}
 #[cfg(test)]
 mod tests {
 
 }
-
-
 
 

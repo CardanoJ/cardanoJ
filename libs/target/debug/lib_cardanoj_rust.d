@@ -1,0 +1,1 @@
+/home/quotus/ATISH/RUST-STUFF/cardanoJ-rust-test-copy/libs/target/debug/lib_cardanoj_rust.so: /home/quotus/ATISH/RUST-STUFF/cardanoJ-rust-test-copy/libs/src/address.rs /home/quotus/ATISH/RUST-STUFF/cardanoJ-rust-test-copy/libs/src/lib.rs /home/quotus/ATISH/RUST-STUFF/cardanoJ-rust-test-copy/libs/src/transaction.rs

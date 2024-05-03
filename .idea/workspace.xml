@@ -10,12 +10,348 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d78f26c-e3ec-474c-80d8-9393c853a139" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/a.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/a.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/a.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/alice.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/alice.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/alice.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/bob.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/bob.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/bob.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/gift.plutus" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/main.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/main.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/main.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/tarachand.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/tarachand.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/tarachand.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/unit.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/assets/units.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/bin/cardano-address.exe" beforeDir="false" afterPath="$PROJECT_DIR$/libs/target/debug/incremental/cardano_serialization_lib-374o76vte0vkk/s-gvp4veksf8-3oqn7y-8857j73i3f2d7fyqrf7b3zn81/query-cache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/bin/libcardano_serialization_libs.so" beforeDir="false" afterPath="$PROJECT_DIR$/libs/target/debug/build/clear_on_drop-c42ee48010e6b2d2/build-script-build" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/org/cardanoJ/transaction/QueryAddress.java.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/a.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/a.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/a.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/alice.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/alice.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/alice.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/bob.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/bob.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/bob.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/main.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/main.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/main.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/tarachand.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/tarachand.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/tarachand.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/unit.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/bin/cardano-address" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/bin/cardano-address.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/.gitmodules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/.readthedocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/.readthedocs.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/LICENSE-IOHK" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/LICENSE-IOHK" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/.sphinx/_templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/.sphinx/_templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/.sphinx/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/.sphinx/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/generating-keys.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/generating-keys.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/generating-transactions.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/generating-transactions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/metadata.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/metadata.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/minting-nfts.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/minting-nfts.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/prerequisite-knowledge.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/getting-started/prerequisite-knowledge.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/doc/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/doc/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/.mocharc.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/.mocharc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/index.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/index.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/example/wallaby.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/example/wallaby.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/release.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/release.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/json-gen/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/json-gen/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/json-gen/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/json-gen/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/json-gen/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/json-gen/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/pkg/cardano_serialization_lib.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/pkg/cardano_serialization_lib.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/address.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/address.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/abor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/abor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/mempack.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/mempack.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/packer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/packer.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/property.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_core/property.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/ed25519.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/ed25519.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/ed25519_derive.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/ed25519_derive.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/ed25519_extended.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/ed25519_extended.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/legacy_daedalus.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/legacy_daedalus.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/algorithms/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/bech32.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/bech32.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/derive.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/derive.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/digest.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/digest.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/hash.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/hash.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/key.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/key.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/sign.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/sign.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/testing.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/chain_crypto/testing.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/crypto.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/crypto.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/emip3.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/emip3.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/error.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/error.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/fakes.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/fakes.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/fees.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/fees.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/impl_mockchain/key.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/impl_mockchain/key.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/impl_mockchain/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/impl_mockchain/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/address.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/address.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/base58.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/base58.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/cbor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/cbor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/crc32.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/crc32.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/legacy_address/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/metadata.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/metadata.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/output_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/output_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/plutus.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/plutus.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/protocol_types/fixed_tx.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/protocol_types/fixed_tx.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/protocol_types/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/protocol_types/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/protocol_types/tests.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/protocol_types/tests.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/ser_info/types.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/ser_info/types.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/serialization.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/serialization.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/serialization_macros.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/serialization_macros.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/serialization_tools/map_names.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/serialization_tools/map_names.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/traits.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/traits.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/asset_categorizer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/asset_categorizer.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/assets_calculator.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/assets_calculator.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/cbor_calculator.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/cbor_calculator.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/indexes.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/indexes.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/proposals.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/proposals.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/utxo_stat.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/utxo_stat.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/witnesses_calculator.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/batch_tools/witnesses_calculator.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/certificates_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/certificates_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/mint_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/mint_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/script_structs.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/script_structs.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/test_batch.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/test_batch.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/tx_batch_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/tx_batch_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/tx_inputs_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/tx_inputs_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/withdrawals_builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder/withdrawals_builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder_constants.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/tx_builder_constants.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/typed_bytes/builder.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/typed_bytes/builder.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/typed_bytes/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/typed_bytes/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/rust/src/utils.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/scripts/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/scripts/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/scripts/fix-buffer-ref.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/scripts/fix-buffer-ref.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/scripts/json-ts-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/scripts/json-ts-types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/scripts/publish-helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/scripts/publish-helper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/scripts/run-json2ts.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/scripts/run-json2ts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/scripts/wasm-to-asm.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/scripts/wasm-to-asm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/sonar-project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/sonar-project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/specs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/specs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/specs/byron.cddl" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/specs/byron.cddl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/specs/shelley.cddl" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/specs/shelley.cddl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.browserslistrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.browserslistrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/karma.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/karma.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/csl-example/csl-example.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/csl-example/csl-example.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/csl-example/csl-example.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/csl-example/csl-example.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/csl-example/csl-example.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/app/csl-example/csl-example.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/src/test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-asmjs/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.browserslistrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.browserslistrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/karma.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/karma.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/csl-example/csl-example.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/csl-example/csl-example.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/csl-example/csl-example.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/csl-example/csl-example.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/csl-example/csl-example.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/app/csl-example/csl-example.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/src/test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/angular-browser/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/reportWebVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-asmjs/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/config-overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/config-overrides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/reportWebVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/templates/react-browser/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/test/1.diag" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/test/1.diag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/tools/metadata-cddl-checker/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/tools/metadata-cddl-checker/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardano-serialization-lib/tools/metadata-cddl-checker/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/cardano-serialization-lib/tools/metadata-cddl-checker/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libcardano_serialization_libs.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/src/address.rs" beforeDir="false" afterPath="$PROJECT_DIR$/libs/src/address.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/libs/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/src/transaction.rs" beforeDir="false" afterPath="$PROJECT_DIR$/libs/src/transaction.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nullQuery.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Example/CLIOprations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Example/Datum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Example/Redeemer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Example/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/JNAInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/Network.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/Networks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/backend/ScriptService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/blockfrost/common/BaseUrlBlockFrost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/blockfrost/exception/ApiException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/blockfrost/exception/BlockFrostConfigurationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/blockfrost/service/BlockFrostBaseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/blockfrost/service/BlockFrostScriptService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/blockfrost/service/http/ScriptApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/core/model/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanoJ/core/model/ScriptDatum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/transaction/BuildTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/transaction/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/utils/PaymentAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/utils/PaymentKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/utils/PolicyPrvPub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/utils/RootPrivateKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/utils/SeedPhraseGenerate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/utils/Types.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend/wallet/CreateWallet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/address/BuildAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/Field.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/JSONData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/JSONDataImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/JSONElement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/JSONStructure.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/genjson/SaveToFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/script/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/script/TransactionCollect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/script/TransactionMake.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/temp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/BuildTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/CreateDatum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/DataTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/GenerateUnitJSON.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/QueryAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/QueryAddress.java.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/transaction/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/utils/PaymentAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/utils/PaymentKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/utils/PolicyPrvPub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/utils/RootPrivateKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/utils/SeedPhraseGenerate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/utils/Types.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cardanoJ/wallet/CreateWallet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/a.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/a.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/a.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/alice.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/alice.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/alice.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/bob.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/bob.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/bob.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gift.plutus" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/main.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/main.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/main.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/tarachand.addr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/tarachand.skey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/tarachand.vkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/unit.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/units.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bin/cardano-address" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bin/cardano-address.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bin/libcardano_serialization_libs.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -30,7 +366,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="cardanoJ" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -40,17 +381,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
+        <option value="module-info" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="cli" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -63,6 +399,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2eOdTRmYWJlacg16scj4PEy50wQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,6 +413,9 @@
     "Gradle.ADAConversionUtilTest.executor": "Run",
     "Gradle.AccountExTest.testGetBaseAddressFromMnemonicIndex_0.executor": "Run",
     "Gradle.AccountTest.testBaseAddressHasSamePrefixForAllTestnets.executor": "Run",
+    "Gradle.AddressJNATest.executor": "Run",
+    "Gradle.AddressServiceTest.executor": "Run",
+    "Gradle.AddressServiceTest.getBaseAddress_whenIndex0_testnet.executor": "Run",
     "Gradle.Build cardanoJ.executor": "Run",
     "Gradle.DefaultUtxoSelectionStrategyImplTest.executor": "Run",
     "Gradle.DefaultUtxoSelectionStrategyImplTest.selectUtxos_returnUtxosWithoutDataHashWhenIgnoreUtxoDataHashIsTrue.executor": "Run",
@@ -86,6 +428,7 @@
     "Gradle.PointerAddressTest.getPointer.executor": "Run",
     "Gradle.RandomImproveUtxoSelectionStrategyTest.coinSelectionSingleMultiAsset.executor": "Run",
     "Gradle.StringUtilsTest.executor": "Run",
+    "Gradle.Tests in 'cardanoJ.test'.executor": "Run",
     "Gradle.Tests in 'cardanoj'.executor": "Run",
     "Gradle.Tests in 'com.cardanoj.address'.executor": "Run",
     "Gradle.Tests in 'com.cardanoj.backend'.executor": "Run",
@@ -102,60 +445,68 @@
     "Gradle.TransactionBuilderTest.createSignedTransaction_sameSender_shouldHaveOneWitness.executor": "Run",
     "Gradle.TransactionBuilderTest.executor": "Run",
     "Gradle.TransactionExTest.executor": "Run",
+    "Gradle.TransactionJNATest.executor": "Run",
     "Gradle.UtxoTest.executor": "Run",
     "Gradle.UtxoTest.toValue_whenOneMultiAsset.executor": "Run",
     "Gradle.UtxoUtilTest.executor": "Run",
     "Gradle.cardanoJ [:CBORTest.main()].executor": "Run",
     "Gradle.cardanoJ [:ClientExceution.main()].executor": "Run",
-    "Gradle.cardanoJ [:CreateDatum.main()].executor": "Run",
-    "Gradle.cardanoJ [:Datum.main()].executor": "Run",
-    "Gradle.cardanoJ [:GenerateUnitJSON.main()].executor": "Run",
     "Gradle.cardanoJ [:Main.main()].executor": "Run",
+    "Gradle.cardanoJ [:SignTxn.main()].executor": "Run",
     "Gradle.cardanoJ [:SimpleTransfer.main()].executor": "Run",
     "Gradle.cardanoJ [:TestRun.main()].executor": "Run",
-    "Gradle.cardanoJ [:Transaction.main()].executor": "Run",
-    "Gradle.cardanoJ [:temp.main()].executor": "Run",
     "Gradle.cardanoJ [compileJava].executor": "Run",
     "Gradle.cardanoJ [dependencies].executor": "Run",
+    "Gradle.cardanoJ-rust [:Address.main()].executor": "Run",
+    "Gradle.cardanoJ-rust [:Main.main()].executor": "Run",
+    "Gradle.cardanoJ-rust [:Test.main()].executor": "Run",
+    "Gradle.cardanoJ-rust-test-copy [:IdTxn.main()].executor": "Run",
+    "Gradle.cardanoJ-rust-test-copy [:Main.main()].executor": "Run",
+    "Gradle.cardanoJ-rust-test-copy [:SignTxn.main()].executor": "Run",
     "JUnit.AdaTransactionTest.transfer.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "rust-cli",
+    "git-widget-placeholder": "rust",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/tarachand/Pictures/cardanoJ/src/main/resources/bin",
-    "project.structure.last.edited": "Artifacts",
+    "last_opened_file_path": "C:/Users/HP/Desktop/Atish Stuff/cardanoJ-rust-test-copy",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/bin" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/org/cardanocli/backend" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/cardanoj/transaction/model" />
-      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/cardanoj/jna/jna" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/cardanoj/jna/address" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/cardanoj/jna/annotation/processor" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/cardanoj/jna" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/mnemonic" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/org/cardano/client/jni/requirements/jna" />
       <recent name="$PROJECT_DIR$/src/main/resources/bin" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.client.cardanoj" />
-      <recent name="com.cardanoj.address" />
-      <recent name="com.cardanoj.coreapi" />
-      <recent name="com.cardanoj.backend" />
+      <recent name="com.org.cardano.client.jni.requirements.transaction.spec" />
+      <recent name="com.org.cardano.client.jni.requirements.util" />
+      <recent name="com.org.cardano.client.jni.requirements.address.util" />
+      <recent name="com.org.cardano.client.jni.requirements.transaction.spec.cert" />
+      <recent name="com.org.cardano.client.jni.requirements.crypto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.org.cardanoJ.script.Main">
-    <configuration name="CreateDatum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.cardanoJ.transaction.CreateDatum" />
+  <component name="RunManager" selected="Application.com.cardanoj.rust.jna.SignTxn">
+    <configuration name="IdTxn" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cardanoj.jna.jna.IdTxn" />
       <module name="cardanoJ.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.cardanoJ.transaction.*" />
+          <option name="PATTERN" value="com.cardanoj.jna.jna.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -163,12 +514,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GenerateUnitJSON" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.cardanoJ.transaction.GenerateUnitJSON" />
+    <configuration name="SignTxn" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cardanoj.jna.jna.SignTxn" />
       <module name="cardanoJ.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.cardanoJ.genjson.*" />
+          <option name="PATTERN" value="com.cardanoj.jna.jna.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -176,12 +527,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.cardanoJ.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.cardanoJ.Main" />
+    <configuration name="com.cardanoj.rust.jna.SignTxn" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cardanoj.rust.jna.SignTxn" />
       <module name="cardanoJ.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.cardanoJ.*" />
+          <option name="PATTERN" value="com.cardanoj.rust.jna.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -189,31 +540,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.cardanoJ.script.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.cardanoJ.script.Main" />
-      <module name="cardanoJ.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.cardanoJ.script.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="AddressServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.cardanoj.jna.address.AddressServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
-    <configuration name="temp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.cardanoJ.temp" />
-      <module name="cardanoJ.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.cardanoJ.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="AddressServiceTest.getBaseAddress_whenIndex0_testnet" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.cardanoj.jna.address.AddressServiceTest.getBaseAddress_whenIndex0_testnet&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
     <configuration name="cardanoJ [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
@@ -260,28 +633,28 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.org.cardanoJ.script.Main" />
-      <item itemvalue="Application.temp" />
-      <item itemvalue="Application.CreateDatum" />
-      <item itemvalue="Application.GenerateUnitJSON" />
-      <item itemvalue="Application.org.cardanoJ.Main" />
-      <item itemvalue="Gradle.cardanoJ [compileJava]" />
+      <item itemvalue="Application.com.cardanoj.rust.jna.SignTxn" />
+      <item itemvalue="Application.SignTxn" />
+      <item itemvalue="Application.IdTxn" />
       <item itemvalue="Gradle.cardanoJ [dependencies]" />
+      <item itemvalue="Gradle.cardanoJ [compileJava]" />
+      <item itemvalue="Gradle.AddressServiceTest" />
+      <item itemvalue="Gradle.AddressServiceTest.getBaseAddress_whenIndex0_testnet" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.org.cardanoJ.Main" />
-        <item itemvalue="Application.GenerateUnitJSON" />
-        <item itemvalue="Application.CreateDatum" />
-        <item itemvalue="Application.temp" />
-        <item itemvalue="Application.org.cardanoJ.script.Main" />
+        <item itemvalue="Application.com.cardanoj.rust.jna.SignTxn" />
+        <item itemvalue="Application.SignTxn" />
+        <item itemvalue="Application.IdTxn" />
+        <item itemvalue="Gradle.AddressServiceTest.getBaseAddress_whenIndex0_testnet" />
+        <item itemvalue="Gradle.AddressServiceTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-f00315f9" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
       </set>
     </attachedChunks>
   </component>
@@ -331,15 +704,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.util.InputMismatchException" package="java.util" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
