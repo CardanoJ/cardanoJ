@@ -9,7 +9,6 @@ import static java.lang.System.exit;
 
 public class Main {
     public static String cliPath;
-    public static String caddrPath;
     public static String os;
     public static String resourcePath;
 
