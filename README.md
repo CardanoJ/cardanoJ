@@ -1,4 +1,4 @@
-# CardanoJ Backend Blockfrost
+# CardanoJ Blockfrost
 Cardano Blockfrost Backend implementation for CardanoJ.
 This project can be integrated into your Java project using Maven or Gradle.
 ##### Account API Usage:-
@@ -153,13 +153,9 @@ You can get UtxoSupplier and ProtocolParamsSupplier from the backend service. Al
 Prerequisites: Java 17
 ### Build
 ```sh
-git clone https://github.com/bloxbean/cardano-client-lib.git
+git clone https://github.com/CardanoJ/cardanoJ.git
 
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 ./gradlew clean build
 ```
-### Integration Tests
-```sh
-export BF_PROJECT_ID=<Blockfrost Preprod network Project Id>
-./gradlew :integration-test:integrationTest -PBF_PROJECT_ID=${BF_PROJECT_ID}
-```
+
