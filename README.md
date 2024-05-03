@@ -1,14 +1,20 @@
-# CardanoJ Blockfrost
-Cardano Blockfrost Backend implementation for CardanoJ.
-This project can be integrated into your Java project using Maven or Gradle.
-##### Account API Usage:-
-- Create a New Account
+# CardanoJ Blockfrost Integration
+
+Cardano Blockfrost Backend implementation for CardanoJ. This project can be integrated into your Java project using Maven or Gradle.
+
+## Account API Usage
+
+### Create a New Account
+
 ```sh
-Account account = new Account();   //Create a Mainnet account
+// Create a Mainnet account
+Account account = new Account();
 
-Account account = new Account(Networks.mainnet());   //Create a Mainnet account
+// Create a Mainnet account specifying network
+Account account = new Account(Networks.mainnet());
 
-Account account = new Account(Networks.testnet());  //Create a Testnet account
+// Create a Testnet account
+Account account = new Account(Networks.testnet());
 ```
 - Get base address, enterprise address, mnemonic
 ```sh
@@ -28,8 +34,7 @@ Account account = new Account(Networks.testnet(), mnemonic); //Create a Testnet 
 ##### Create Backend Service
 ```sh
 //For Blockfrost
-BackendService backendService =
-                new BFBackendService(Constants.BLOCKFROST_TESTNET_URL, <BF_PROJECT_ID>);    
+BackendService backendService = new BFBackendService(Constants.BLOCKFROST_TESTNET_URL, <BF_PROJECT_ID>);    
                 
 FeeCalculationService feeCalculationService = backendService.getFeeCalculationService();
 TransactionHelperService transactionHelperService = backendService.getTransactionHelperService();
@@ -60,7 +65,6 @@ AddressService addressService = backendService.getAddressService();
                 .withSigner(SignerProviders.signerFrom(sender1))
                 .withSigner(SignerProviders.signerFrom(sender2))
                 .completeAndWait(System.out::println);
-        
 ```
 ##### Simple ADA Payment using Composable Functions Api
 ```sh
@@ -76,10 +80,9 @@ AddressService addressService = backendService.getAddressService();
                 .assetName(LOVELACE)
                 .qty(adaToLovelace(20))
                 .build();
-
-        // Create a CIP20 message metadata
+         // Create a CIP20 message metadata
         MessageMetadata metadata = MessageMetadata.create()
-                .add("First transfer transaction");
+                .add("First transaction From Quotus");
 
         // Define TxBuilder
         TxBuilder txBuilder = output1.outputBuilder()
@@ -92,8 +95,8 @@ AddressService addressService = backendService.getAddressService();
         ProtocolParamsSupplier protocolParamsSupplier = new DefaultProtocolParamsSupplier(backendService.getEpochService());
 
         //Build and sign the transaction
-        Transaction signedTransaction = TxBuilderContext.init(utxoSupplier, protocolParamsSupplier)
-                .buildAndSign(txBuilder, signerFrom(senderAccount));
+         Transaction signedTransaction = TxBuilderContext.init(utxoSupplier, protocolParamsSupplier)
+        .buildAndSign(txBuilder, signerFrom(senderAccount));
 
         //Submit the transaction
         Result<String> result = backendService.getTransactionService().submitTransaction(signedTransaction.serialize());
@@ -151,6 +154,7 @@ You can get UtxoSupplier and ProtocolParamsSupplier from the backend service. Al
 
 # Build from source and run integration tests
 Prerequisites: Java 17
+
 ### Build
 ```sh
 git clone https://github.com/CardanoJ/cardanoJ.git
@@ -158,4 +162,3 @@ git clone https://github.com/CardanoJ/cardanoJ.git
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 ./gradlew clean build
 ```
-
