@@ -1,20 +1,61 @@
-# CardanoJ
-- CardanoJ is a powerful Java library designed for Java developers seeking a streamlined approach to decentralized application (DApp) development on the Cardano blockchain. This library empowers developers to create robust and secure DApps without the need to delve into Haskell or Plutus languages, offering a familiar environment for Java enthusiasts.
+# Cardano CLI Java Toolkit
+###### _This Java toolkit provides functionality to interact with Cardano's command-line interface (CLI) for various tasks including address generation, wallet creation, and transaction management. It simplifies the process for Java developers to integrate Cardano functionalities into their applications._
 
-- Seamless Integration:
-CardanoJ provides seamless integration with Java, allowing developers to leverage their existing Java skills and knowledge to build decentralized applications on the Cardano blockchain.
+## Requirements
+- Java 8 or higher
+- Cardano CLI installed
+- Access to a Cardano node with the appropriate socket path
+- Installation
+- Clone this repository to your local machine.
+- Ensure you have Java installed on your system.
+- Install the Cardano CLI.
+- For Windows users, ensure cardano-address.exe is placed in the src/main/resources/bin/ directory.
 
-- Abstraction of Complexity:
-With CardanoJ, developers can abstract away the complexities of blockchain development, focusing on building the application logic and user interfaces without being burdened by the intricacies of Haskell or Plutus.
+## Usage
+### Cardano Address Generator
+This program generates Cardano addresses for users based on their input. It interacts with the Cardano CLI to perform key generation and address building processes.
 
-- Smart Contract Support:
-The library facilitates the creation and deployment of smart contracts on the Cardano blockchain. Developers can define and deploy smart contracts using Java, enabling a smoother development process.
+Usage:
 
-- Security and Reliability:
-CardanoJ follows best practices in security and reliability, ensuring that DApps built using this library are robust and resistant to common vulnerabilities. Developers can trust the underlying infrastructure while concentrating on application-specific functionality.
+```sh
+$ java -jar CardanoAddressGenerator.jar
+Enter name: Alice
+--> Files Generated Successfully.
+Exited with code : 0
+```
+### Cardano Wallet Creator
+The CreateWallet class facilitates the creation of Cardano wallets. It generates a recovery phrase, derives the root private key, generates payment keys and addresses, and saves them to files.
 
-- Interoperability:
-CardanoJ promotes interoperability with other Java libraries and frameworks, enabling developers to integrate their DApps seamlessly with existing Java-based projects or third-party services.
+Usage:
+```sh
+CreateWallet walletCreator = new CreateWallet();
+walletCreator.create();
+```
 
-- Community-driven Development:
-As an open-source project, CardanoJ thrives on community collaboration. Developers can contribute to the library, report issues, and engage in discussions to improve the overall ecosystem for Java-based Cardano DApp development.
+### Cardano Transaction Toolkit
+This toolkit provides Java classes for facilitating Cardano transactions by interacting with the Cardano CLI. It offers methods for querying protocol parameters, building transactions, signing transactions, and submitting transactions to the Cardano network.
+
+Usage:
+```sh
+TransactionCollect tc = new TransactionCollect();
+```
+```sh
+// Query protocol parameters
+String protocolParamFile = tc.queryProtocolParam(cliPath, resourcePath, network, socketPath);
+```
+```sh
+// Build transaction
+String bodyFile = tc.buildTransaction(cliPath, resourcePath, senderAddress, receiverAddress, network, lovelace, senderName, datumValue, socketPath);
+```
+```sh
+// Sign transaction
+tc.signTransaction(cliPath, resourcePath, network, receiverName);
+```
+```sh
+// Submit transaction
+String transactionID = tc.submitTransaction(cliPath, resourcePath, network, senderName);
+```
+
+> Note: _Customize paths and parameters according to your Cardano setup.
+Ensure the Cardano CLI executable is available in the specified path.
+For Unix/Linux/MacOS users, the program gives executable permissions to cardano-cli if necessary._.
