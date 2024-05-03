@@ -152,13 +152,3 @@ You can use a custom or different implementation of UtxoSelectionStrategy to cha
 ##### UtxoSupplier, ProtocolPramsSupplier
 You can get UtxoSupplier and ProtocolParamsSupplier from the backend service. Alternatively, you can create your own UtxoSupplier, ProtocolParamsSupplier and use it in the transaction builder api.
 
-# Build from source and run integration tests
-Prerequisites: Java 17
-
-### Build
-```sh
-git clone https://github.com/CardanoJ/cardanoJ.git
-
-export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
-./gradlew clean build
-```
