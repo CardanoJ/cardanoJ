@@ -15,6 +15,7 @@ public class BuildAddress {
         System.out.print("Enter name: ");
         String userName = scanner.nextLine();
 
+<<<<<<< HEAD
         // Path to the user's .vkey file
         String vkeyFilePath = "src/main/resources/assets/" + userName + ".vkey";    // set path accordingly
 
@@ -23,6 +24,16 @@ public class BuildAddress {
 
         // Path to store the address file (.addr)
         String addrFilePath = "src/main/resources/test/" + userName + ".addr";      // set path accordingly
+=======
+        // Path to store the user's .vkey file
+        String vkeyFilePath = "src/main/resources/assets/" + userName + ".vkey";    // set path accordingly
+
+        // Path to store the user's .skey file
+        String skeyFilePath = "src/main/resources/assets/" + userName + ".skey";    // set path accordingly
+
+        // Path to store the user's .addr file
+        String addrFilePath = "src/main/resources/assets/" + userName + ".addr";      // set path accordingly
+>>>>>>> origin/rust
 
         // Initialize cliPath and os
         os = System.getProperty("os.name").toLowerCase();
@@ -83,7 +94,11 @@ public class BuildAddress {
         try {
             Process process = processBuilder.start();
             int exitCode = process.waitFor();
+<<<<<<< HEAD
             System.out.println("--> Address File Generated Successfully.");
+=======
+            System.out.println("--> Files Generated Successfully.");
+>>>>>>> origin/rust
             System.out.println("Exited with code : " + exitCode);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
