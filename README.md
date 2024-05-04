@@ -45,4 +45,4 @@ String transactionID = tc.submitTransaction(cliPath, resourcePath, network, send
 ```
 > Note: _Customize paths and parameters according to your Cardano setup.
 Ensure the Cardano CLI executable is available in the specified path.
-For Linux users, the program gives executable permissions to cardano-cli if necessary._
+For Unix/Linux/MacOs users, the program gives executable permissions to cardano-cli if necessary._
