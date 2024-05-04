@@ -1,52 +1,20 @@
-# Cardano JNI Client with Rust Integration
+# CardanoJ
+- CardanoJ is a powerful Java library designed for Java developers seeking a streamlined approach to decentralized application (DApp) development on the Cardano blockchain. This library empowers developers to create robust and secure DApps without the need to delve into Haskell or Plutus languages, offering a familiar environment for Java enthusiasts.
 
-This Java program interacts with a native Cardano library through JNI to perform various operations. The native library implemented in Rust for enhanced performance or specific functionality.
+- Seamless Integration:
+CardanoJ provides seamless integration with Java, allowing developers to leverage their existing Java skills and knowledge to build decentralized applications on the Cardano blockchain.
 
-## Address Generation
+- Abstraction of Complexity:
+With CardanoJ, developers can abstract away the complexities of blockchain development, focusing on building the application logic and user interfaces without being burdened by the intricacies of Haskell or Plutus.
 
-The program generates a Cardano address based on a given mnemonic phrase, index, and network type (mainnet or testnet).
+- Smart Contract Support:
+The library facilitates the creation and deployment of smart contracts on the Cardano blockchain. Developers can define and deploy smart contracts using Java, enabling a smoother development process.
 
-### Example:
+- Security and Reliability:
+CardanoJ follows best practices in security and reliability, ensuring that DApps built using this library are robust and resistant to common vulnerabilities. Developers can trust the underlying infrastructure while concentrating on application-specific functionality.
 
-```sh
-// Define mnemonic phrase
-String[] mnemonicWords = { "insect", "sad", "deal", ... };
-String phrase = String.join(" ", mnemonicWords);
-int index = 0;
-boolean isTestnet = false;
+- Interoperability:
+CardanoJ promotes interoperability with other Java libraries and frameworks, enabling developers to integrate their DApps seamlessly with existing Java-based projects or third-party services.
 
-// Obtain base address
-Pointer result = JNAInterface.INSTANCE.getBaseAddress(phrase, index, isTestnet);
-
-// Print the main address
-System.out.println("Main Address: " + result.getString(0));
-```
-## Private Key Generation
-The program retrieves the private key corresponding to the given mnemonic phrase and index.
-
-### Example:
-```sh
-// Define mnemonic phrase
-String[] mnemonicWords = { "insect", "sad", "deal", ... };
-String phrase = String.join(" ", mnemonicWords);
-int index = 0;
-
-// Obtain private key from mnemonic
-Pointer privateKey = JNAInterface.INSTANCE.getPrivateKeyFromMnemonic(phrase, index);
-
-// Print the private key
-System.out.println("Private Key: " + privateKey.getString(0));
-```
-## Signing
-The program signs a raw transaction hash using the private key obtained from the mnemonic phrase.
-
-### Example:
-```sh
-// Obtain private key from mnemonic (as shown in the Private Key Generation section)
-
-// Sign a raw transaction hash
-Pointer sign = JNAInterface.INSTANCE.sign("01d8d23cb0f8954e1c3c8c487983294d6b31d7d09eb4e16169121b573c75e7e4", privateKey.getString(0));
-
-// Print the signature
-System.out.println("Signature: " + sign.getString(0));
-```
+- Community-driven Development:
+As an open-source project, CardanoJ thrives on community collaboration. Developers can contribute to the library, report issues, and engage in discussions to improve the overall ecosystem for Java-based Cardano DApp development.
