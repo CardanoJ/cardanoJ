@@ -1,6 +1,7 @@
 package com.cardanoJ.script;
 
-import com.cardanoJ.transaction.CreateDatum;
+
+import com.cardanoJ.util.CalculateFee;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,71 +12,11 @@ public class Main {
     public static String cliPath;
     public static String os;
     public static String resourcePath;
+    public static String network;
+    public static String networkId;
+    public static String socketPath;
 
-    public void transactionSession(){
-        String socketPath = "/home/tarachand/preview/node.socket";    //define your own cardano Node path
-        String receiverName = "bob";
 
-        String network = "";
-        String result = "";
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter sender Address: ");
-        String senderAddress = scanner.nextLine();
-        System.out.print("Enter sender Name: ");
-        String senderName = scanner.nextLine();
-        System.out.print("Enter Receiver Address: ");
-        String receiverAddress = scanner.nextLine();
-        System.out.print("Enter the Lovelace (3 ADA = 3_000_000lovelace): ");
-        int lovelace = scanner.nextInt();
-
-        CreateDatum dat = new CreateDatum();
-        String datum = dat.create(senderAddress,receiverAddress,lovelace,resourcePath);
-//        TransactionMake tm = new TransactionMake();
-        TransactionCollect tc = new TransactionCollect();
-        System.out.println("Choose the Network. \n1. Testnet-magic \n2. Mainnet \n3. Exit");
-        int a = scanner.nextInt();
-        switch (a){
-            case 1:
-                network = "--testnet-magic";
-//                tm.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
-                tc.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum,socketPath);
-//                tm.signTransaction(cliPath,resourcePath,network,senderName);
-                tc.signTransaction(cliPath,resourcePath,network,receiverName);
-//                result = tm.submitTransaction(cliPath,resourcePath,network,senderName);
-                result = tc.submitTransaction(cliPath,resourcePath,network,senderName);
-                break;
-            case 2:
-                network = "--mainnet";
-//                tm.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
-//                tm.signTransaction(cliPath,resourcePath,network,senderName);
-//                result = tm.submitTransaction(cliPath,resourcePath,network,senderName);
-                break;
-            case 3:
-                exit(0);
-            default:
-                System.out.println("You Have to choose the network");
-
-        }
-
-    }
-    public void transact() {
-        // Initialize cliPath and os
-        os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win")) {
-            // Windows path
-            cliPath = "src/main/resources/bin/cardano-address.exe";
-        } else {
-            // Unix/Linux/MacOS command
-            cliPath = "src/main/resources/bin/cardano-cli"; // Assuming the executable for Unix/Linux doesn't have '.exe'
-            givingPermissionToCAcli();
-        }
-        resourcePath = getResourcePath();
-
-        System.out.println();
-
-        Main m = new Main();
-        m.transactionSession();
-    }
 
     private static void setCliPath(){
         // Initialize cliPath and os
@@ -88,9 +29,11 @@ public class Main {
             cliPath = "src/main/resources/bin/cardano-cli"; // Assuming the executable for Unix/Linux doesn't have '.exe'
             givingPermissionToCAcli();
         }
+        resourcePath = getResourcePath();
+
     }
     private static String getResourcePath() {
-        return TransactionMake.class.getClassLoader().getResource("").getPath();
+        return Main.class.getClassLoader().getResource("").getPath();
     }
 
     private static void givingPermissionToCAcli(){
@@ -107,7 +50,40 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main m = new Main();
-        m.transact();
+
+        setCliPath();
+        network = "--testnet-magic";
+        networkId = "2";
+        socketPath = "/home/tarachand/preview/node.socket";
+        String datumValue = "6666";
+        int lovelace = 100000000;
+
+        TransactionMake tm = new TransactionMake();
+        CalculateFee cf = new CalculateFee();
+        TransactionCollect tc = new TransactionCollect();
+        String scriptAddress = tm.addressBuild(cliPath,resourcePath,network);
+        String datumHash = tm.datumHashFromValue(cliPath,resourcePath,network,datumValue);
+        String txBuild = tm.buildTransaction(cliPath,resourcePath, "addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2", scriptAddress, network,networkId, 100000000,"sender", datumHash);
+        String fee =  cf.calculateMinimumFee(cliPath,network, networkId, txBuild,tc.queryProtocolParam(cliPath,resourcePath,network,networkId,socketPath),"1","2","0");
+        String txSigned = tm.signTransaction(cliPath,resourcePath,network,networkId, "sender", scriptAddress);
+//        String txID = tm.submitTransaction(cliPath,network,networkId,txSigned);
+
+
+        //Contract to receiver
+
+        String build = tc.buildTransaction(cliPath,resourcePath,scriptAddress,"","79e5a6171362590a211e9cf91555c7004d26979c99e369f95d1cb11fdfe0d7b0","6666","42","src/main/resources/assets/AlwaysSucceeds.plutus","addr_test1vq97lwwsv32lty8u0n6vzlf0f3ah5rhpf43gjcjccp0l8gck54upq","addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk",network,networkId,socketPath);
+
+        String signed = tc.signTransaction(cliPath,resourcePath,network,networkId,build,"addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk");
+
+        String tXiD = tc.submitTransaction(cliPath,network,networkId,signed,socketPath);
+
+        String txID = "null";
+        System.out.println("TXBUILD : " + txBuild + " \nTXSIGNED : " + txSigned + " \ntxID : " + txID);
+
+
+        System.out.println("Build : " + build);
+        System.out.println("Signed : " + signed);
+        System.out.println("TxID : " + tXiD);
+
     }
 }
