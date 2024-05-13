@@ -54,6 +54,8 @@ dependencies {
     implementation 'net.java.dev.jna:jna:5.14.0'
     implementation 'net.java.dev.jna:jna-platform:5.14.0'
     implementation 'org.bouncycastle:bcprov-jdk15to18:1.76'
+    implementation 'net.java.dev.jna:jna:5.14.0'
+
 
 }
 

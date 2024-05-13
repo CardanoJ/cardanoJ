@@ -9,12 +9,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SignTxn {
+public class SignTransaction {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         try {
             // Fetch the rawTxnHex value from RawTxnHex class
-            String rawTxnInHex = RawTxnHex.rawTxnHexGeneration();
+            String rawTxnInHex = RawTransactionHex.rawTxnHexGeneration();
             System.out.println("Raw Txn Hex: " + rawTxnInHex);
 
             // Generate sender's account from Mnemonic
@@ -32,13 +32,20 @@ public class SignTxn {
 
             byte[] signedTxnBytes = HexUtil.decodeHexString(signedTxnHex);
             if(signedTxnBytes.length > 100) {
-                String outputFile = "src/main/resources/test/signedTxnByte1.raw";
+//                System.out.println("Enter the file name for saving signed transaction bytes: ");
+//                String fileName = sc.nextLine();
+//                fileName += ".raw";
+//                String directoryPath = "src/main/resources/test/";
+//                String filePath = directoryPath + fileName;
 
+                String outputFile = "src/main/resources/test/signedTxnByte.raw";
+
+//                try (FileWriter writer = new FileWriter(filePath)) {
                 try (FileWriter writer = new FileWriter(outputFile)) {
                     for (byte b : signedTxnBytes) {
                         writer.write(Integer.toHexString(b & 0xff)); // Write byte as hexadecimal string
                     }
-                    System.out.println("Signed Txn Bytes as .raw file generated successfully!"); // CBOR Hex
+                    System.out.println("--> Signed Txn Bytes as .raw file generated successfully!"); // CBOR Hex
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -49,5 +56,6 @@ public class SignTxn {
         } catch (CborSerializationException e) {
             e.printStackTrace();
         }
+        sc.close();
     }
 }

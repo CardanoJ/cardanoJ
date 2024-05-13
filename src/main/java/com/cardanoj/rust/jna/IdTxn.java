@@ -19,7 +19,7 @@ public class IdTxn {
 //        System.out.println("Main Address: " + mainAddr);
 //        System.out.println("Test Address: " + testAddr);
 
-        String hexStr = RawTxnHex.rawTxnHexGeneration();
+        String hexStr = RawTransactionHex.rawTxnHexGeneration();
 
 //        byte[] bytes = HexUtil.decodeHexString("6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7");
         byte[] bytes = HexUtil.decodeHexString(hexStr);
