@@ -1,72 +1,37 @@
 package com.cardanoJ.address;
 
 import java.io.IOException;
-import java.util.Scanner;
-
 public class BuildAddress {
-    public static String cliPath;
-    public static String os;
-    public static String resourcePath;
 
-    public void addressGen() {
-        Scanner scanner = new Scanner(System.in);
+    public String addressGen(String cliPath, String name) {
+        String vkeyFilePath = "src/main/resources/assets/" + name + ".vkey";
 
-        // Get user's name
-        System.out.print("Enter name: ");
-        String userName = scanner.nextLine();
+        String skeyFilePath = "src/main/resources/assets/" + name + ".skey";
 
+        String addrFilePath = "src/main/resources/assets/" + name + ".addr";
 
-        // Path to store the user's .vkey file
-        String vkeyFilePath = "src/main/resources/assets/" + userName + ".vkey";    // set path accordingly
+        generateAddress(cliPath, vkeyFilePath, skeyFilePath, addrFilePath);
 
-        // Path to store the user's .skey file
-        String skeyFilePath = "src/main/resources/assets/" + userName + ".skey";    // set path accordingly
+        return addrFilePath;
 
-        // Path to store the user's .addr file
-        String addrFilePath = "src/main/resources/assets/" + userName + ".addr";      // set path accordingly
-
-        // Initialize cliPath and os
-        os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win")) {
-            // Windows path
-            cliPath = "src/main/resources/bin/cardano-address.exe";
-        } else {
-            // Unix/Linux/MacOS command
-            cliPath = "src/main/resources/bin/cardano-cli"; // Assuming the executable for Unix/Linux doesn't have '.exe'
-            givingPermissionToCAcli();
-        }
-        resourcePath = getResourcePath();
-
-        generateAddress(vkeyFilePath, skeyFilePath, addrFilePath);
-
-        scanner.close();
     }
 
-    private void generateAddress(String vkey, String skey, String addrFilePath) {
+    private void generateAddress(String cliPath, String vkey, String skey, String addrFilePath) {
         try {
             ProcessBuilder keyGenProcessBuilder = new ProcessBuilder(
-                    cliPath,
-                    "address",
-                    "key-gen",
-                    "--verification-key-file",
-                    vkey,
-                    "--signing-key-file",
-                    skey
+                    cliPath, "address", "key-gen",
+                    "--verification-key-file", vkey,
+                    "--signing-key-file", skey
             );
             Process keyGenProcess = keyGenProcessBuilder.start();
             keyGenProcess.waitFor();
 
             // Build address
             ProcessBuilder addressBuildProcessBuilder = new ProcessBuilder(
-                    cliPath,
-                    "address",
-                    "build",
-                    "--payment-verification-key-file",
-                    vkey,
-                    "--testnet-magic",
-                    "2",
-                    "--out-file",
-                    addrFilePath
+                    cliPath, "address", "build",
+                    "--payment-verification-key-file", vkey,
+                    "--testnet-magic", "2",
+                    "--out-file", addrFilePath
             );
             Process addressBuildProcess = addressBuildProcessBuilder.start();
             addressBuildProcess.waitFor();
@@ -75,17 +40,4 @@ public class BuildAddress {
         }
     }
 
-    private String getResourcePath() {
-        return BuildAddress.class.getClassLoader().getResource("").getPath();
-    }
-
-    private void givingPermissionToCAcli() {
-        ProcessBuilder processBuilder = new ProcessBuilder("chmod", "+x", cliPath);
-        try {
-            Process process = processBuilder.start();
-            int exitCode = process.waitFor();
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
