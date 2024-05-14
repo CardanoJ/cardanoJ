@@ -75,7 +75,7 @@ public class SignTransactionController {
                 System.out.println("Signing TX file generated");
             } else {
                 System.err.println(
-                        "Error: F%7B%0A%20%20%20%20%22type%22%3A%20%22PaymentSigningKeyShelley_ed25519%22%2C%0A%20%20%20%20%22description%22%3A%20%22Payment%20Signing%20Key%22%2C%0A%20%20%20%20%22cborHex%22%3A%20%225820eaadd017a202d990e3918022623cc3a2d861a4efb5641c7863d160ef9d40c7dc%22%0A%7D&txbody=%7B%0A%20%20%20%20%22type%22%3A%20%22Unwitnessed%20Tx%20BabbageEra%22%2C%0A%20%20%20%20%22description%22%3A%20%22Ledger%20Cddl%20Format%22%2C%0A%20%20%20%20%22cborHex%22%3A%20%2284a30081825820e691702007043e13f86b9d5d21aebf55ed2d9b1074cb3f33ffb32214f0ac34f200018282581d6083377fad68e45c474545153423db475a58e799e89c5cdda5cf1528f31a0098968082581d6073910a62b3d834ae39bf3606a3223b4bb52c6eff34d76d4c8e785f521b000000025370c6d7021a000286a9a0f5f6%22%0A%7D%0Aailed to generate signing TX.");
+                        "Error:failed to generate signing TX.");
             }
 
             String fileContent = new String(Files.readAllBytes(Paths.get(txPath)));
