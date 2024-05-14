@@ -71,7 +71,7 @@ public class Main {
 
         //Contract to receiver
 
-        String build = tc.buildTransaction(cliPath,resourcePath,scriptAddress,"","79e5a6171362590a211e9cf91555c7004d26979c99e369f95d1cb11fdfe0d7b0","6666","42","src/main/resources/assets/AlwaysSucceeds.plutus","addr_test1vq97lwwsv32lty8u0n6vzlf0f3ah5rhpf43gjcjccp0l8gck54upq","addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk",network,networkId,socketPath);
+        String build = tc.buildTransaction(cliPath,resourcePath,scriptAddress,"","bc97bf14c9fb57b4d05b2d1043e610b63d901894b1e761c6c2bcb5708f8dc7c4","6666","42","src/main/resources/assets/AlwaysSucceeds.plutus","addr_test1vq97lwwsv32lty8u0n6vzlf0f3ah5rhpf43gjcjccp0l8gck54upq","addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk",network,networkId,socketPath);
 
         String signed = tc.signTransaction(cliPath,resourcePath,network,networkId,build,"addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk");
 

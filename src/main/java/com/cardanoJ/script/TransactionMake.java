@@ -164,7 +164,7 @@ public class TransactionMake {
     public String buildTransaction(String cliPath, String resourcePath, String senderAddress, String scriptAddress,String network, String networkID, int lovelace, String senderName, String datumHash) {
         String txINN = getTransactionDetails(cliPath, resourcePath, senderAddress, networkID);
         String tot = scriptAddress + "+" + lovelace;
-        String bodyPath = resourcePath + scriptAddress + ".build";
+        String bodyPath = "src/main/resources/assets/" + scriptAddress + ".build";
         String socketPath = "/home/tarachand/preview/node.socket";    //define your own cardano Node path
 
 
