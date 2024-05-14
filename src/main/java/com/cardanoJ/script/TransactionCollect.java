@@ -303,7 +303,7 @@ public class TransactionCollect {
                         break;
                     }
                 }
-
+                System.out.println("FetchUTXO : " + transactionHash + "#" + transactionId);
                 return transactionHash + "#" + transactionId;
             }catch (Exception e){
                 e.printStackTrace();

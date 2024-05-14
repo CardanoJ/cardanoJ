@@ -16,7 +16,7 @@ public class CalculateFee {
                     "--protocol-params-file", protocolParam,
                     "--tx-in-count", txInCount, //"1",
                     "--tx-out-count", txOutCount, //"2",
-                    "--byron-witness-count",byronWitnessCount // "0"
+                    "--witness-count",byronWitnessCount // "0"
             );
 
             System.out.println("command: "+processBuilder.command());

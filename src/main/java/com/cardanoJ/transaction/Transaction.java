@@ -54,9 +54,9 @@ public class Transaction {
         return tx;
     }
 
-    public void signTransaction(String cliPath, String resourcePath, String network, String name ){
+    public String signTransaction(String cliPath, String resourcePath, String network, String name ){
         String bodyPath = resourcePath + name+".txbody";
-        String txPath = resourcePath + name+".tx";
+        String txPath = "src/main/resources/assets/" + name+".tx";
         String signKeyPath = "src/main/resources/assets/"+name+".skey";
         String socketPath = "/home/tarachand/preview/node.socket";  // define your own cardano Node path
         try{
@@ -83,12 +83,13 @@ public class Transaction {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return txPath;
     }
 
     public String buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace,String senderName, String datumValue) {
         String txINN = getTransactionDetails(cliPath, resourcePath, address, network);
         String tot = receiver + "+" + lovelace+" lovelace";
-        String bodyPath = resourcePath + senderName+".txbody";
+        String bodyPath = "src/main/resources/assets/" + senderName+".txbody";
         String socketPath = "/home/tarachand/preview/node.socket";    //define your own cardano Node path
 
 
