@@ -36,7 +36,8 @@ public class CardanoController {
 		jsonBuilder.append("]");
 		System.out.println(jsonBuilder);
 
-		return jsonBuilder.toString(); // Return JSON response
+//		return jsonBuilder.toString(); // Return JSON response
+		return "Hello";
 	}
 
 	private List<TransactionDetails> parseOutput(String output) {
