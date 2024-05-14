@@ -15,9 +15,10 @@ repositories {
 	mavenCentral()
 }
 
-dependencies {
+dependencies {	
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.json:json:20210307' // Adjust the version as needed
 }
 
 tasks.named('bootBuildImage') {

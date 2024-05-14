@@ -1,7 +1,3 @@
-
-
-
-
 package com.cardanoj.api.controller;
 
 import java.io.BufferedReader;
@@ -20,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.cardanoj.api.util.TransactionDetails;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api")
@@ -48,7 +43,8 @@ public class CardanoController {
 		List<TransactionDetails> transactions = new ArrayList<>();
 		Pattern txHashPattern = Pattern.compile("^([a-fA-F0-9]+)\\s+(\\d+)\\s+(.+)$");
 		Pattern headerPattern = Pattern.compile("^\\s*TxHash\\s+TxIx\\s+Amount\\s*$");
-		// Pattern additionalPattern = Pattern.compile("TxOutDatumHash\\s+([\\w\\s]+)\\s+\"([a-fA-F0-9]+)\"");
+		// Pattern additionalPattern =
+		// Pattern.compile("TxOutDatumHash\\s+([\\w\\s]+)\\s+\"([a-fA-F0-9]+)\"");
 
 		boolean headerPassed = false;
 		String[] lines = output.split("\n");
