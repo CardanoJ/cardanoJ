@@ -1,5 +1,3 @@
-
-
 package com.cardanoj.api.util;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +18,7 @@ public class TransactionDetails {
         this.amount = amount;
         this.additionalInfo = additionalInfo;
     }
+    
 
     public String getTxHash() {
         return txHash;
@@ -61,12 +60,10 @@ public class TransactionDetails {
 	}
 
     public String toJSON() {
-        StringBuilder jsonBuilder = new StringBuilder("{");
-        jsonBuilder.append("\"txHash\": \"").append(txHash).append("\",");
-        jsonBuilder.append("\"txIx\": ").append(txIx).append(",");
-        jsonBuilder.append("\"amount\": \"").append(amount).append("\",");
-        jsonBuilder.append("\"additionalInfo\": \"").append(additionalInfo).append("\"");
-        jsonBuilder.append("}");
-        return jsonBuilder.toString();
+        return String.format(
+            "{\"txHash\": \"%s\", \"txIx\": %d, \"amount\": \"%s\", \"additionalInfo\": \"%s\"}",
+            txHash, txIx, amount.replace("\"", "\\\""), additionalInfo.replace("\"", "\\\"")
+        );
     }
+    
 }
