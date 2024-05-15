@@ -20,6 +20,10 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.10.0'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.9.0'
     implementation 'com.google.code.gson:gson:2.10.1'
+    // https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+
 
 }
 
