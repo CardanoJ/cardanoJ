@@ -1,115 +1,106 @@
 package com.cardanoj.api.controller;
 
 import java.io.BufferedReader;
-
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import static com.cardanoj.api.util.CJConstant.cliPath;
-import static com.cardanoj.api.util.CJConstant.socketPath;
-import static com.cardanoj.api.util.CJConstant.TESTNET;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.cardanoj.api.util.TransactionDetails;
+import com.fasterxml.jackson.databind.ObjectMapper; // Import ObjectMapper from Jackson
+
+import static com.cardanoj.api.util.CJConstant.cliPath;
+import static com.cardanoj.api.util.CJConstant.socketPath;
+import static com.cardanoj.api.util.CJConstant.TESTNET;
 
 @RestController
 @RequestMapping("/api")
 public class CardanoController {
 
-	@GetMapping("/queryutxo/{address}")
-	public String getOutput(@PathVariable String address) {
+    @GetMapping("/queryutxo/{address}")
+    public List<TransactionDetails> getOutput(@PathVariable String address) {
+        String output = executeCommand(address); // Get transaction details from the command line
+        
+        // Parse the output into a list of TransactionDetails
+        List<TransactionDetails> transactionDetailsList = parseOutput(output);
 
-		String output = executeCommand(address); // Get transaction details from the command line
-		List<TransactionDetails> transactions = parseOutput(output); // Parse the output
-
-		// Convert transaction details to JSON
-		StringBuilder jsonBuilder = new StringBuilder("[");
-		for (TransactionDetails transaction : transactions) {
-			jsonBuilder.append(transaction.toJSON()).append(",");
-		}
-		jsonBuilder.deleteCharAt(jsonBuilder.length() - 1); // Remove the last comma
-		jsonBuilder.append("]");
-		System.out.println(jsonBuilder);
-
-//		return jsonBuilder.toString(); // Return JSON response
-		return "Hello";
-	}
+        return transactionDetailsList;
+    }
 
 	private List<TransactionDetails> parseOutput(String output) {
-		List<TransactionDetails> transactions = new ArrayList<>();
-		Pattern txHashPattern = Pattern.compile("^([a-fA-F0-9]+)\\s+(\\d+)\\s+(.+)$");
-		Pattern headerPattern = Pattern.compile("^\\s*TxHash\\s+TxIx\\s+Amount\\s*$");
-		// Pattern additionalPattern =
-		// Pattern.compile("TxOutDatumHash\\s+([\\w\\s]+)\\s+\"([a-fA-F0-9]+)\"");
+		List<TransactionDetails> transactionDetailsList = new ArrayList<>();
 
-		boolean headerPassed = false;
 		String[] lines = output.split("\n");
 		for (String line : lines) {
-			if (!headerPassed) {
-				Matcher headerMatcher = headerPattern.matcher(line);
-				if (headerMatcher.matches()) {
-					headerPassed = true;
-				}
+			// Skip empty or header lines
+			if (line.trim().isEmpty() || line.contains("TxHash") || line.contains("TxIx")) {
 				continue;
 			}
-			Matcher txMatcher = txHashPattern.matcher(line);
-			if (txMatcher.matches()) {
-				String txHash = txMatcher.group(1);
-				int txIx = Integer.parseInt(txMatcher.group(2));
-				String amount = txMatcher.group(3);
-				// Check if the amount contains "lovelace"
-				int plusIndex = amount.indexOf("lovelace +");
-				String additionalInfo = null;
-				if (plusIndex != -1) {
-					// If "lovelace" is found, extract the part after it as additionalInfo
-					additionalInfo = amount.substring(plusIndex + "lovelace +".length()).trim();
-					amount = amount.substring(0, plusIndex).trim();
+			// Use regular expression to split the line by whitespace
+			String[] parts = line.trim().split("\\s+");
+			if (parts.length >= 4) { 
+				try {
+					// Concatenate additionalInfo if there are more than 4 parts
+					StringBuilder additionalInfo = new StringBuilder();
+					for (int i = 3; i < parts.length; i++) {
+						additionalInfo.append(parts[i]).append(" ");
+					}
+					// Attempt to parse the transaction index as an integer
+					int txIx = Integer.parseInt(parts[1]);
+
+					double amount = Double.parseDouble(parts[2]);
+
+					// If successful, create TransactionDetails object and add to the list
+
+					TransactionDetails details = new TransactionDetails(parts[0], txIx, String.format("%.0f", amount), additionalInfo.toString().trim());
+
+					// TransactionDetails details = new TransactionDetails(parts[0], txIx, Double.parseDouble(parts[2]), additionalInfo.toString().trim());
+
+
+					transactionDetailsList.add(details);
+				} catch (NumberFormatException e) {
+					// If parsing fails, log an error and skip this line
+					System.err.println("Skipping line due to invalid transaction index: " + line);
 				}
-				transactions.add(new TransactionDetails(txHash, txIx, amount, additionalInfo));
-				System.out.println(additionalInfo + "--------------------------------");
-
+			} else {
+				// If the line does not contain at least four parts, log an error and skip this line
+				System.err.println("Skipping line due to invalid format: " + line);
 			}
 		}
-		return transactions;
+		
+		return transactionDetailsList;
 	}
+	
 
-	public String executeCommand(String address) {
-		// String address =
-		// "addr_test1vr06yexumsxcf26uhdpyawpu9vffcxw0d9xr37vem3sfvwqwpggea";
-		StringBuilder outputBuilder = new StringBuilder();
+    public String executeCommand(String address) {
+        StringBuilder outputBuilder = new StringBuilder();
 
-		try {
-			ProcessBuilder processBuilder = new ProcessBuilder(
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    cliPath, "query", "utxo",
+                    "--socket-path", socketPath,
+                    "--address", address,
+                    TESTNET, "2");
 
-					cliPath, "query", "utxo",
-					"--socket-path", socketPath,
-					"--address", address,
-					TESTNET, "2");
+            processBuilder.redirectErrorStream(true);
+            Process process = processBuilder.start();
 
-			System.out.println("command: " + processBuilder.command());
-			processBuilder.redirectErrorStream(true);
-			Process process = processBuilder.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                outputBuilder.append(line).append("\n");
+            }
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				outputBuilder.append(line).append("\n");
-				System.out.println(line);
-			}
+            process.waitFor();
 
-			process.waitFor();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-
-		return outputBuilder.toString();
-
-	}
-
+        return outputBuilder.toString();
+    }
 }
