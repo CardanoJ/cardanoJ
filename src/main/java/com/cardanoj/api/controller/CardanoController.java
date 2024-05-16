@@ -42,11 +42,11 @@ public class CardanoController {
 			}
 			// Use regular expression to split the line by whitespace
 			String[] parts = line.trim().split("\\s+");
-			if (parts.length >= 4) { 
+			if (parts.length >= 4) { // Assuming at least four parts in each line
 				try {
 					// Concatenate additionalInfo if there are more than 4 parts
 					StringBuilder additionalInfo = new StringBuilder();
-					for (int i = 3; i < parts.length; i++) {
+					for (int i = 5; i < parts.length; i++) {
 						additionalInfo.append(parts[i]).append(" ");
 					}
 					// Attempt to parse the transaction index as an integer
