@@ -1,6 +1,7 @@
 package com.cardanoJ.stake;
 
 import static com.cardanoJ.transaction.CardanoJConstant.*;
+
 public class Main {
     public static void main(String[] args) {
         CardanoJRegisterAndDelegate cardanoJRegisterAndDelegate = new CardanoJRegisterAndDelegate();
@@ -12,8 +13,8 @@ public class Main {
         System.out.println("RegCert :" + c);
 
         CardanoJQueryStakePool cardanoJQueryStakePool = new CardanoJQueryStakePool();
-        String first = cardanoJQueryStakePool.queryStakePool(CLI_PATH,SOCKET_PATH);
-        System.out.println("Pool :"+ first);
+        String first = cardanoJQueryStakePool.queryStakePool(CLI_PATH, SOCKET_PATH);
+        System.out.println("Pool :" + first);
         String d = cardanoJRegisterAndDelegate.stakeAddressDelCert(CLI_PATH, first);
         System.out.println("DelCert :" + d);
 
@@ -30,19 +31,17 @@ public class Main {
         System.out.println("Submit :" + h);
 
 
-
         //Withdraw
 
         CardanoJWithdrawUser cardanoJWithdrawUser = new CardanoJWithdrawUser();
-        String i = cardanoJWithdrawUser.buildTransaction(CLI_PATH,"7dd2c84807a7e39401e4577a756f0e021c3c17f12e837ec4155ae82b94472b8d#0",SOCKET_PATH);
+        String i = cardanoJWithdrawUser.buildTransaction(CLI_PATH, "7dd2c84807a7e39401e4577a756f0e021c3c17f12e837ec4155ae82b94472b8d#0", SOCKET_PATH);
         System.out.println("Build : " + i);
 
-String j = cardanoJWithdrawUser.signTransaction(CLI_PATH,SOCKET_PATH);
+        String j = cardanoJWithdrawUser.signTransaction(CLI_PATH, SOCKET_PATH);
         System.out.println("Sign : " + j);
 
-String k = cardanoJWithdrawUser.submitTransaction(CLI_PATH,SOCKET_PATH);
+        String k = cardanoJWithdrawUser.submitTransaction(CLI_PATH, SOCKET_PATH);
         System.out.println("Build : " + k);
-
 
 
     }

@@ -27,3 +27,7 @@ build/resources/main/bin/cardano-cli
 /.idea/
 /build/
 /src/main/resources/bin/cardano-cli
+/.vscode/
+/.settings/
+/out/
+/gradle/
