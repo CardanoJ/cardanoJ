@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cardanoj.api.util.RandomNameGenerator;
+import com.cardanoj.api.util.CardanoJRandomNameGenerator;
 
-import static com.cardanoj.api.util.CJConstant.cliPath;
+import static com.cardanoj.api.util.CardanoJConstant.cliPath;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,13 +16,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import static com.cardanoj.api.util.CJConstant.TESTNET;
+import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 
 @RestController
 @RequestMapping("/api")
-public class SignTransactionController {
+public class CardanoJSignTransactionController {
     @Autowired
-    RandomNameGenerator randomName;
+    CardanoJRandomNameGenerator randomName;
 
     @GetMapping("/sign")
     public String getSign(@RequestParam String signKey, @RequestParam String txbody)
@@ -88,7 +88,7 @@ public class SignTransactionController {
     }
 
     private static String getResourcePath() {
-        return SignTransactionController.class.getClassLoader().getResource("").getPath();
+        return CardanoJSignTransactionController.class.getClassLoader().getResource("").getPath();
     }
 
     // Method to save the decoded JSON data to a file

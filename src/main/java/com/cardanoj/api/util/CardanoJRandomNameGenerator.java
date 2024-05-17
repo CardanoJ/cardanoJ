@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Component;
 @Component
-public class RandomNameGenerator {
+public class CardanoJRandomNameGenerator {
 
 	public String generate() {
 		LocalDateTime now = LocalDateTime.now();

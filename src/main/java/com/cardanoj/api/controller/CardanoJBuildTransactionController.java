@@ -3,9 +3,9 @@ package com.cardanoj.api.controller;
 import java.io.BufferedReader;
 import java.util.Random;
 
-import static com.cardanoj.api.util.CJConstant.cliPath;
-import static com.cardanoj.api.util.CJConstant.socketPath;
-import static com.cardanoj.api.util.CJConstant.TESTNET;
+import static com.cardanoj.api.util.CardanoJConstant.cliPath;
+import static com.cardanoj.api.util.CardanoJConstant.socketPath;
+import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 @RestController
 @RequestMapping("/api")
 
-public class BuildTransactionController {
+public class CardanoJBuildTransactionController {
 	@GetMapping("/build/{senderAddress}/{receiverAddress}/{lovelace}/{txHash}/{txID}")
 	public String getTransaction(@PathVariable String senderAddress, @PathVariable String receiverAddress,
 			@PathVariable String lovelace, @PathVariable String txHash, @PathVariable String txID) 
@@ -84,7 +84,7 @@ public class BuildTransactionController {
 	}
 
 	private static String getResourcePath() {
-		return BuildTransactionController.class.getClassLoader().getResource("").getPath();
+		return CardanoJBuildTransactionController.class.getClassLoader().getResource("").getPath();
 	}
 
 }

@@ -10,29 +10,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cardanoj.api.util.TransactionDetails;
-import com.fasterxml.jackson.databind.ObjectMapper; // Import ObjectMapper from Jackson
+import com.cardanoj.api.util.CardanoJTransactionDetails;
 
-import static com.cardanoj.api.util.CJConstant.cliPath;
-import static com.cardanoj.api.util.CJConstant.socketPath;
-import static com.cardanoj.api.util.CJConstant.TESTNET;
+import static com.cardanoj.api.util.CardanoJConstant.cliPath;
+import static com.cardanoj.api.util.CardanoJConstant.socketPath;
+import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 
 @RestController
 @RequestMapping("/api")
-public class CardanoController {
+public class CardanoJCardanoController {
 
     @GetMapping("/queryutxo/{address}")
-    public List<TransactionDetails> getOutput(@PathVariable String address) {
+    public List<CardanoJTransactionDetails> getOutput(@PathVariable String address) {
         String output = executeCommand(address); // Get transaction details from the command line
         
         // Parse the output into a list of TransactionDetails
-        List<TransactionDetails> transactionDetailsList = parseOutput(output);
+        List<CardanoJTransactionDetails> cardanoJTransactionDetailsList = parseOutput(output);
 
-        return transactionDetailsList;
+        return cardanoJTransactionDetailsList;
     }
 
-	private List<TransactionDetails> parseOutput(String output) {
-		List<TransactionDetails> transactionDetailsList = new ArrayList<>();
+	private List<CardanoJTransactionDetails> parseOutput(String output) {
+		List<CardanoJTransactionDetails> cardanoJTransactionDetailsList = new ArrayList<>();
 
 		String[] lines = output.split("\n");
 		for (String line : lines) {
@@ -56,12 +55,12 @@ public class CardanoController {
 
 					// If successful, create TransactionDetails object and add to the list
 
-					TransactionDetails details = new TransactionDetails(parts[0], txIx, String.format("%.0f", amount), additionalInfo.toString().trim());
+					CardanoJTransactionDetails details = new CardanoJTransactionDetails(parts[0], txIx, String.format("%.0f", amount), additionalInfo.toString().trim());
 
 					// TransactionDetails details = new TransactionDetails(parts[0], txIx, Double.parseDouble(parts[2]), additionalInfo.toString().trim());
 
 
-					transactionDetailsList.add(details);
+					cardanoJTransactionDetailsList.add(details);
 				} catch (NumberFormatException e) {
 					// If parsing fails, log an error and skip this line
 					System.err.println("Skipping line due to invalid transaction index: " + line);
@@ -72,7 +71,7 @@ public class CardanoController {
 			}
 		}
 		
-		return transactionDetailsList;
+		return cardanoJTransactionDetailsList;
 	}
 	
 

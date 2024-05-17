@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-import static com.cardanoj.api.util.CJConstant.cliPath;
-import static com.cardanoj.api.util.CJConstant.socketPath;
-import static com.cardanoj.api.util.CJConstant.TESTNET;
+import static com.cardanoj.api.util.CardanoJConstant.cliPath;
+import static com.cardanoj.api.util.CardanoJConstant.socketPath;
+import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cardanoj.api.util.RandomNameGenerator;
+import com.cardanoj.api.util.CardanoJRandomNameGenerator;
 
 @RestController
 @RequestMapping("/api")
-public class SubmitTransactionController {
+public class CardanoJSubmitTransactionController {
 	@Autowired
-	RandomNameGenerator randomName;
+	CardanoJRandomNameGenerator randomName;
 
 	@GetMapping("/submit")
 	public String submitTransaction(@RequestParam String tx) throws UnsupportedEncodingException {
@@ -90,7 +90,7 @@ public class SubmitTransactionController {
 	}
 
 	private static String getResourcePath() {
-		return SubmitTransactionController.class.getClassLoader().getResource("").getPath();
+		return CardanoJSubmitTransactionController.class.getClassLoader().getResource("").getPath();
 	}
 
 	// Method to save the decoded JSON data to a file

@@ -3,16 +3,16 @@ package com.cardanoj.api.util;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TransactionDetails {
+public class CardanoJTransactionDetails {
     private String txHash;
     private int txIx;
     private String amount;
     private String additionalInfo;
 
-    public TransactionDetails() {
+    public CardanoJTransactionDetails() {
     }
 
-    public TransactionDetails(String txHash, int txIx, String amount, String additionalInfo) {
+    public CardanoJTransactionDetails(String txHash, int txIx, String amount, String additionalInfo) {
         this.txHash = txHash;
         this.txIx = txIx;
         this.amount = amount;
