@@ -11,12 +11,12 @@
 
 ## Usage
 ### Cardano Wallet Creator
-The `CreateWallet` class facilitates the creation of Cardano wallets. It generates a recovery phrase, derives the root private key, generates payment keys and addresses, and saves them to files.
+The `BuildAddress` class facilitates the creation of Cardano wallets. It generates a recovery phrase, derives the root private key, generates payment keys and addresses, and saves them to files.
 
 Usage:
 ```sh
-CreateWallet walletCreator = new CreateWallet();
-walletCreator.create();
+BuildAddress buildAddress = new BuildAddress();
+buildAddress.addressGen();
 ```
 
 # Cardano Transaction Toolkit
