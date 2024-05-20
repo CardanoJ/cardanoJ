@@ -23,41 +23,80 @@ buildAddress.addressGen();
 
 This toolkit provides Java classes for facilitating Cardano transactions by interacting with the Cardano CLI. It offers methods for querying protocol parameters, building transactions, signing transactions, and submitting transactions to the Cardano network.
 
-## Usage
-```sh
-CardanoJBuildTransaction cardanoJBuildTransaction = new CardanoJBuildTransaction();
-cardanoJBuildTransaction.transact();
-```
+### Example:
 
 ```sh
-cardanoJBuildTransaction.transactionSession();
+CardanoJCreateDatum dat = new CardanoJCreateDatum();
+String datum = dat.create(senderAddress, receiverAddress, lovelace, resourcePath);
 ```
+### Building the Transaction
+Construct a transaction with specified parameters.
+
 ```sh
 CardanoJTransaction tr = new CardanoJTransaction();
+tr.buildTransaction(cliPath, resourcePath, senderAddress, receiverAddress, network, lovelace, senderName, datum);
 ```
-# Creating Datum
+### Example:
 ```sh
-CardanoJCreateDatum dat = new CardanoJCreateDatum();
-String datum = dat.create(senderAddress,receiverAddress,lovelace,resourcePath);
+CardanoJTransaction tr = new CardanoJTransaction();
+tr.buildTransaction(cliPath, resourcePath, senderAddress, receiverAddress, network, lovelace, senderName, datum);
 ```
-# Building the transaction
+### Signing the Transaction
+Sign the constructed transaction.
+### Example:
 ```sh
-tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
+tr.signTransaction(cliPath, resourcePath, network, senderName);
 ```
-# Sign transaction
+### Submitting the Transaction
+Submit the signed transaction to the Cardano network.
+
+### Example:
 ```sh
-tr.signTransaction(cliPath,resourcePath,network,senderName);
+String result = tr.submitTransaction(cliPath, resourcePath, network, senderName);
 ```
-# Submit transaction
-```sh
-String result = tr.submitTransaction(cliPath,resourcePath,network,senderName);
-```
-# Transaction validation
+### Transaction Validation
+Validate and check the transaction on Cardanoscan.
+### Example:
 ```sh
 System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + result);
 ```
 
+### Notes
+- Customize paths and parameters according to your Cardano setup.
+- Ensure the Cardano CLI executable is available in the specified path.
+- For Unix/Linux/MacOS users, the program can give executable permissions to cardano-cli if necessary.
 
-> Note: _Customize paths and parameters according to your Cardano setup.
-Ensure the Cardano CLI executable is available in the specified path.
-For Unix/Linux/MacOs users, the program gives executable permissions to cardano-cli if necessary._
+# Example Code
+```sh
+package com.cardanoJ;
+
+import com.cardanoJ.transaction.CardanoJBuildTransaction;
+
+public class Main {
+    public static void main(String[] args) {
+        CardanoJBuildTransaction cardanoJBuildTransaction = new CardanoJBuildTransaction();
+        cardanoJBuildTransaction.transact();
+    }
+}
+```
+
+### Classes and Methods
+### `CardanoJBuildTransaction`
+This class handles the core functionality for querying, building, signing, and submitting transactions.
+
+### Methods:
+- **query():** Queries the balance of an address.
+- **transactionSession():** Manages the entire transaction session.
+- **transact():** Initializes paths and starts a transaction session.
+- **setCliPath():** Sets the CLI path based.
+- **getResourcePath():** Retrieves the resource path.
+- **givingPermissionToCAcli():** Gives executable permissions to cardano-cli on Unix/Linux/MacOS systems.
+### `CardanoJTransaction`
+This class provides methods for building, signing, and submitting transactions.
+### Methods:
+- **submitTransaction(String cliPath, String resourcePath, String network, String senderName):** Submits a transaction.
+- **signTransaction(String cliPath, String resourcePath, String network, String name):** Signs a transaction.
+- **buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace, String senderName, String datumValue):** Builds a transaction.
+- **getTransactionDetails(String cliPath, String resourcePath, String address, String network):** Retrieves transaction details.
+- **getTransaction(String filePath):** Parses the transaction details from a file.
+- **parseLovelace(String amount):** Parses the lovelace amount from a string.
