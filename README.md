@@ -86,7 +86,7 @@ This class handles the core functionality for querying, building, signing, and s
 
 ### Methods:
 - ***query():*** Queries the balance of an address.
-- ***transactionSession():** Manages the entire transaction session.
+- ***transactionSession():*** Manages the entire transaction session.
 - ***transact():*** Initializes paths and starts a transaction session.
 - ***setCliPath():*** Sets the CLI path based.
 - ***getResourcePath():*** Retrieves the resource path.
