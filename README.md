@@ -10,7 +10,7 @@
 - Clone this repository to your local machine.
 
 ## Usage
-### Cardano Wallet Creator
+### Cardano Wallet address Creator
 The `BuildAddress` class facilitates the creation of Cardano wallet's addresses. It generates a private key, payment keys and addresses, and saves them to files.
 
 Usage:
@@ -25,24 +25,39 @@ This toolkit provides Java classes for facilitating Cardano transactions by inte
 
 ## Usage
 ```sh
-TransactionCollect trancationCollect = new TransactionCollect();
+CardanoJBuildTransaction cardanoJBuildTransaction = new CardanoJBuildTransaction();
+cardanoJBuildTransaction.transact();
+```
+
+```sh
+cardanoJBuildTransaction.transactionSession();
 ```
 ```sh
-// Query protocol parameters
-String protocolParamFile = trancationCollect.queryProtocolParam(cliPath, resourcePath, network, socketPath);
+CardanoJTransaction tr = new CardanoJTransaction();
 ```
+# Creating Datum
 ```sh
-// Build transaction
-String bodyFile = trancationCollect.buildTransaction(cliPath, resourcePath, senderAddress, receiverAddress, network, lovelace, senderName, datumValue, socketPath);
+CardanoJCreateDatum dat = new CardanoJCreateDatum();
+String datum = dat.create(senderAddress,receiverAddress,lovelace,resourcePath);
 ```
+# Building the transaction
 ```sh
-// Sign transaction
-trancationCollect.signTransaction(cliPath, resourcePath, network, receiverName);
+tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
 ```
+# Sign transaction
 ```sh
-// Submit transaction
-String transactionID = trancationCollect.submitTransaction(cliPath, resourcePath, network, senderName);
+tr.signTransaction(cliPath,resourcePath,network,senderName);
 ```
+# Submit transaction
+```sh
+String result = tr.submitTransaction(cliPath,resourcePath,network,senderName);
+```
+# Transaction validation
+```sh
+System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + result);
+```
+
+
 > Note: _Customize paths and parameters according to your Cardano setup.
 Ensure the Cardano CLI executable is available in the specified path.
 For Unix/Linux/MacOs users, the program gives executable permissions to cardano-cli if necessary._
