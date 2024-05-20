@@ -87,20 +87,20 @@ public class Main {
 _This class handles the core functionality for querying, building, signing, and submitting transactions._
 
 ### Methods:
-- *query() -* Queries the balance of an address.
-- *transactionSession() -* Manages the entire transaction session.
-- *transact() -* Initializes paths and starts a transaction session.
-- *setCliPath() -* Sets the CLI path based.
-- *getResourcePath() -* Retrieves the resource path.
-- *givingPermissionToCAcli() -* Gives executable permissions to cardano-cli on Unix/Linux/MacOS systems.
+- **query() -** _Queries the balance of an address._
+- **transactionSession() -** _Manages the entire transaction session._
+- **transact() -** _Initializes paths and starts a transaction session._
+- **setCliPath() -** _Sets the CLI path based._
+- **getResourcePath() -** _Retrieves the resource path._
+- **givingPermissionToCAcli() -** _Gives executable permissions to cardano-cli on Unix/Linux/MacOS systems._
   
 ### `CardanoJTransaction`
 _This class provides methods for building, signing, and submitting transactions._
 
 ### Methods:
-- *submitTransaction(String cliPath, String resourcePath, String network, String senderName) -* Submits a transaction.
-- *signTransaction(String cliPath, String resourcePath, String network, String name) -* Signs a transaction.
-- *buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace, String senderName, String datumValue) -* Builds a transaction.
-- *getTransactionDetails(String cliPath, String resourcePath, String address, String network) -* Retrieves transaction details.
-- *getTransaction(String filePath) -* Parses the transaction details from a file.
-- *parseLovelace(String amount) -* Parses the lovelace amount from a string.
+- **submitTransaction(String cliPath, String resourcePath, String network, String senderName) -** _Submits a transaction._
+- **signTransaction(String cliPath, String resourcePath, String network, String name) -** _Signs a transaction._
+- **buildTransaction(String cliPath, String resourcePath, String address, String receiver, String network, int lovelace, String senderName, String datumValue) -** _Builds a transaction._
+- **getTransactionDetails(String cliPath, String resourcePath, String address, String network) -** _Retrieves transaction details._
+- **getTransaction(String filePath) -** _Parses the transaction details from a file._
+- **parseLovelace(String amount) -** _Parses the lovelace amount from a string._
