@@ -31,10 +31,6 @@ String datum = dat.create(senderAddress, receiverAddress, lovelace, resourcePath
 ## Building the Transaction
 _Construct a transaction with specified parameters._
 
-```sh
-CardanoJTransaction tr = new CardanoJTransaction();
-tr.buildTransaction(cliPath, resourcePath, senderAddress, receiverAddress, network, lovelace, senderName, datum);
-```
 **Example:**
 ```sh
 CardanoJTransaction tr = new CardanoJTransaction();
