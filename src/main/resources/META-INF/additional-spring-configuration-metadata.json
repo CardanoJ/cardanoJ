@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "file.asset-dir",
+    "type": "java.lang.String",
+    "description": "A description for 'file.asset-dir'"
+  },
+  {
+    "name": "cardano.cli.path",
+    "type": "java.lang.String",
+    "description": "A description for 'cardano.cli.path'"
+  }
+]}
