@@ -36,3 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 /src/main/resources/bin/
+src/main/java/com/cardanoj/api/scriptTransactionCollectController/CardanoJCollectBuildTransactionController.java
+src/main/java/com/cardanoj/api/stakeController/CaardanoJStakeBuildTransactionController.java
+src/main/java/com/cardanoj/api/stakeController/CardanoJWithdrawUserBuildTransactionController.java
+src/main/java/com/cardanoj/api/stakeController/CardanoJCalculateFeeController.java
