@@ -265,7 +265,7 @@ This endpoint builds a Cardano transaction based on provided parameters.
 - **Method:** `GET`
 - **Summary:** Build a Cardano transaction.
 - **Parameters:**
-   -senderAddress, receiverAddress, lovelace, txHash, txID (path parameters): Transaction details.
+   - senderAddress, receiverAddress, lovelace, txHash, txID (path parameters): Transaction details.
 - **Responses:**
   - `200 OK`: Successfully built the transaction.
   - `500 Internal Server Error`: Failed to build the transaction due to an internal server error.
@@ -277,8 +277,8 @@ This endpoint signs a Cardano transaction using the provided signing key and tra
 - **Method:** `GET`
 - **Summary:** Sign a Cardano transaction.
 - **Parameters:**
-   -signKey (query parameter): Signing key for the transaction.
-   -txbody (query parameter): Transaction body to sign.
+   - signKey (query parameter): Signing key for the transaction.
+   - txbody (query parameter): Transaction body to sign.
 - **Responses:**
   - `200 OK`: Successfully signed the transaction.
   - `500 Internal Server Error`: Failed to sign the transaction due to an internal server error.
@@ -290,7 +290,7 @@ This endpoint submits a Cardano transaction to the blockchain.
 - **Method:** `GET`
 - **Summary:** Submit a Cardano transaction.
 - **Parameters:**
-tx (query parameter): Transaction to submit.
+   - tx (query parameter): Transaction to submit.
 - **Responses:**
   - `200 OK`:  Successfully submitted the transaction.
   - `500 Internal Server Error`: Failed to submit the transaction due to an internal server error.
