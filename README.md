@@ -251,7 +251,7 @@ This endpoints to interact with Cardano's Unspent Transaction Output (UTXO) usin
 - **Method:** `GET`
 - **Summary:** Querying UTXO details.
 - **Parameters:**
-- `{address}`: Path variable representing the Cardano address to query UTXO details for.
+   - address : Path variable representing the Cardano address to query UTXO details for.
 - **Responses:**
   - `200 OK`: Description: Successfully retrieved the UTXO details.
     Content: A JSON array containing transaction details.
