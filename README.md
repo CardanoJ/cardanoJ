@@ -4,6 +4,10 @@
 
 This document provides documentation for various controllers in the CardanoJ API, each serving specific functionalities related to the Cardano blockchain.
 
+**how the CardanoJ API works, please watch the following YouTube video:**
+
+[CardanoJ API Documentation and Use](https://youtu.be/CrMZbuiwQss?si=wq6qnLmIdS5aCAJ2)
+
 ## Table of Contents
 
 1. [Address Controller](#address-controller)
