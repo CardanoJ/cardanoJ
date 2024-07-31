@@ -1,29 +1,72 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.1.11'
-	id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+    id 'org.springframework.boot' version '3.1.11'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'maven-publish'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+    sourceCompatibility = '17'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.11'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.11'
 }
 
 tasks.named('bootBuildImage') {
-	builder = 'paketobuildpacks/builder-jammy-base:latest'
+    builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                name.set('CardanoJ')
+                description.set('It simplifies the process for Java developers to integrate Cardano functionalities into their applications.')
+                url.set('https://github.com/CardanoJ/cardanoJ')
+                licenses {
+                    license {
+                        name.set('The Apache License, Version 2.0')
+                        url.set('http://www.apache.org/licenses/LICENSE-2.0')
+                    }
+                }
+                developers {
+                    developer {
+                        id.set('Quotus-dev')
+                        name.set('Anjali Sethy')
+                        email.set('your-email@example.com')
+                    }
+                }
+                scm {
+                    connection.set('scm:git:git://github.com/CardanoJ/cardanoJ.git')
+                    developerConnection.set('scm:git:ssh://github.com/CardanoJ/cardanoJ.git')
+                    url.set('https://github.com/CardanoJ/cardanoJ')
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/CardanoJ/cardanoJ')
+            credentials {
+                username = project.findProperty('gpr.user') ?: System.getenv('USERNAME')
+                password = project.findProperty('gpr.token') ?: System.getenv('GITHUB_TOKEN')
+            }
+        }
+    }
 }
