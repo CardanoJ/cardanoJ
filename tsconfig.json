@@ -4,12 +4,15 @@
     "module": "commonjs",
     "moduleResolution": "Node",
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDir": "./",  // Set rootDir to the common directory
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "types": ["node", "jest"]
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules", "build"]
 }

@@ -23,7 +23,7 @@ exports.getTransactionDetails = getTransactionDetails;
 exports.getProtocolParams = getProtocolParams;
 exports.buildStakeAddress = buildStakeAddress;
 exports.getStakePoolInfo = getStakePoolInfo;
-const axios_1 = __importDefault(require("axios")); // Import axios
+const axios_1 = __importDefault(require("axios"));
 // Function to get address information
 function getAddressInfo() {
     return __awaiter(this, void 0, void 0, function* () {
