@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cardanoj.api.util.CardanoJTransactionDetails;
-import com.fasterxml.jackson.databind.ObjectMapper; // Import ObjectMapper from Jackson
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.cardanoj.api.util.CardanoJConstant.cliPath;
 import static com.cardanoj.api.util.CardanoJConstant.socketPath;
@@ -21,61 +22,79 @@ import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 @RequestMapping("/api")
 public class CardanoJUtxoController {
 
+    private static final Logger logger = LoggerFactory.getLogger(CardanoJUtxoController.class);
+
+    /**
+     * Endpoint to query UTXOs for a given address.
+     * <p>
+     * This method executes a Cardano CLI command to retrieve UTXO details for a specific address
+     * and parses the command output into a list of transaction details.
+     * </p>
+     *
+     * @param address the Cardano address to query
+     * @return a list of transaction details
+     */
     @GetMapping("/queryutxo/{address}")
     public List<CardanoJTransactionDetails> getOutput(@PathVariable String address) {
         String output = executeCommand(address); // Get transaction details from the command line
-        
-        // Parse the output into a list of TransactionDetails
-        List<CardanoJTransactionDetails> transactionDetailsList = parseOutput(output);
+        return parseOutput(output);
+    }
+
+    /**
+     * Parses the CLI command output into a list of transaction details.
+     * <p>
+     * This method processes each line of the output, skipping headers and empty lines,
+     * and constructs `CardanoJTransactionDetails` objects.
+     * </p>
+     *
+     * @param output the raw output from the CLI command
+     * @return a list of parsed transaction details
+     */
+    private List<CardanoJTransactionDetails> parseOutput(String output) {
+        List<CardanoJTransactionDetails> transactionDetailsList = new ArrayList<>();
+        String[] lines = output.split("\n");
+
+        for (String line : lines) {
+            if (line.trim().isEmpty() || line.contains("TxHash") || line.contains("TxIx")) {
+                continue;
+            }
+
+            String[] parts = line.trim().split("\\s+");
+            if (parts.length >= 4) {
+                try {
+                    StringBuilder additionalInfo = new StringBuilder();
+                    for (int i = 5; i < parts.length; i++) {
+                        additionalInfo.append(parts[i]).append(" ");
+                    }
+
+                    int txID = Integer.parseInt(parts[1]);
+                    double amount = Double.parseDouble(parts[2]);
+
+                    CardanoJTransactionDetails details = new CardanoJTransactionDetails(
+                            parts[0], txID, String.format("%.0f", amount), additionalInfo.toString().trim()
+                    );
+
+                    transactionDetailsList.add(details);
+                } catch (NumberFormatException e) {
+                    logger.error("Skipping line due to invalid format: " + line, e);
+                }
+            } else {
+                logger.error("Skipping line due to invalid format: " + line);
+            }
+        }
 
         return transactionDetailsList;
     }
 
-	private List<CardanoJTransactionDetails> parseOutput(String output) {
-		List<CardanoJTransactionDetails> transactionDetailsList = new ArrayList<>();
-
-		String[] lines = output.split("\n");
-		for (String line : lines) {
-			// Skip empty or header lines
-			if (line.trim().isEmpty() || line.contains("TxHash") || line.contains("TxIx")) {
-				continue;
-			}
-			// Use regular expression to split the line by whitespace
-			String[] parts = line.trim().split("\\s+");
-			if (parts.length >= 4) { // Assuming at least four parts in each line
-				try {
-					// Concatenate additionalInfo if there are more than 4 parts
-					StringBuilder additionalInfo = new StringBuilder();
-					for (int i = 5; i < parts.length; i++) {
-						additionalInfo.append(parts[i]).append(" ");
-					}
-					// Attempt to parse the transaction index as an integer
-					int txID = Integer.parseInt(parts[1]);
-
-					double amount = Double.parseDouble(parts[2]);
-
-					// If successful, create TransactionDetails object and add to the list
-
-					CardanoJTransactionDetails details = new CardanoJTransactionDetails(parts[0], txID, String.format("%.0f", amount), additionalInfo.toString().trim());
-
-					// TransactionDetails details = new TransactionDetails(parts[0], txID, Double.parseDouble(parts[2]), additionalInfo.toString().trim());
-
-
-					transactionDetailsList.add(details);
-				} catch (NumberFormatException e) {
-					// If parsing fails, log an error and skip this line
-					System.err.println("Skipping line due to invalid transaction index: " + line);
-				}
-			} else {
-				// If the line does not contain at least four parts, log an error and skip this line
-				System.err.println("Skipping line due to invalid format: " + line);
-			}
-		}
-		
-		return transactionDetailsList;
-	}
-	
-
+    /**
+     * Executes a Cardano CLI command to query UTXOs for the specified address.
+     * <p>
+     * This method runs the command using `ProcessBuilder` and collects the output.
+     * </p>
+     *
+     * @param address the Cardano address to query
+     * @return the output from the CLI command
+     */
     public String executeCommand(String address) {
         StringBuilder outputBuilder = new StringBuilder();
 
@@ -89,15 +108,17 @@ public class CardanoJUtxoController {
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                outputBuilder.append(line).append("\n");
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    outputBuilder.append(line).append("\n");
+                }
             }
 
             process.waitFor();
 
         } catch (Exception e) {
+            logger.error("Error executing command", e);
             throw new RuntimeException(e);
         }
 

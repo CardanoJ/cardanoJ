@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
+
 import static com.cardanoj.api.util.CardanoJConstant.cliPath;
 import static com.cardanoj.api.util.CardanoJConstant.socketPath;
 import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
@@ -15,9 +15,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * REST controller for handling requests related to building Cardano transactions
+ * using script addresses and various parameters.
+ * <p>
+ * This controller provides an endpoint to build a transaction based on provided
+ * parameters such as sender address, script address, lovelace amount, datum hash,
+ * transaction hash, and transaction ID.
+ * </p>
+ */
 @RestController
 @RequestMapping("/api")
 public class CardanoJScriptMakeBuildTransactionController {
+
+    /**
+     * Endpoint to build a Cardano transaction with the specified parameters.
+     * <p>
+     * The parameters include sender address, script address, amount of lovelace,
+     * datum hash, transaction hash, and transaction ID. This method constructs the
+     * transaction using the Cardano CLI and returns the transaction body.
+     * </p>
+     *
+     * @param senderAddress the address of the sender
+     * @param scriptAddress the address of the script
+     * @param lovelace      the amount of lovelace to be sent
+     * @param datumHash     the datum hash associated with the transaction
+     * @param txHash        the transaction hash
+     * @param txID          the transaction ID
+     * @return the transaction body as a string
+     */
     @GetMapping("/script/{senderAddress}/{scriptAddress}/{lovelace}/{datumHash}/{txHash}/{txID}")
     public String getTransaction(@PathVariable String senderAddress, @PathVariable String scriptAddress,
             @PathVariable String lovelace, @PathVariable String datumHash, @PathVariable String txHash,
@@ -25,15 +51,28 @@ public class CardanoJScriptMakeBuildTransactionController {
         return buildTransaction(senderAddress, scriptAddress, lovelace, datumHash, txHash, txID);
     }
 
+    /**
+     * Builds a Cardano transaction using the Cardano CLI with the provided parameters.
+     * <p>
+     * This method executes the CLI command to build the transaction and then reads
+     * the generated transaction body from a file. The file is created in the resource
+     * directory and contains the transaction body in JSON format.
+     * </p>
+     *
+     * @param senderAddress the address of the sender
+     * @param scriptAddress the address of the script
+     * @param lovelace      the amount of lovelace to be sent
+     * @param datumHash     the datum hash associated with the transaction
+     * @param txHash        the transaction hash
+     * @param txID          the transaction ID
+     * @return the transaction body as a string, or null if the process fails
+     */
     public String buildTransaction(String senderAddress, String scriptAddress, String lovelace, String datumHash,
             String txHash, String txID) {
-        // String txINN = getTransactionDetails(cliPath, resourcePath, senderAddress,
-        // networkID);
         String tot = scriptAddress + "+" + lovelace;
         String resourcePath = getResourcePath();
         String txHashID = txHash + "#" + txID;
         String bodyPath = resourcePath + scriptAddress + ".build";
-        // define your own cardano Node path
 
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
@@ -45,7 +84,8 @@ public class CardanoJScriptMakeBuildTransactionController {
                     TESTNET, "2",
                     "--out-file", bodyPath,
                     "--babbage-era",
-                    "--socket-path", socketPath);
+                    "--socket-path", socketPath
+            );
             System.out.println("Build Transaction command: " + processBuilder.command());
 
             processBuilder.redirectErrorStream(true);
@@ -90,8 +130,16 @@ public class CardanoJScriptMakeBuildTransactionController {
         }
     }
 
+    /**
+     * Retrieves the resource path for storing temporary files.
+     * <p>
+     * This method gets the path to the directory where temporary files are stored,
+     * using the class loader to get the path to the resources directory.
+     * </p>
+     *
+     * @return the resource path as a string
+     */
     private static String getResourcePath() {
         return CardanoJScriptMakeBuildTransactionController.class.getClassLoader().getResource("").getPath();
     }
-
 }

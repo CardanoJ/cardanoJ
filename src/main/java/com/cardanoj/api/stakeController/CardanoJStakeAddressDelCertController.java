@@ -1,4 +1,5 @@
 package com.cardanoj.api.stakeController;
+
 import static com.cardanoj.api.util.CardanoJConstant.cliPath;
 
 import java.io.File;
@@ -14,12 +15,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * REST controller for handling requests related to Cardano delegation certificate generation.
+ * <p>
+ * This controller provides an endpoint for generating a Cardano delegation certificate using
+ * a provided staking script and pool ID. It interacts with the Cardano CLI to perform the
+ * certificate generation operation and returns the result as a JSON response.
+ * </p>
+ */
 @RestController
 @RequestMapping("/api")
 public class CardanoJStakeAddressDelCertController {
 
+    /**
+     * Endpoint to build a Cardano delegation certificate using the provided staking script and pool ID.
+     * <p>
+     * This method decodes the URL-encoded staking script, saves it to a file,
+     * and uses the Cardano CLI to generate the delegation certificate. It returns the certificate
+     * or an error message in JSON format.
+     * </p>
+     *
+     * @param script the staking script (URL-encoded)
+     * @param poolId the pool ID for the delegation certificate
+     * @return a JSON response containing the generated delegation certificate or an error message
+     * @throws UnsupportedEncodingException if the URL decoding fails
+     */
     @GetMapping("/delcert")
-    public String getstakeAddressDelCert(@RequestParam String script,@RequestParam String poolId) throws UnsupportedEncodingException {
+    public String getStakeAddressDelCert(@RequestParam String script, @RequestParam String poolId) throws UnsupportedEncodingException {
         String decodedScript = URLDecoder.decode(script, "UTF-8");
         String resourcePath = getWritableResourcePath();
         String scriptFilePath = resourcePath + "staking.plutus";
@@ -27,20 +49,28 @@ public class CardanoJStakeAddressDelCertController {
         // Save the decoded script to a file
         saveToFile(decodedScript, scriptFilePath);
 
-        String delCert = stakeAddressDelCert(scriptFilePath,poolId);
-        String jsonResponse = "{\"delCert\":\"" + delCert + "\"}";
-        return jsonResponse;
+        // Generate the delegation certificate
+        String delCert = stakeAddressDelCert(scriptFilePath, poolId);
+        return "{\"delCert\":\"" + delCert + "\"}";
     }
 
+    /**
+     * Generates a Cardano delegation certificate using the provided staking script file and pool ID.
+     * <p>
+     * This method constructs and executes a Cardano CLI command to generate the delegation certificate,
+     * reads the output from the CLI, and returns the certificate or an error message.
+     * </p>
+     *
+     * @param scriptFilePath the path to the staking script file
+     * @param poolId the pool ID for the delegation certificate
+     * @return the generated delegation certificate as a string, or an error message in JSON format
+     */
+    public String stakeAddressDelCert(String scriptFilePath, String poolId) {
+        String resourcePath = getWritableResourcePath();
+        String delCertPath = resourcePath + "delegation.cert";
 
-
-
-    public String stakeAddressDelCert(String scriptFilePath,String poolId) {
-        String  resourcePath = getWritableResourcePath();
-        String delCertPath = resourcePath +"delegation.cert";
-        //String delCert = "src/main/resources/assets/delegation.cert";
-        System.out.println(scriptFilePath);
         try {
+            // Construct the Cardano CLI command
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "stake-address", "delegation-certificate",
                     "--stake-script-file", scriptFilePath,
@@ -51,37 +81,56 @@ public class CardanoJStakeAddressDelCertController {
 
             Process process = processBuilder.start();
             process.waitFor();
+
+            // Read output and error streams
             String output = new String(process.getInputStream().readAllBytes());
             String error = new String(process.getErrorStream().readAllBytes());
 
-        System.out.println("Process output: " + output);
-        System.err.println("Process error: " + error);
+            System.out.println("Process output: " + output);
+            System.err.println("Process error: " + error);
 
-        if (process.exitValue() != 0) {
-            System.err.println("Process failed with exit code: " + process.exitValue());
-            return "{\"error\":\"Failed to generate delCert. Process failed with exit code: " + process.exitValue() + "\"}";
-        }
-            
+            // Check process exit value
+            if (process.exitValue() != 0) {
+                return "{\"error\":\"Failed to generate delegation certificate. Process failed with exit code: " + process.exitValue() + "\"}";
+            }
+
+            // Check if the delegation certificate file was created and return its content
             File delCertFile = new File(delCertPath);
             if (delCertFile.exists()) {
-                System.out.println("Payment Script delCert generated successfully");
                 return new String(Files.readAllBytes(Paths.get(delCertPath)));
             } else {
-                System.err.println("Error: Failed to generate Payment Script delCert.");
-                return "{\"error\":\"Failed to generate Payment Script delCert.\"}";
+                return "{\"error\":\"Failed to generate delegation certificate.\"}";
             }
-         
-
-        } catch (Exception e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            return null;
+            return "{\"error\":\"An error occurred while generating the delegation certificate.\"}";
         }
     }
+
+    /**
+     * Retrieves the path to a writable directory for storing temporary files.
+     * <p>
+     * This method gets the path to the system's temporary directory and ensures
+     * it ends with the appropriate file separator.
+     * </p>
+     *
+     * @return the writable resource path as a string
+     */
     private static String getWritableResourcePath() {
-        // Define a writable directory for storing temporary files
         String tempDir = System.getProperty("java.io.tmpdir");
         return tempDir.endsWith(File.separator) ? tempDir : tempDir + File.separator;
     }
+
+    /**
+     * Saves the given data to a file.
+     * <p>
+     * This method writes the specified data to a file with the given file path,
+     * ensuring that the directory structure exists.
+     * </p>
+     *
+     * @param data the data to be saved
+     * @param filePath the path to the file where data will be saved
+     */
     private void saveToFile(String data, String filePath) {
         try {
             File file = new File(filePath);
@@ -99,5 +148,4 @@ public class CardanoJStakeAddressDelCertController {
             throw new RuntimeException("Failed to save file", e);
         }
     }
-
 }

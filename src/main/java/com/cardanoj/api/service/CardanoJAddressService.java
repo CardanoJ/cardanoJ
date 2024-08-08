@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.springframework.stereotype.Service;
-
 import com.cardanoj.api.dto.CardanoJAddressData;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 
+/**
+ * Service class for managing Cardano addresses.
+ */
 @Service
 public class CardanoJAddressService {
 
@@ -18,6 +20,12 @@ public class CardanoJAddressService {
     @Value("${cardano.cli.path}")
     private String cliPath;
 
+    /**
+     * Creates and reads address data for a given name.
+     *
+     * @param name the name for the address data
+     * @return the created address data
+     */
     public CardanoJAddressData createAndReadAddressData(String name) {
         String vkeyFilePath = "ApiCardanojApi/src/main/resources/assets/" + name + ".vkey";
         String skeyFilePath = "ApiCardanojApi/src/main/resources/assets/" + name + ".skey";
@@ -32,6 +40,13 @@ public class CardanoJAddressService {
         return addressData;
     }
 
+    /**
+     * Generates a Cardano address using the given key file paths.
+     *
+     * @param vkey the path to the verification key file
+     * @param skey the path to the signing key file
+     * @param addrFilePath the path to the address file
+     */
     private void generateAddress(String vkey, String skey, String addrFilePath) {
         try {
             ProcessBuilder keyGenProcessBuilder = new ProcessBuilder(
@@ -55,6 +70,14 @@ public class CardanoJAddressService {
         }
     }
 
+    /**
+     * Reads address data from the given file paths.
+     *
+     * @param vkeyFilePath the path to the verification key file
+     * @param skeyFilePath the path to the signing key file
+     * @param addrFilePath the path to the address file
+     * @return the address data
+     */
     private CardanoJAddressData readAddressData(String vkeyFilePath, String skeyFilePath, String addrFilePath) {
         try {
             String vkeyContent = new String(Files.readAllBytes(Paths.get(vkeyFilePath)));
@@ -71,6 +94,11 @@ public class CardanoJAddressService {
         }
     }
 
+    /**
+     * Deletes the specified files.
+     *
+     * @param filePaths the paths to the files to be deleted
+     */
     private void deleteFiles(String... filePaths) {
         for (String filePath : filePaths) {
             try {
@@ -81,6 +109,3 @@ public class CardanoJAddressService {
         }
     }
 }
-
-
-
