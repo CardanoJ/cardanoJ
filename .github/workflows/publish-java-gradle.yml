@@ -11,7 +11,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      id-token: write # Required for GitHub Packages authentication
 
     steps:
       - name: Checkout repository
@@ -21,7 +20,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'adopt-openjdk'
+          distribution: 'temurin' # Updated distribution name
 
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
@@ -32,9 +31,9 @@ jobs:
       - name: Build and publish package
         run: ./gradlew publish
         env:
-          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }} # Use your updated secret token
+          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }} # Use GitHub's default token
 
       - name: Clean up Gradle cache (optional)
         run: ./gradlew clean
         env:
-          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }} # Use GitHub's default token
