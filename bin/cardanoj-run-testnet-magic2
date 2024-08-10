@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Default paths (can be overridden by environment variables)
+TOPOLOGY_PATH=${TOPOLOGY_PATH:-/home/quotus/git/preview/topology.json}
+SOCKET_PATH=${SOCKET_PATH:-/home/quotus/git/preview/db/node.socket}
+CONFIG_PATH=${CONFIG_PATH:-/home/quotus/git/preview/config.json}
+PORT=${PORT:-3001}
+
+# Run the cardano-node command with the specified paths
+cardano-node run \
+  --topology $TOPOLOGY_PATH \
+  --socket-path $SOCKET_PATH \
+  --port $PORT \
+  --config $CONFIG_PATH

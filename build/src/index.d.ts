@@ -48,7 +48,7 @@ interface TransactionResponse {
     description: string;
     cborHex: string;
 }
-export declare function getTransactionDetails(senderAddress: string, receiverAddress: string, lovelace: number, txHash: string, txID: number, datumValue: string): Promise<TransactionResponse>;
+export declare function getScriptTransactionDetails(senderAddress: string, receiverAddress: string, lovelace: number, txHash: string, txID: number, datumValue: string): Promise<TransactionResponse>;
 interface ProtocolParamsResponse {
     collateralPercentage: number;
     costModels: {

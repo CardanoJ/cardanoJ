@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .custom-gradient {
+    background-image: linear-gradient(to right, #06b6d4, #3b82f6);
+  }
+  
+  .inner-div {
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .text-center {
+    font-family: sans-serif;
+    color: white;
+    font-size: 4rem;
+    margin: 20px 0;
+  }
+  
+  .learn-more {
+    margin-top: 10px;
+  }
+  
+  .learn-more-link {
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: underline;
+  }
+  
+  .learn-more-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .logo {
+    max-width: 350px;
+    margin-bottom: 5px;
+  }
+  
+  /* Responsive Media Queries */
+  
+  /* For screens smaller than 1024px (e.g., tablets) */
+  @media (max-width: 1024px) {
+    .logo {
+      max-width: 250px;
+    }
+    
+    .text-center {
+      font-size: 3rem;
+    }
+  }
+  
+  /* For screens smaller than 768px (e.g., large smartphones) */
+  @media (max-width: 768px) {
+    .logo {
+      max-width: 200px;
+    }
+    
+    .text-center {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* For screens smaller than 480px (e.g., small smartphones) */
+  @media (max-width: 480px) {
+    .logo {
+      max-width: 150px;
+    }
+    
+    .text-center {
+      font-size: 2rem;
+    }
+  }
+  
+  .bg-attached {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/polygon-bg-element.svg'), linear-gradient(to right, #06b6d4, #3b82f6);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

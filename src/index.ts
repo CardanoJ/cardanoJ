@@ -150,6 +150,7 @@ export async function getScriptAddress(cbor: string): Promise<ScriptResponse> {
     }
 }
 
+
 // Function to build a script transaction
 interface TransactionResponse {
     type: string;
@@ -157,7 +158,7 @@ interface TransactionResponse {
     cborHex: string;
 }
 
-export async function getTransactionDetails(
+export async function getScriptTransactionDetails(
     senderAddress: string,
     receiverAddress: string,
     lovelace: number,

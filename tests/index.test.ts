@@ -1,6 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { getAddressInfo, getUTXO, buildTransaction, signTransaction, submitTransaction, getDatumHash, getScriptAddress,getTransactionDetails, getProtocolParams, buildStakeAddress, getStakePoolInfo } from '../src/index';
+import { getAddressInfo, getUTXO, buildTransaction, signTransaction, submitTransaction, getDatumHash, getScriptAddress,getScriptTransactionDetails, getProtocolParams, buildStakeAddress, getStakePoolInfo } from '../src/index';
 
 const mock = new MockAdapter(axios);
 
@@ -73,7 +73,7 @@ describe('Cardano-j API functions', () => {
     it('should get transaction details', async () => {
         const mockTransactionResponse = { type: 'string', description: 'string', cborHex: 'string' };
         mockedAxios.get.mockResolvedValueOnce({ data: mockTransactionResponse });
-        const data = await getTransactionDetails('addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2', 'addr_test1wpnlxv2xv9a9ucvnvzqakwepzl9ltx7jzgm53av2e9ncv4sysemm8', 1000000, '100e0bd6f28708c6acff22da143f9229c8fb03fa8c2407246f44759fc8a39dd5', 1,'8d085d681253d96d514f16ece10ca144f9e733fc94527107d08b1593a7dc692c');
+        const data = await getScriptTransactionDetails('addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2', 'addr_test1wpnlxv2xv9a9ucvnvzqakwepzl9ltx7jzgm53av2e9ncv4sysemm8', 1000000, '100e0bd6f28708c6acff22da143f9229c8fb03fa8c2407246f44759fc8a39dd5', 1,'8d085d681253d96d514f16ece10ca144f9e733fc94527107d08b1593a7dc692c');
         expect(data).toEqual(mockTransactionResponse);
     });
 

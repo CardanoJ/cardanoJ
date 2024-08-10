@@ -19,7 +19,7 @@ exports.signTransaction = signTransaction;
 exports.submitTransaction = submitTransaction;
 exports.getDatumHash = getDatumHash;
 exports.getScriptAddress = getScriptAddress;
-exports.getTransactionDetails = getTransactionDetails;
+exports.getScriptTransactionDetails = getScriptTransactionDetails;
 exports.getProtocolParams = getProtocolParams;
 exports.buildStakeAddress = buildStakeAddress;
 exports.getStakePoolInfo = getStakePoolInfo;
@@ -124,7 +124,7 @@ function getScriptAddress(cbor) {
         }
     });
 }
-function getTransactionDetails(senderAddress, receiverAddress, lovelace, txHash, txID, datumValue) {
+function getScriptTransactionDetails(senderAddress, receiverAddress, lovelace, txHash, txID, datumValue) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield axios_1.default.get(`${BASE_URL}/script/${senderAddress}/${receiverAddress}/${lovelace}/${txHash}/${txID}/${datumValue}`);
