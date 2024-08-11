@@ -7,6 +7,7 @@
     "cardanoj-script": "build/src/script.js",
     "cardanoj-wallet": "build/src/cli.js",
     "cardanoj-create-dapp": "./bin/cardanoj-create-dapp",
+    "cardanoj-create-demo-dapp": "./bin/cardanoj-create-demo-dapp",
     "cardanoj-run-testnet-magic2": "./bin/cardanoj-run-testnet-magic2"
   },
   "types": "build/index.d.ts",
