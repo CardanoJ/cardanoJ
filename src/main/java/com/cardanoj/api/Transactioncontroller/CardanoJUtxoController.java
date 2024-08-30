@@ -18,11 +18,19 @@ import static com.cardanoj.api.util.CardanoJConstant.cliPath;
 import static com.cardanoj.api.util.CardanoJConstant.socketPath;
 import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 
+/**
+ * REST controller for querying UTXOs for a given Cardano address.
+ * <p>
+ * This controller provides an endpoint to retrieve UTXO details by executing
+ * a Cardano CLI command and parsing the output.
+ * </p>
+ */
 @RestController
 @RequestMapping("/api")
 public class CardanoJUtxoController {
 
     private static final Logger logger = LoggerFactory.getLogger(CardanoJUtxoController.class);
+    private static final int WAIT_TIMEOUT_SECONDS = 2; // Timeout for process wait
 
     /**
      * Endpoint to query UTXOs for a given address.
@@ -95,7 +103,7 @@ public class CardanoJUtxoController {
      * @param address the Cardano address to query
      * @return the output from the CLI command
      */
-    public String executeCommand(String address) {
+    private String executeCommand(String address) {
         StringBuilder outputBuilder = new StringBuilder();
 
         try {
@@ -103,7 +111,8 @@ public class CardanoJUtxoController {
                     cliPath, "query", "utxo",
                     "--socket-path", socketPath,
                     "--address", address,
-                    TESTNET, "2");
+                    TESTNET
+            );
 
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
@@ -115,7 +124,7 @@ public class CardanoJUtxoController {
                 }
             }
 
-            process.waitFor();
+            process.waitFor(WAIT_TIMEOUT_SECONDS, java.util.concurrent.TimeUnit.SECONDS);
 
         } catch (Exception e) {
             logger.error("Error executing command", e);
