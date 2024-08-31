@@ -1,12 +1,13 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.2'
-    id 'io.spring.dependency-management' version '1.1.6'
+    id 'org.springframework.boot' version '2.7.9'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'maven-publish'
 }
 
-group = 'com.cardanoj'  
-version = '0.0.4-SNAPSHOT'  // Update version as needed
+
+group = 'com.cardanoj'
+version = '0.0.1'
 
 repositories {
     mavenCentral()
@@ -16,6 +17,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.3.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.2'
 }
+
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -31,7 +33,7 @@ tasks.named('test') {
 publishing {
     publications {
         maven(MavenPublication) {
-            artifactId = 'cardanoj-api'  // Ensure this matches the previous artifactId
+            artifactId = 'cardanoj-api'
 
             from components.java
 
@@ -73,6 +75,6 @@ publishing {
 }
 
 wrapper {
-    gradleVersion = '8.9'
+    gradleVersion = '7.3'
     distributionType = Wrapper.DistributionType.ALL
 }
