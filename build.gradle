@@ -10,15 +10,6 @@ group = 'com.cardanoj'
 version = '0.0.5'
 
 repositories {
-       maven {
-            name = 'GitHubPackages'
-            url = uri('https://maven.pkg.github.com/CardanoJ/cardanoJ')
-            credentials {
-                username = project.findProperty('gpr.user') ?: System.getenv('GITHUB_ACTOR')
-                password = project.findProperty('gpr.token') ?: System.getenv('GITHUB_TOKEN')
-            }
-        }
-    }
     mavenCentral()
 }
 
@@ -71,7 +62,17 @@ publishing {
             }
         }
     }
-
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/CardanoJ/cardanoJ')
+            credentials {
+                username = project.findProperty('gpr.user') ?: System.getenv('GITHUB_ACTOR')
+                password = project.findProperty('gpr.token') ?: System.getenv('GITHUB_TOKEN')
+            }
+        }
+    }
+}
 
 wrapper {
     gradleVersion = '7.3'
