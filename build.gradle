@@ -29,7 +29,9 @@ tasks.withType(Test) {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = 'Cardanoj-Api'
+            groupId = 'com.cardanoj'
+            artifactId = 'cardanoj-Api'
+            version = '0.0.2-SNAPSHOT'
             from components.java
         }
     }
@@ -45,6 +47,7 @@ publishing {
         }
     }
 }
+
 
 wrapper {
     gradleVersion = '7.6'
