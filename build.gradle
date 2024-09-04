@@ -37,19 +37,12 @@ publishing {
 
             pom {
                 name.set('CardanoJ API')
-                description.set('It simplifies the process for Java developers to integrate Cardano functionalities into their applications.')
+                description.set('Java library for Cardano functionalities.')
                 url.set('https://github.com/CardanoJ/cardanoJ')
                 licenses {
                     license {
-                        name.set('The Apache License, Version 2.0')
+                        name.set('Apache License, Version 2.0')
                         url.set('http://www.apache.org/licenses/LICENSE-2.0')
-                    }
-                }
-                developers {
-                    developer {
-                        id.set('Quotus-dev')
-                        name.set('Anjali Sethy')
-                        email.set('anjalisethy1234@gmail.com')
                     }
                 }
                 scm {
@@ -72,10 +65,3 @@ publishing {
         }
     }
 }
-
-
-wrapper {
-    gradleVersion = '7.6'
-    distributionType = Wrapper.DistributionType.ALL
-}
-
