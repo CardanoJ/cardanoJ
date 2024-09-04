@@ -1,11 +1,9 @@
-name: Publish package to GitHub Packages
+name: Publish Package to GitHub Packages
 
 on:
   push:
     branches:
-      - cardanoj-api
-  release:
-    types: [created]
+      - cardanoj-api # Trigger workflow on push to this branch
 
 jobs:
   publish:
@@ -19,15 +17,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'temurin' # Updated distribution name
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
 
-      - name: Publish package
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build and publish package
         run: ./gradlew publish
         env:
-          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }} # Use GitHub's default token
+
+      - name: Clean up Gradle cache (optional)
+        run: ./gradlew clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.CARDANO_J_TOKEN }} # Use GitHub's default token
