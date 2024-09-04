@@ -9,7 +9,8 @@ group = 'com.cardanoj'
 version = '0.0.8-SNAPSHOT'
 
 repositories {
-    mavenCentral() 
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -19,7 +20,8 @@ dependencies {
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17 
+    targetCompatibility = JavaVersion.VERSION_17
+    withSourcesJar() // Generates sources JAR
 }
 
 tasks.withType(Test) {
@@ -29,10 +31,32 @@ tasks.withType(Test) {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId = 'com.cardanoj'
-            artifactId = 'cardanoj-Api'
-            version = '0.0.8-SNAPSHOT'
+            artifactId = 'cardanoj-api'
             from components.java
+
+            pom {
+                name.set('CardanoJ API')
+                description.set('It simplifies the process for Java developers to integrate Cardano functionalities into their applications.')
+                url.set('https://github.com/CardanoJ/cardanoJ')
+                licenses {
+                    license {
+                        name.set('The Apache License, Version 2.0')
+                        url.set('http://www.apache.org/licenses/LICENSE-2.0')
+                    }
+                }
+                developers {
+                    developer {
+                        id.set('Quotus-dev')
+                        name.set('Anjali Sethy')
+                        email.set('anjalisethy1234@gmail.com')
+                    }
+                }
+                scm {
+                    connection.set('scm:git:git://github.com/CardanoJ/cardanoJ.git')
+                    developerConnection.set('scm:git:ssh://github.com/CardanoJ/cardanoJ.git')
+                    url.set('https://github.com/CardanoJ/cardanoJ')
+                }
+            }
         }
     }
 
