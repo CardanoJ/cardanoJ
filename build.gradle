@@ -6,34 +6,36 @@ plugins {
 }
 
 group = 'com.cardanoj'
-version = '1.0.0-SNAPSHOT'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
 
 repositories {
     mavenCentral()
-    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.3.2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-    withSourcesJar() // Generates sources JAR
-    withJavadocJar() // Generates Javadoc JAR
+tasks.named('bootBuildImage') {
+    builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
 
-tasks.withType(Test) {
+tasks.named('test') {
     useJUnitPlatform()
 }
+
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = 'ApiCardanojApi'
             from components.java
+            artifactId = 'ApiCardanojApi'
 
             pom {
                 name.set('CardanoJ API')
