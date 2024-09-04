@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin' # Updated distribution name
+          distribution: 'oracle'
 
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
