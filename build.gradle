@@ -9,8 +9,8 @@ group = 'com.cardanoj'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
+ sourceCompatibility = JavaVersion.VERSION_17
+ targetCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -37,24 +37,24 @@ publishing {
             from components.java
             artifactId = 'ApiCardanojApi'
 
-            // pom {
-            //     name.set('CardanoJ API')
-            //     description.set('Java library for Cardano functionalities.')
-            //     url.set('https://github.com/CardanoJ/cardanoJ')
+            pom {
+                name.set('CardanoJ API')
+                description.set('Java library for Cardano functionalities.')
+                url.set('https://github.com/CardanoJ/cardanoJ')
 
-            //     licenses {
-            //         license {
-            //             name.set('Apache License, Version 2.0')
-            //             url.set('http://www.apache.org/licenses/LICENSE-2.0')
-            //         }
-            //     }
+                licenses {
+                    license {
+                        name.set('Apache License, Version 2.0')
+                        url.set('http://www.apache.org/licenses/LICENSE-2.0')
+                    }
+                }
                 
-            //     scm {
-            //         connection.set('scm:git:git://github.com/CardanoJ/cardanoJ.git')
-            //         developerConnection.set('scm:git:ssh://github.com/CardanoJ/cardanoJ.git')
-            //         url.set('https://github.com/CardanoJ/cardanoJ')
-            //     }
-            // }
+                scm {
+                    connection.set('scm:git:git://github.com/CardanoJ/cardanoJ.git')
+                    developerConnection.set('scm:git:ssh://github.com/CardanoJ/cardanoJ.git')
+                    url.set('https://github.com/CardanoJ/cardanoJ')
+                }
+            }
         }
     }
 
@@ -68,4 +68,9 @@ publishing {
             }
         }
     }
+}
+
+wrapper {
+    gradleVersion = '8.9'
+    distributionType = Wrapper.DistributionType.ALL
 }
