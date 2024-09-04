@@ -6,15 +6,11 @@ plugins {
 }
 
 group = 'com.cardanoj'
-version = '0.0.1-SNAPSHOT'
-
-java {
- sourceCompatibility = JavaVersion.VERSION_17
- targetCompatibility = JavaVersion.VERSION_17
-}
+version = '1.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -22,33 +18,40 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.2'
 }
 
-tasks.named('bootBuildImage') {
-    builder = 'paketobuildpacks/builder-jammy-base:latest'
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    withSourcesJar() // Generates sources JAR
+    withJavadocJar() // Generates Javadoc JAR
 }
 
-tasks.named('test') {
+tasks.withType(Test) {
     useJUnitPlatform()
 }
-
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            artifactId = 'cardanoj-api'
             from components.java
-            artifactId = 'ApiCardanojApi'
 
             pom {
                 name.set('CardanoJ API')
-                description.set('Java library for Cardano functionalities.')
+                description.set('It simplifies the process for Java developers to integrate Cardano functionalities into their applications.')
                 url.set('https://github.com/CardanoJ/cardanoJ')
-
                 licenses {
                     license {
-                        name.set('Apache License, Version 2.0')
+                        name.set('The Apache License, Version 2.0')
                         url.set('http://www.apache.org/licenses/LICENSE-2.0')
                     }
                 }
-                
+                developers {
+                    developer {
+                        id.set('Quotus-dev')
+                        name.set('Anjali Sethy')
+                        email.set('anjalisethy1234@gmail.com')
+                    }
+                }
                 scm {
                     connection.set('scm:git:git://github.com/CardanoJ/cardanoJ.git')
                     developerConnection.set('scm:git:ssh://github.com/CardanoJ/cardanoJ.git')
@@ -71,6 +74,6 @@ publishing {
 }
 
 wrapper {
-    gradleVersion = '8.9'
+    gradleVersion = '7.6'
     distributionType = Wrapper.DistributionType.ALL
 }
