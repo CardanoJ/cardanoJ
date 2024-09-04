@@ -32,7 +32,7 @@ tasks.withType(Test) {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = 'cardanoj-api'
+            artifactId = 'ApiCardanojApi'
             from components.java
 
             pom {
