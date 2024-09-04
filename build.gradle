@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.cardanoj'
-version = '0.0.2-SNAPSHOT'
+version = '0.0.8-SNAPSHOT'
 
 repositories {
     mavenCentral() 
@@ -31,7 +31,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.cardanoj'
             artifactId = 'cardanoj-Api'
-            version = '0.0.2-SNAPSHOT'
+            version = '0.0.8-SNAPSHOT'
             from components.java
         }
     }
