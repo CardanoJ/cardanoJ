@@ -10,13 +10,19 @@ export default function Home() {
   const [networkId, setNetworkId] = useState("preprod");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  const [error, setError] = useState(null);                                                                                                                         
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setResult(null);
+
+    let fixedPath = "";
+
+    if (resourcePath && !resourcePath.endsWith("/")) {
+      fixedPath = resourcePath + "/";
+    }
 
     try {
       const res = await fetch(
@@ -26,7 +32,7 @@ export default function Home() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             // cliPath,
-            resourcePath,
+            resourcePath: fixedPath,
             name,
             network,
             networkId: networkId === "preprod" ? "1" : "2",
