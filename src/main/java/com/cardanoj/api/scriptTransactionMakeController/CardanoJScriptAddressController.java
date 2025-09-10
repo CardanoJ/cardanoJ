@@ -10,10 +10,6 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cardanoj.api.util.CardanoJRandomNameGenerator;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * REST controller for handling requests related to Cardano script addresses.
@@ -55,7 +53,7 @@ public class CardanoJScriptAddressController {
             String paymentScriptFile = resourcePath + "AlwaysSucceeds.plutus";
             saveToFile(decodedCbor, paymentScriptFile);
 
-            String address = addressBuild(paymentScriptFile);
+            String address = addressBuild(paymentScriptFile).trim();
             if (address.contains("error")) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(address);
             } else {
@@ -83,7 +81,7 @@ public class CardanoJScriptAddressController {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "address", "build",
                     "--payment-script-file", paymentScriptFile,
-                    TESTNET, "2", "--out-file", paymentScriptFileAddress
+                    TESTNET, TESTNET_MAGIC_NUMBER, "--out-file", paymentScriptFileAddress
             );
 
             System.out.println("Command: " + processBuilder.command());
@@ -104,7 +102,7 @@ public class CardanoJScriptAddressController {
             File addressFile = new File(paymentScriptFileAddress);
             if (addressFile.exists()) {
                 System.out.println("Payment Script Address generated successfully");
-                return new String(Files.readAllBytes(Paths.get(paymentScriptFileAddress)));
+                return new String(Files.readAllBytes(Paths.get(paymentScriptFileAddress))).trim();
             } else {
                 System.err.println("Error: Failed to generate Payment Script Address.");
                 return "{\"error\":\"Failed to generate Payment Script Address.\"}";

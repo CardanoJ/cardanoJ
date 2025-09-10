@@ -3,6 +3,8 @@ package com.cardanoj.api.service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import com.cardanoj.api.util.CardanoJConstant;
 import org.springframework.stereotype.Service;
 import com.cardanoj.api.dto.CardanoJAddressData;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -27,15 +29,15 @@ public class CardanoJAddressService {
      * @return the created address data
      */
     public CardanoJAddressData createAndReadAddressData(String name) {
-        String vkeyFilePath = "ApiCardanojApi/src/main/resources/assets/" + name + ".vkey";
-        String skeyFilePath = "ApiCardanojApi/src/main/resources/assets/" + name + ".skey";
-        String addrFilePath = "ApiCardanojApi/src/main/resources/assets/" + name + ".addr";
+        String vkeyFilePath = "src/main/resources/assets/" + name + ".vkey";
+        String skeyFilePath = "src/main/resources/assets/" + name + ".skey";
+        String addrFilePath = "src/main/resources/assets/" + name + ".addr";
 
         generateAddress(vkeyFilePath, skeyFilePath, addrFilePath);
 
         CardanoJAddressData addressData = readAddressData(vkeyFilePath, skeyFilePath, addrFilePath);
 
-        deleteFiles(vkeyFilePath, skeyFilePath, addrFilePath);
+//        deleteFiles(vkeyFilePath, skeyFilePath, addrFilePath);
 
         return addressData;
     }
@@ -60,7 +62,7 @@ public class CardanoJAddressService {
             ProcessBuilder addressBuildProcessBuilder = new ProcessBuilder(
                     cliPath, "address", "build",
                     "--payment-verification-key-file", vkey,
-                    "--testnet-magic", "2",
+                    CardanoJConstant.TESTNET, CardanoJConstant.TESTNET_MAGIC_NUMBER,
                     "--out-file", addrFilePath
             );
             Process addressBuildProcess = addressBuildProcessBuilder.start();

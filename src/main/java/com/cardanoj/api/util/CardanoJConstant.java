@@ -22,12 +22,17 @@ public class CardanoJConstant {
     public static final String TESTNET = "--testnet-magic";
 
     /**
+     * The constant representing the Cardano testnet number (1 for preprod, 2 for preview).
+     */
+    public static final String TESTNET_MAGIC_NUMBER = "1";
+
+    /**
      * The file path to the Cardano CLI executable.
      * <p>
      * This path is used to invoke the Cardano CLI commands.
      * </p>
      */
-    public static final String cliPath = "/home/quotus/.local/bin/cardano-cli";
+    public static final String cliPath = "/home/snehasish/.local/bin/cardano-cli";
 
     /**
      * The file path to the Cardano node socket.
@@ -35,6 +40,6 @@ public class CardanoJConstant {
      * This path is used to connect to the Cardano node via the socket.
      * </p>
      */
-    public static final String socketPath = "/home/quotus/git/preview/db/node.socket";
+    public static final String socketPath = "/home/snehasish/git/cardano-node/preprod/db/node.socket";
 
 }

@@ -3,13 +3,12 @@ package com.cardanoj.api.stakeController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * Controller for querying stake pool information in the Cardano J API application.
@@ -49,7 +48,7 @@ public class CardanoJQueryStakePoolController {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "stake-pools",
-                    TESTNET, "2",
+                    TESTNET, TESTNET_MAGIC_NUMBER,
                     "--socket-path", socketPath
             );
             System.out.println("QueryStakePool: " + processBuilder.command());

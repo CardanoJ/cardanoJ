@@ -10,15 +10,14 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * REST controller for handling requests related to Cardano stake address generation.
@@ -84,7 +83,7 @@ public class CardanoJStakeAddressController {
             // Construct the Cardano CLI command
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "stake-address", "build",
-                    TESTNET, "2",
+                    TESTNET, TESTNET_MAGIC_NUMBER,
                     "--stake-script-file", scriptFilePath,
                     "--out-file", addressPath
             );

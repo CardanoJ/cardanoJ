@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 /**
  * REST controller for handling requests related to Cardano script datum hashes.
  * <p>
@@ -59,7 +58,7 @@ public class CardanoJScriptDatumHashController {
 
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction",
+                    cliPath, "conway", "transaction",
                     "hash-script-data",
                     "--script-data-value", datumValue
             );

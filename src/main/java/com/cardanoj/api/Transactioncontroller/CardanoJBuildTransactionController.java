@@ -1,20 +1,19 @@
 package com.cardanoj.api.Transactioncontroller;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Random;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * Controller for handling transaction-related API requests.
@@ -70,13 +69,12 @@ public class CardanoJBuildTransactionController {
         String txHashID = txHash + "#" + txID;
         String tot = receiverAddress + "+" + lovelace + " lovelace";
         String resourcePath = getResourcePath();
-        String bodyPath = resourcePath + "body_" + randomNumber + ".txbody";
-
+        String bodyPath = resourcePath + "body_" + randomNumber + "_build.txbody";
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "build",
+                    cliPath, "conway", "transaction", "build",
                     "--socket-path", socketPath,
-                    TESTNET.toString(), "2",
+                    TESTNET, TESTNET_MAGIC_NUMBER,
                     "--tx-in", txHashID,
                     "--tx-out", tot,
                     "--change-address", senderAddress,

@@ -1,15 +1,8 @@
 package com.cardanoj.api.Transactioncontroller;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLDecoder;
-
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
+import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cardanoj.api.util.CardanoJRandomNameGenerator;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * REST controller for submitting Cardano transactions.
@@ -72,8 +67,12 @@ public class CardanoJSubmitTransactionController {
         try {
             // Submit the transaction
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "submit", TESTNET, "2", "--tx-file", txPath, "--socket-path", socketPath
+                    cliPath, "conway", "transaction", "submit",
+                    "--tx-file", txPath,
+                    TESTNET, TESTNET_MAGIC_NUMBER,
+                    "--socket-path", socketPath
             );
+
             System.out.println("Command: " + processBuilder.command());
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
@@ -90,7 +89,7 @@ public class CardanoJSubmitTransactionController {
 
                 // Retrieve the transaction ID
                 ProcessBuilder processBuilderTXID = new ProcessBuilder(
-                        cliPath, "transaction", "txid", "--tx-file", txPath
+                        cliPath, "conway", "transaction", "txid", "--tx-file", txPath
                 );
                 System.out.println("Command: " + processBuilderTXID.command());
                 processBuilderTXID.redirectErrorStream(true);
@@ -99,7 +98,11 @@ public class CardanoJSubmitTransactionController {
                 try (BufferedReader readerTXID = new BufferedReader(new InputStreamReader(processTXID.getInputStream()))) {
                     while ((lineTXID = readerTXID.readLine()) != null) {
                         System.out.println("Transaction ID: " + lineTXID);
-                        System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + lineTXID);
+                        if(TESTNET_MAGIC_NUMBER.equals("1")) {
+                            System.out.println("Cardanoscan: https://preprod.cardanoscan.io/transaction/" + lineTXID);
+                        } else if(TESTNET_MAGIC_NUMBER.equals("2")) {
+                            System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + lineTXID);
+                        }
                         break;
                     }
                 }

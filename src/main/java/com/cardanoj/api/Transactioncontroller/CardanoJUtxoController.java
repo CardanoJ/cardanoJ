@@ -14,9 +14,7 @@ import com.cardanoj.api.util.CardanoJTransactionDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * REST controller for querying UTXOs for a given Cardano address.
@@ -109,9 +107,9 @@ public class CardanoJUtxoController {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "utxo",
-                    "--socket-path", socketPath,
                     "--address", address,
-                    TESTNET
+                    TESTNET, TESTNET_MAGIC_NUMBER,
+                    "--socket-path", socketPath
             );
 
             processBuilder.redirectErrorStream(true);

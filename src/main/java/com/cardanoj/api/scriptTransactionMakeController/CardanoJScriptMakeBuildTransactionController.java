@@ -6,14 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * REST controller for handling requests related to building Cardano transactions
@@ -76,14 +74,14 @@ public class CardanoJScriptMakeBuildTransactionController {
 
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "build",
+                    cliPath, "conway", "transaction", "build",
+//                    "--babbage-era",
                     "--tx-in", txHashID,
                     "--tx-out", tot,
                     "--tx-out-datum-hash", datumHash,
                     "--change-address", senderAddress,
-                    TESTNET, "2",
+                    TESTNET, TESTNET_MAGIC_NUMBER,
                     "--out-file", bodyPath,
-                    "--babbage-era",
                     "--socket-path", socketPath
             );
             System.out.println("Build Transaction command: " + processBuilder.command());

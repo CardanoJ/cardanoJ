@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cardanoj.api.util.CardanoJRandomNameGenerator;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * REST controller for handling requests related to signing Cardano transactions.
@@ -79,7 +78,7 @@ public class CardanoJSignTransactionController {
         // Generate unique file paths for the transaction body and signing key
         String bodyPath = resourcePath + randomName.generate() + ".txbody";
         String signKeyPath = resourcePath + randomName.generate() + ".skey";
-        String txPath = resourcePath + randomName.generate() + ".tx";
+        String txPath = resourcePath + randomName.generate() + "_signed.tx";
 
         System.out.println(signKey);
         System.out.println(txbody);
@@ -90,10 +89,10 @@ public class CardanoJSignTransactionController {
 
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "sign",
-                    "--tx-body-file", bodyPath,
+                    cliPath, "conway", "transaction", "sign",
+                    "--tx-file", bodyPath,
                     "--signing-key-file", signKeyPath,
-                    TESTNET, "2",
+                    TESTNET, TESTNET_MAGIC_NUMBER,
                     "--out-file", txPath
             );
 

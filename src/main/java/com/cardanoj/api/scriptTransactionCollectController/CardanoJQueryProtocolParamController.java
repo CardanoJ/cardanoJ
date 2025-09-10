@@ -1,9 +1,5 @@
 package com.cardanoj.api.scriptTransactionCollectController;
 
-import static com.cardanoj.api.util.CardanoJConstant.cliPath;
-import static com.cardanoj.api.util.CardanoJConstant.socketPath;
-import static com.cardanoj.api.util.CardanoJConstant.TESTNET;
-
 import java.io.File;
 import java.net.URI;
 import java.nio.file.Files;
@@ -13,6 +9,8 @@ import java.nio.file.Paths;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.cardanoj.api.util.CardanoJConstant.*;
 
 /**
  * Controller for querying protocol parameters in the Cardano J API application.
@@ -47,11 +45,11 @@ public class CardanoJQueryProtocolParamController {
      */
     public String queryProtocolParam() {
         String resourcePath = getResourcePath();
-        String protocolParam = resourcePath + "protocol-parameters.json";
+        String protocolParam = resourcePath + "/protocol-parameters.json";
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "protocol-parameters",
-                    TESTNET, "2",
+                    TESTNET, TESTNET_MAGIC_NUMBER,
                     "--socket-path", socketPath,
                     "--out-file", protocolParam
             );
