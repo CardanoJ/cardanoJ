@@ -1,24 +1,26 @@
 package com.cardanoJ.script;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CardanoJTransactionCollect {
 
     private String scriptLovelace = "";
 
     //  Query the protocol parameters
-    public String queryProtocolParam(String cliPath, String resourcePath, String network, String networkId, String socketPath){
+    public String queryProtocolParam(String cliPath, String resourcePath, String network, String networkId, String socketPath) {
         String protocolParam = resourcePath + "protocol-parameters.json";
 
-        try{
+        try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "protocol-parameters",
-                    network, networkId,
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--socket-path", socketPath,
-                    "--out-file",protocolParam
+                    "--out-file", protocolParam
             );
 
-            System.out.println("command: "+processBuilder.command());
+            System.out.println("command: " + processBuilder.command());
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
             process.waitFor();
@@ -33,18 +35,23 @@ public class CardanoJTransactionCollect {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    return protocolParam;
+        return protocolParam;
     }
 
 
-    public String submitTransaction(String cliPath, String network, String networkId,String signedTX, String socketPath){
+    public String submitTransaction(String cliPath, String resourcePath, String network, String networkId, String receiverAddress, String socketPath) {
         String tx = "";
 
-        try{
+        String signedTx = resourcePath + receiverAddress + "_unlock.signed";
+
+        try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "submit", network, networkId, "--tx-file",signedTX, "--socket-path",socketPath
+                    cliPath, "conway", "transaction", "submit",
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
+                    "--tx-file", signedTx,
+                    "--socket-path", socketPath
             );
-            System.out.println("command: "+processBuilder.command());
+            System.out.println("command: " + processBuilder.command());
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
             int exitcode = process.waitFor();
@@ -54,12 +61,12 @@ public class CardanoJTransactionCollect {
                 System.out.println(line);
             }
 
-            if (exitcode == 0){
+            if (exitcode == 0) {
                 System.out.println("Executed Successfully");
 
                 //Geting Transaction ID
                 ProcessBuilder processBuilderTXID = new ProcessBuilder(
-                        cliPath,"transaction","txid","--tx-file",signedTX
+                        cliPath, "conway", "transaction", "txid", "--tx-file", signedTx
                 );
                 System.out.println("Commands: " + processBuilderTXID.command());
                 processBuilderTXID.redirectErrorStream(true);
@@ -69,13 +76,19 @@ public class CardanoJTransactionCollect {
                 String lineTXID;
                 while ((lineTXID = readerTXID.readLine()) != null) {
                     System.out.println("Transaction ID: " + lineTXID);
-                    System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + lineTXID);
+                    if(network.contains("testnet")) {
+                        if(networkId.equals("1")) {
+                            System.out.println("Cardanoscan: https://preprod.cardanoscan.io/transaction/" + lineTXID);
+                        } else if(networkId.equals("2")) {
+                            System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + lineTXID);
+                        }
+                    }
                     tx = lineTXID;
                 }
-                if (exitcodeTXID == 0){
+                if (exitcodeTXID == 0) {
                     System.out.println("Transaction ID Generated SuccessFully");
                 }
-            }else {
+            } else {
                 System.err.println("Error while generating transaction ID");
             }
         } catch (Exception e) {
@@ -87,20 +100,21 @@ public class CardanoJTransactionCollect {
     }
 
     //    # Sign the transaction
-    public String signTransaction(String cliPath, String resourcePath, String network, String networkId, String txBuild, String receiverAddress){
+    public String signTransaction(String cliPath, String resourcePath, String network, String networkId, String sKeyPath, String receiverAddress) {
 
-        String txPath = resourcePath + receiverAddress + ".signed";
-        String signKeyPath = "src/main/resources/assets/fees.skey"; //Collateral Signing Key
-        try{
+        String txPath = resourcePath + receiverAddress + "_unlock.signed";
+        String txBuild = resourcePath + receiverAddress + "_unlock.build";
+
+        try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "sign",
-                    "--tx-body-file",txBuild,
-                    "--signing-key-file",signKeyPath,
-                    network, networkId,
-                    "--out-file",txPath
+                    cliPath, "conway", "transaction", "sign",
+                    "--tx-body-file", txBuild,
+                    "--signing-key-file", sKeyPath,
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
+                    "--out-file", txPath
             );
 
-            System.out.println("command: "+processBuilder.command());
+            System.out.println("command: " + processBuilder.command());
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
             process.waitFor();
@@ -121,32 +135,34 @@ public class CardanoJTransactionCollect {
 
 
     //    # Build the transaction
-    public String buildTransaction(String cliPath, String resourcePath, String scriptAddress,  String collateral, String scriptUTXO, String datumValue, String redeemerValue, String scriptFile, String feeAddress, String receiverAddress, String network, String networkId, String socketPath) {
-
-        collateral = getTransactionDetails(cliPath, resourcePath, feeAddress, network, networkId);
-        String scriptUtxoId = fetchScriptUTXO(cliPath,scriptAddress,network,networkId,socketPath,scriptUTXO);
-        String receiver = receiverAddress +"+"+ scriptLovelace; // --Fix it its not right
-        String calculateDatumHash = datumHashFromValue(cliPath,resourcePath, datumValue);
-        String txBuild = resourcePath + receiverAddress + ".build";
+    public String buildTransaction(String cliPath, String resourcePath, String scriptAddress, String scriptUTXO, String datumValue, String redeemerValue, String scriptFile, String feeAddress, String receiverAddress, String network, String networkId, String socketPath) {
+        String collateral = getTransactionDetails(cliPath, socketPath, resourcePath, feeAddress, network, networkId);
+        String scriptUtxoId = checkScriptUTXO(cliPath, scriptAddress, network, networkId, socketPath, scriptUTXO);
+        String receiver = receiverAddress + "+" + scriptLovelace; // --Fix it its not right
+//        String calculateDatumHash = datumHashFromValue(cliPath, datumValue);
+        String txBuild = resourcePath + receiverAddress + "_unlock.build";
 
         System.out.println("collateral : " + collateral);
+        System.out.println("scriptUtxoId: " + scriptUtxoId);
+        System.out.println("receiver: " + receiver);
+//        System.out.println("datumHash: " + calculateDatumHash);
 
-
-        try{
+        try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "build",
+                    cliPath, "conway", "transaction", "build",
                     "--tx-in", collateral,
                     "--tx-in", scriptUtxoId,
-                    "--tx-in-datum-value", datumValue,
+//                    "--tx-in-datum-value", datumValue,
                     "--tx-in-redeemer-value", redeemerValue,
                     "--tx-in-script-file", scriptFile,
                     "--tx-in-collateral", collateral,
                     "--change-address", feeAddress,
                     "--tx-out", receiver,
-                    "--tx-out-datum-hash", calculateDatumHash,
+//                    "--tx-out-datum-hash", calculateDatumHash,
                     "--out-file", txBuild,
-                    network, networkId,
-                    "--babbage-era", "--socket-path", socketPath
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
+//                    "--babbage-era",
+                    "--socket-path", socketPath
             );
             System.out.println("Build Transaction command: " + processBuilder.command());
             processBuilder.redirectErrorStream(true);
@@ -177,24 +193,22 @@ public class CardanoJTransactionCollect {
                 return null;
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
         return null;
     }
 
 
-    private String getTransactionDetails(String cliPath, String resourcePath, String address, String network, String networkId) {
+    private String getTransactionDetails(String cliPath, String socketPath, String resourcePath, String address, String network, String networkId) {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "utxo",
                     "--address", address,
-                    network, networkId,
-                    "--socket-path", "/home/tarachand/preview/node.socket" // define your own cardano Node path
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
+                    "--socket-path", socketPath
             );
-            System.out.println("getTransactionDetails: "+ processBuilder.command());
+            System.out.println("getTransactionDetails: " + processBuilder.command());
             processBuilder.redirectOutput(new File(resourcePath + address + "TransactionDetails.txt"));
 
             Process process = processBuilder.start();
@@ -223,7 +237,7 @@ public class CardanoJTransactionCollect {
                 maxTransactionIx = parts[1];
                 long lovelace = parseLovelace(parts[2]);
 
-                if (lovelace > maxLovelace){
+                if (lovelace > maxLovelace) {
                     maxLovelace = lovelace;
                     maxTransactionHash = parts[0];
                     maxTransactionIx = parts[1];
@@ -235,23 +249,22 @@ public class CardanoJTransactionCollect {
             return null;
         }
     }
+
     private static long parseLovelace(String amount) {
         String[] tokens = amount.split("\\s+");
         return Long.parseLong(tokens[0]);
     }
 
-
-
-    public String datumHashFromValue(String cliPath, String resourcePath,String datumValue){
+    public String datumHashFromValue(String cliPath, String datumValue) {
         String datumHash = "";
-        try{
+        try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction",
+                    cliPath, "conway", "transaction",
                     "hash-script-data",
                     "--script-data-value", datumValue
             );
 
-            System.out.println("command: "+processBuilder.command());
+            System.out.println("command: " + processBuilder.command());
             processBuilder.redirectErrorStream(true);
             Process process = processBuilder.start();
 
@@ -269,14 +282,14 @@ public class CardanoJTransactionCollect {
         return datumHash;
     }
 
-    private String fetchScriptUTXO(String cliPath, String scriptAddress, String network, String networkId, String socketPath, String utxo) {
+    private String checkScriptUTXO(String cliPath, String scriptAddress, String network, String networkId, String socketPath, String utxo) {
         String transactionHash = "";
         String transactionId = "";
-        try{
+        try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "utxo",
                     "--address", scriptAddress,
-                    network, networkId,
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--socket-path", socketPath
             );
 
@@ -287,7 +300,6 @@ public class CardanoJTransactionCollect {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
                 String line;
-
 
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.trim().split("\\s+");
@@ -302,18 +314,69 @@ public class CardanoJTransactionCollect {
                 }
                 System.out.println("FetchUTXO : " + transactionHash + "#" + transactionId);
                 return transactionHash + "#" + transactionId;
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return transactionHash + "#" + transactionId;
     }
 
+    public List<String> fetchUtxos(String cliPath, String socketPath, String resourcePath, String address, String network, String networkId) {
+        List<String> utxos = new ArrayList<>();
+        String outputFilePath = resourcePath + "utxos_" + address + ".txt"; // unique filename
+
+        try {
+            // Build the CLI command
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    cliPath, "query", "utxo",
+                    "--address", address,
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
+                    "--socket-path", socketPath
+            );
+
+            System.out.println("fetchUtxos command: " + processBuilder.command());
+            processBuilder.redirectOutput(new File(outputFilePath));
+
+            // Run the command
+            Process process = processBuilder.start();
+            int exitCode = process.waitFor();
+
+            if (exitCode != 0) {
+                System.err.println("Error: Failed to query UTxOs for address " + address);
+                return utxos;
+            }
+
+            // Parse the output file
+            try (BufferedReader reader = new BufferedReader(new FileReader(outputFilePath))) {
+                String line;
+                boolean skipHeader = true;
+                while ((line = reader.readLine()) != null) {
+                    if (skipHeader) {
+                        // skip the first two header lines (TxHash | TxIx | Amount ...)
+                        skipHeader = line.contains("TxHash");
+                        continue;
+                    }
+                    if (line.trim().isEmpty()) continue;
+
+                    String[] parts = line.trim().split("\\s+");
+                    if (parts.length >= 2) {
+                        String utxo = parts[0] + "#" + parts[1];
+                        utxos.add(utxo);
+                    }
+                }
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Fetched UTxOs for address: " + address + " → " + utxos);
+        return utxos;
+    }
 
 
 }

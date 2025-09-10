@@ -5,14 +5,14 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class CardanoJQueryAddress {
-    public long queryAddress(String cliPath, String address, String network) {
+    public long queryAddress(String cliPath, String socketPath, String address, String network, String networkId) {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "utxo",
                     "--address", address,
-                    network.contains("testnet") ? "--testnet-magic" : network,
-                    "2",
-                    "--socket-path", CardanoJConstant.SOCKET_PATH // define your own cardano Node path
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
+                    networkId,
+                    "--socket-path", socketPath // define your own cardano Node path
             );
             System.out.println("Query: " + processBuilder.command());
 

@@ -8,7 +8,7 @@ public class CardanoJCalculateFee {
 
         try{
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "calculate-min-fee",
+                    cliPath, "conway", "transaction", "calculate-min-fee",
                     "--tx-body-file", txBuild,
                     network, networkId,
                     "--protocol-params-file", protocolParam,

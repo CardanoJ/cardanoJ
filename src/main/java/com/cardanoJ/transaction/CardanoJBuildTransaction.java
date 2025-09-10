@@ -7,11 +7,14 @@ import static java.lang.System.exit;
 
 public class CardanoJBuildTransaction {
     public static String cliPath;
+    public static String socketPath;
     public static String caddrPath;
     public static String os;
     public static String resourcePath;
+
     public void query() {
         String network = "";
+        String networkId = "";
         long result = 0;
         setCliPath();
         resourcePath = getResourcePath();
@@ -24,11 +27,11 @@ public class CardanoJBuildTransaction {
         switch (a) {
             case 1:
                 network = "--testnet-magic";
-                result = q.queryAddress(cliPath, address, network);
+                result = q.queryAddress(cliPath, socketPath, address, network, networkId);
                 break;
             case 2:
                 network = "--mainnet";
-                result = q.queryAddress(cliPath, address, network);
+                result = q.queryAddress(cliPath, socketPath, address, network, networkId);
 //                result = q.queryAddress(cliPath, resourcePath, address, network);
                 break;
             case 3:
@@ -37,11 +40,12 @@ public class CardanoJBuildTransaction {
                 System.out.println("You Have to choose the network");
 
         }
-        System.out.println("Total : " + result + " Lovelace ( " + (result/1000000) + " ADA)");
+        System.out.println("Total : " + result + " Lovelace ( " + (result / 1000000) + " ADA)");
     }
 
-    public void transactionSession(){
+    public void transactionSession() {
         String network = "";
+        String networkId = "";
         CardanoJTransaction tr = new CardanoJTransaction();
         String result = "";
         Scanner scanner = new Scanner(System.in);
@@ -55,22 +59,22 @@ public class CardanoJBuildTransaction {
         int lovelace = scanner.nextInt();
 
         CardanoJCreateDatum dat = new CardanoJCreateDatum();
-        String datum = dat.create(senderAddress,receiverAddress,lovelace,resourcePath);
+        String datum = dat.create(senderAddress, receiverAddress, lovelace, resourcePath);
 
         System.out.println("Choose the Network. \n1. Testnet-magic \n2. Mainnet \n3. Exit");
         int a = scanner.nextInt();
-        switch (a){
+        switch (a) {
             case 1:
                 network = "--testnet-magic";
-                tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
-                tr.signTransaction(cliPath,resourcePath,network,senderName);
-                result = tr.submitTransaction(cliPath,resourcePath,network,senderName);
+                tr.buildTransaction(cliPath, socketPath, resourcePath, senderAddress, receiverAddress, network, networkId, lovelace, senderName, datum);
+                tr.signTransaction(cliPath, resourcePath, network, networkId, senderName);
+                result = tr.submitTransaction(cliPath, socketPath, resourcePath, network, networkId, senderName);
                 break;
             case 2:
                 network = "--mainnet";
-                tr.buildTransaction(cliPath,resourcePath,senderAddress,receiverAddress,network,lovelace,senderName,datum);
-                tr.signTransaction(cliPath,resourcePath,network,senderName);
-                result = tr.submitTransaction(cliPath,resourcePath,network,senderName);
+                tr.buildTransaction(cliPath, resourcePath, socketPath, senderAddress, receiverAddress, network, networkId, lovelace, senderName, datum);
+                tr.signTransaction(cliPath, resourcePath, network, networkId, senderName);
+                result = tr.submitTransaction(cliPath, socketPath, resourcePath, network, networkId, senderName);
                 break;
             case 3:
                 exit(0);
@@ -80,6 +84,7 @@ public class CardanoJBuildTransaction {
         }
 
     }
+
     public void transact() {
         // Initialize cliPath and os
         os = System.getProperty("os.name").toLowerCase();
@@ -100,7 +105,7 @@ public class CardanoJBuildTransaction {
 
     }
 
-    private static void setCliPath(){
+    private static void setCliPath() {
         // Initialize cliPath and os
         os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
@@ -112,13 +117,14 @@ public class CardanoJBuildTransaction {
             givingPermissionToCAcli();
         }
     }
+
     private static String getResourcePath() {
         return CardanoJBuildTransaction.class.getClassLoader().getResource("").getPath();
     }
 
-    private static void givingPermissionToCAcli(){
+    private static void givingPermissionToCAcli() {
         ProcessBuilder processBuilder = new ProcessBuilder("chmod", "+x", cliPath);
-        try{
+        try {
             Process process = processBuilder.start();
             int exitCode = process.waitFor();
             System.out.println("Exited with code : " + exitCode);

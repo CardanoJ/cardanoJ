@@ -11,6 +11,10 @@ class CardanoJBuildAddressTest {
     void addressGen() {
         CardanoJBuildAddress cardanoJBuildAddress = new CardanoJBuildAddress();
 
-        assertEquals("src/main/resources/assets/yourName.addr", cardanoJBuildAddress.addressGen(CLI_PATH,"yourName"));
+        assertEquals("src/main/resources/assets/yourName.addr", cardanoJBuildAddress.addressGen(CLI_PATH,getResourcesPath(), "yourName", TESTNET, TESTNET_MAGIC_NUMBER));
+    }
+
+    private String getResourcesPath() {
+        return "src/main/resources/assets/";
     }
 }

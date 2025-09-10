@@ -1,23 +1,36 @@
 package com.cardanoJ.address;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static com.cardanoJ.transaction.CardanoJConstant.TESTNET_MAGIC;
+import static com.cardanoJ.transaction.CardanoJConstant.TESTNET_MAGIC_NUMBER;
+
 public class CardanoJBuildAddress {
 
-    public String addressGen(String cliPath, String name) {
-        String vkeyFilePath = "src/main/resources/assets/" + name + ".vkey";
+    public String addressGen(String cliPath, String resourcePath, String name, String network, String networkId) {
+        String vkeyFilePath = resourcePath + name + ".vkey";
 
-        String skeyFilePath = "src/main/resources/assets/" + name + ".skey";
+        String skeyFilePath = resourcePath + name + ".skey";
 
-        String addrFilePath = "src/main/resources/assets/" + name + ".addr";
+        String addrFilePath = resourcePath + name + ".addr";
 
-        generateAddress(cliPath, vkeyFilePath, skeyFilePath, addrFilePath);
+        generateAddress(cliPath, resourcePath, vkeyFilePath, skeyFilePath, addrFilePath, network, networkId);
 
         return addrFilePath;
 
     }
 
-    private void generateAddress(String cliPath, String vkey, String skey, String addrFilePath) {
+    private void generateAddress(String cliPath, String resourcePath, String vkey, String skey, String addrFilePath, String network, String networkId) {
         try {
+            Path dirPath = Paths.get(resourcePath);
+
+            if (!Files.exists(dirPath)) {
+                Files.createDirectories(dirPath);
+            }
+
             ProcessBuilder keyGenProcessBuilder = new ProcessBuilder(
                     cliPath, "address", "key-gen",
                     "--verification-key-file", vkey,
@@ -30,7 +43,7 @@ public class CardanoJBuildAddress {
             ProcessBuilder addressBuildProcessBuilder = new ProcessBuilder(
                     cliPath, "address", "build",
                     "--payment-verification-key-file", vkey,
-                    "--testnet-magic", "2",
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--out-file", addrFilePath
             );
             Process addressBuildProcess = addressBuildProcessBuilder.start();

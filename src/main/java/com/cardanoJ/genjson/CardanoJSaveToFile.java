@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class CardanoJSaveToFile {
     public void writeJsonToFile(String json, String resourcePath) {
-        String fileName = resourcePath + "unit.json";
+        String fileName = resourcePath + "datum.json";
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             fileWriter.write(json);
             System.out.println("JSON data written to file: " + fileName);
