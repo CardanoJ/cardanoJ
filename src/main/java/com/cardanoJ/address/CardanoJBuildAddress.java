@@ -1,5 +1,6 @@
 package com.cardanoJ.address;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +26,9 @@ public class CardanoJBuildAddress {
 
     private void generateAddress(String cliPath, String resourcePath, String vkey, String skey, String addrFilePath, String network, String networkId) {
         try {
-            Path dirPath = Paths.get(resourcePath);
+            Path dirPath = Paths.get(
+                    resourcePath.endsWith(File.separator) ? resourcePath : resourcePath + File.separator
+            );
 
             if (!Files.exists(dirPath)) {
                 Files.createDirectories(dirPath);

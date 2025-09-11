@@ -10,7 +10,7 @@ class CardanoJRegisterAndDelegateTest {
     @Test
     void stakeAddress() {
         CardanoJRegisterAndDelegate cardanoJRegisterAndDelegate = new CardanoJRegisterAndDelegate();
-        assertEquals("src/main/resources/assets/user1scriptstake.addr", cardanoJRegisterAndDelegate.stakeAddress(CLI_PATH));
+        assertEquals("src/main/resources/assets/user1scriptstake.addr", cardanoJRegisterAndDelegate.stakeAddress(CLI_PATH, TESTNET, TESTNET_MAGIC_NUMBER));
     }
 
     @Test
