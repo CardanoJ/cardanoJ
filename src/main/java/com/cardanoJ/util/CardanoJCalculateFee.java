@@ -10,7 +10,7 @@ public class CardanoJCalculateFee {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "conway", "transaction", "calculate-min-fee",
                     "--tx-body-file", txBuild,
-                    network, networkId,
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--protocol-params-file", protocolParam,
                     "--tx-in-count", txInCount, //"1",
                     "--tx-out-count", txOutCount, //"2",

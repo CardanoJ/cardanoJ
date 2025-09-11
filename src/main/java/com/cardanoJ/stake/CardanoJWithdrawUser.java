@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 public class CardanoJWithdrawUser {
 
-    public String buildTransaction(String cliPath, String txIn, String socketPath) {
+    public String buildTransaction(String cliPath, String txIn, String socketPath, String network, String networkId) {
         String body = "src/main/resources/assets/withdrawTx.txbody";
         String scriptFile = "src/main/resources/assets/staking.plutus";
         String redeemerFile = "src/main/resources/assets/units.json";
@@ -13,7 +13,7 @@ public class CardanoJWithdrawUser {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "transaction", "build",
                     "--babbage-era",
-                    "--testnet-magic", "2",
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--change-address", "addr_test1yzc22rfmfpgshyp60n4ev0s3j5svz3r9q5mzutvcaznu5gs8phtwuxk0fw226lwaujsmy0v3hxr7z3uajs5r5hmddx4sekdxvx",
                     "--out-file", body,
                     "--tx-out", "addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2+500000000",
@@ -39,14 +39,14 @@ public class CardanoJWithdrawUser {
         }
     }
 
-    public String signTransaction(String cliPath, String socketPath) {
+    public String signTransaction(String cliPath, String socketPath, String network, String networkId) {
         String body = "src/main/resources/assets/withdrawTx.txbody";
         String signingKeyFile = "src/main/resources/assets/test.skey";
         String txSigned = "src/main/resources/assets/withdrawTx.signed";
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "transaction", "sign",
-                    "--testnet-magic", "2",
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--tx-body-file", body,
                     "--out-file",txSigned,
                     "--signing-key-file", signingKeyFile
@@ -64,13 +64,13 @@ public class CardanoJWithdrawUser {
             return null;
         }
     }
-    public String submitTransaction(String cliPath, String socketPath){
+    public String submitTransaction(String cliPath, String socketPath, String network, String networkId){
         String tx = "";
         String txPath = "src/main/resources/assets/withdrawTx.signed";
 
         try{
             ProcessBuilder processBuilder = new ProcessBuilder(
-                    cliPath, "transaction", "submit", "--testnet-magic", "2", "--tx-file",txPath,"--socket-path",socketPath
+                    cliPath, "transaction", "submit", network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId, "--tx-file",txPath,"--socket-path",socketPath
             );
             System.out.println("command: "+processBuilder.command());
             processBuilder.redirectErrorStream(true);
@@ -97,7 +97,13 @@ public class CardanoJWithdrawUser {
                 String lineTXID;
                 while ((lineTXID = readerTXID.readLine()) != null) {
                     System.out.println("Transaction ID: " + lineTXID);
-                    System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + lineTXID);
+                    if(network.contains("testnet")) {
+                        if(networkId.equals("1")) {
+                            System.out.println("Cardanoscan: https://preprod.cardanoscan.io/transaction/" + lineTXID);
+                        } else if(networkId.equals("2")) {
+                            System.out.println("Cardanoscan: https://preview.cardanoscan.io/transaction/" + lineTXID);
+                        }
+                    }
                     tx = lineTXID;
                 }
                 if (exitcodeTXID == 0){

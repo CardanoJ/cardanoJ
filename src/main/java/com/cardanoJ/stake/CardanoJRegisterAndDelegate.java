@@ -5,12 +5,12 @@ import java.io.File;
 import java.io.InputStreamReader;
 
 public class CardanoJRegisterAndDelegate {
-    public String stakeAddress(String cliPath) {
+    public String stakeAddress(String cliPath, String network, String networkId) {
         String address = "src/main/resources/assets/user1scriptstake.addr";
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "stake-address", "build",
-                    "--testnet-magic", "2",
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--stake-script-file", "src/main/resources/assets/staking.plutus",
                     "--out-file", address
             );

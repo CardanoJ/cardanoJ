@@ -11,8 +11,7 @@ public class CardanoJQueryAddress {
                     cliPath, "query", "utxo",
                     "--address", address,
                     network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
-                    networkId,
-                    "--socket-path", socketPath // define your own cardano Node path
+                    "--socket-path", socketPath
             );
             System.out.println("Query: " + processBuilder.command());
 

@@ -34,7 +34,6 @@ public class CardanoJUtxoQuery {
                     cliPath, "query", "utxo",
                     "--address", address,
                     network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
-                    networkId,
                     "--socket-path", socketPath
             );
 

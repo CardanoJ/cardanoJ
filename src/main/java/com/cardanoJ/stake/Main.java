@@ -5,7 +5,7 @@ import static com.cardanoJ.transaction.CardanoJConstant.*;
 public class Main {
     public static void main(String[] args) {
         CardanoJRegisterAndDelegate cardanoJRegisterAndDelegate = new CardanoJRegisterAndDelegate();
-        String a = cardanoJRegisterAndDelegate.stakeAddress(CLI_PATH);
+        String a = cardanoJRegisterAndDelegate.stakeAddress(CLI_PATH, TESTNET, TESTNET_MAGIC_NUMBER);
         System.out.println("user1scriptstake :" + a);
         String b = cardanoJRegisterAndDelegate.stakeAddressBuild(CLI_PATH);
         System.out.println("user1script :" + b);
@@ -13,7 +13,7 @@ public class Main {
         System.out.println("RegCert :" + c);
 
         CardanoJQueryStakePool cardanoJQueryStakePool = new CardanoJQueryStakePool();
-        String first = cardanoJQueryStakePool.queryStakePool(CLI_PATH, SOCKET_PATH);
+        String first = cardanoJQueryStakePool.queryStakePool(CLI_PATH, SOCKET_PATH, TESTNET, TESTNET_MAGIC_NUMBER);
         System.out.println("Pool :" + first);
         String d = cardanoJRegisterAndDelegate.stakeAddressDelCert(CLI_PATH, first);
         System.out.println("DelCert :" + d);
@@ -34,13 +34,13 @@ public class Main {
         //Withdraw
 
         CardanoJWithdrawUser cardanoJWithdrawUser = new CardanoJWithdrawUser();
-        String i = cardanoJWithdrawUser.buildTransaction(CLI_PATH, "7dd2c84807a7e39401e4577a756f0e021c3c17f12e837ec4155ae82b94472b8d#0", SOCKET_PATH);
+        String i = cardanoJWithdrawUser.buildTransaction(CLI_PATH, "7dd2c84807a7e39401e4577a756f0e021c3c17f12e837ec4155ae82b94472b8d#0", SOCKET_PATH, TESTNET, TESTNET_MAGIC_NUMBER);
         System.out.println("Build : " + i);
 
-        String j = cardanoJWithdrawUser.signTransaction(CLI_PATH, SOCKET_PATH);
+        String j = cardanoJWithdrawUser.signTransaction(CLI_PATH, SOCKET_PATH, TESTNET, TESTNET_MAGIC_NUMBER);
         System.out.println("Sign : " + j);
 
-        String k = cardanoJWithdrawUser.submitTransaction(CLI_PATH, SOCKET_PATH);
+        String k = cardanoJWithdrawUser.submitTransaction(CLI_PATH, SOCKET_PATH, TESTNET, TESTNET_MAGIC_NUMBER);
         System.out.println("Build : " + k);
 
 

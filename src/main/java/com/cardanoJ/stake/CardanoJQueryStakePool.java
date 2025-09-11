@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 
 public class CardanoJQueryStakePool {
 
-    public String queryStakePool(String cliPath, String socketPath) {
+    public String queryStakePool(String cliPath, String socketPath, String network, String networkId) {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "stake-pools",
-                    "--testnet-magic", "2",
+                    network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--socket-path", socketPath
             );
             System.out.println("QueryStakePool: " + processBuilder.command());
