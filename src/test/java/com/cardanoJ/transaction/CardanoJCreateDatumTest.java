@@ -10,16 +10,15 @@ class CardanoJCreateDatumTest {
     void create() {
         CardanoJCreateDatum cardanoJCreateDatum = new CardanoJCreateDatum();
         assertEquals(
-                "[{\"constructor\":0,\"list\":[{\"int\":0,\"string\":\"addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2\"}]},{\"constructor\":1,\"list\":[{\"int\":0,\"string\":\"addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk\"}]},{\"constructor\":2,\"list\":[{\"int\":1000000}]}]",
-                cardanoJCreateDatum.create("addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2","addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk",
-                        1000000,
+                "{\"constructor\":0,\"fields\":[{\"int\":42},{\"bytes\":\"616464725f7465737431767a706e776c616464726a39633336396735326e6767376d6761643933657565617a7739656864396575326a3375637234356e646b\"}]}",
+                cardanoJCreateDatum.createDatumV2(42, "addr_test1vzpnwladdrj9c369g52ngg7mgad93eueazw9ehd9eu2j3ucr45ndk",
                         getResourcePath()
                 )
         );
     }
 
     private static String getResourcePath() {
-        return CardanoJBuildTransaction.class.getClassLoader().getResource("").getPath();
+        return "src/main/resources/assets/";
     }
 
 }

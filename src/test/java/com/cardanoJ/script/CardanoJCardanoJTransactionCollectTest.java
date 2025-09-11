@@ -19,7 +19,7 @@ class CardanoJCardanoJTransactionCollectTest {
     @Test
     void signTransaction() {
         CardanoJTransactionCollect cardanoJTransactionCollect = new CardanoJTransactionCollect();
-        assertEquals(getResourcePath() + "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p" + "_unlock.signed", cardanoJTransactionCollect.signTransaction(CLI_PATH, getResourcePath(), "--testnet-magic", "1", getResourcePath() + "snehasish.skey", "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p"));
+        assertEquals(getResourcePath() + "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p" + "_unlock.signed", cardanoJTransactionCollect.signTransaction(CLI_PATH, getResourcePath(), "--testnet-magic", "1", getResourcePath() + "yourName.skey", "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p"));
     }
 
     @Test

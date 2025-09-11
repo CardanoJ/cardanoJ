@@ -100,16 +100,17 @@ public class CardanoJTransactionCollect {
     }
 
     //    # Sign the transaction
-    public String signTransaction(String cliPath, String resourcePath, String network, String networkId, String sKeyPath, String receiverAddress) {
+    public String signTransaction(String cliPath, String resourcePath, String network, String networkId, String sKeyName, String receiverAddress) {
 
         String txPath = resourcePath + receiverAddress + "_unlock.signed";
         String txBuild = resourcePath + receiverAddress + "_unlock.build";
+//        String skeyPath = resourcePath + sKeyName + ".skey";
 
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "conway", "transaction", "sign",
                     "--tx-body-file", txBuild,
-                    "--signing-key-file", sKeyPath,
+                    "--signing-key-file", sKeyName,
                     network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
                     "--out-file", txPath
             );

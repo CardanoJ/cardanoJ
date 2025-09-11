@@ -23,13 +23,13 @@ class CardanoJCardanoJTransactionMakeTest {
     @Test
     void signTransaction() {
         CardanoJTransactionMake cardanoJTransactionMake = new CardanoJTransactionMake();
-        assertEquals("src/main/resources/assets/addr_test1wpnlxv2xv9a9ucvnvzqakwepzl9ltx7jzgm53av2e9ncv4sysemm8.signed", cardanoJTransactionMake.signTransaction(CLI_PATH, "src/main/resources/assets/", "--testnet-magic", "2", "sender", "addr_test1wpnlxv2xv9a9ucvnvzqakwepzl9ltx7jzgm53av2e9ncv4sysemm8"));
+        assertEquals("src/main/resources/assets/addr_test1wqag3rt979nep9g2wtdwu8mr4gz6m4kjdpp5zp705km8wys6t2kla.signed", cardanoJTransactionMake.signTransaction(CLI_PATH, "src/main/resources/assets/", "--testnet-magic", "1", "yourName", "addr_test1wqag3rt979nep9g2wtdwu8mr4gz6m4kjdpp5zp705km8wys6t2kla"));
     }
 
     @Test
     void buildTransaction() {
         CardanoJTransactionMake cardanoJTransactionMake = new CardanoJTransactionMake();
-        assertEquals("src/main/resources/assets/addr_test1wqag3rt979nep9g2wtdwu8mr4gz6m4kjdpp5zp705km8wys6t2kla.build", cardanoJTransactionMake.buildTransaction(CLI_PATH, SOCKET_PATH, getResourcePath(), "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p", "addr_test1wqag3rt979nep9g2wtdwu8mr4gz6m4kjdpp5zp705km8wys6t2kla", "--testnet-magic", "1", 100000000, "src/main/resources/assets/datum.json"));
+        assertEquals("src/main/resources/assets/addr_test1wqag3rt979nep9g2wtdwu8mr4gz6m4kjdpp5zp705km8wys6t2kla.build", cardanoJTransactionMake.buildTransaction(CLI_PATH, SOCKET_PATH, getResourcePath(), "addr_test1vqczqf5f2p5uqu3nujtjeu4l2dps0ccu6xlt5cl2sytahvgujxqd8", "addr_test1wqag3rt979nep9g2wtdwu8mr4gz6m4kjdpp5zp705km8wys6t2kla", "--testnet-magic", "1", 5000000, "src/main/resources/assets/datum.json"));
     }
 
     private static String getResourcePath() {
