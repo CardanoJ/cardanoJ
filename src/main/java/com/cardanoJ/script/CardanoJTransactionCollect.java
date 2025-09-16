@@ -90,6 +90,7 @@ public class CardanoJTransactionCollect {
                 }
             } else {
                 System.err.println("Error while generating transaction ID");
+                throw new RuntimeException("Error while generating transaction ID");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -138,6 +139,9 @@ public class CardanoJTransactionCollect {
     //    # Build the transaction
     public String buildTransaction(String cliPath, String resourcePath, String scriptAddress, String scriptUTXO, String datumValue, String redeemerValue, String scriptFile, String feeAddress, String receiverAddress, String network, String networkId, String socketPath) {
         String collateral = getTransactionDetails(cliPath, socketPath, resourcePath, feeAddress, network, networkId);
+        if (collateral == null || collateral.equals("null#null")) {
+            throw new RuntimeException("No UTxO found for address. Fund it before building transactions.");
+        }
         String scriptUtxoId = checkScriptUTXO(cliPath, scriptAddress, network, networkId, socketPath, scriptUTXO);
         String receiver = receiverAddress + "+" + scriptLovelace; // --Fix it its not right
 //        String calculateDatumHash = datumHashFromValue(cliPath, datumValue);

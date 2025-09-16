@@ -120,6 +120,7 @@ public class CardanoJTransactionMake {
                 }
             } else {
                 System.err.println("Error while generating transaction ID");
+                throw new RuntimeException("Error while generating transaction ID");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -133,6 +134,10 @@ public class CardanoJTransactionMake {
         String bodyPath = resourcePath + scriptAddress + ".build";
         String txPath = resourcePath + scriptAddress + ".signed";
         String signKeyPath = resourcePath + senderName + ".skey";
+        File signKey = new File(signKeyPath);
+        if (!signKey.exists()) {
+            throw new IllegalArgumentException("Signing key file not found: " + signKeyPath);
+        }
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "conway", "transaction", "sign",
@@ -164,6 +169,9 @@ public class CardanoJTransactionMake {
     //    # Build the transaction
     public String buildTransaction(String cliPath, String socketPath, String resourcePath, String senderAddress, String scriptAddress, String network, String networkID, long lovelace, String datumFilePath) {
         String txINN = getTransactionDetails(cliPath, socketPath, resourcePath, senderAddress, network, networkID);
+        if (txINN == null || txINN.equals("null#null")) {
+            throw new RuntimeException("No UTxO found for address. Fund it before building transactions.");
+        }
         String tot = scriptAddress + "+" + lovelace;
         String bodyPath = resourcePath + scriptAddress + ".build";
 
