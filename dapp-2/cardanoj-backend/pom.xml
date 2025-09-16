@@ -38,8 +38,6 @@
             <groupId>com.cardanoJ</groupId>
             <artifactId>cardanoJ</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/cardanoJ-1.0.jar</systemPath>
         </dependency>
 
         <dependency>

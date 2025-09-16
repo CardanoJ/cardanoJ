@@ -22,6 +22,9 @@ public class AddressController {
     @Value("${cardano.cli.path}")
     private String cliPath;
 
+    @Value("${resource.path}")
+    private String resourcePathFromProp;
+
     @GetMapping("/ping")
     public ResponseEntity<String> response() {
         return ResponseEntity.ok("pong");
@@ -29,13 +32,14 @@ public class AddressController {
 
     @PostMapping("/address/generate")
     public ResponseEntity<Map<String, String>> generateAddress(@RequestBody AddressRequest addressRequest) {
-        logger.info("cliPath: " + cliPath);
+        logger.info("cliPath: {}", cliPath);
+        logger.info("resourcePathFromProp: {}", resourcePathFromProp);
         CardanoJBuildAddress cardanoJBuildAddress = new CardanoJBuildAddress();
         Map<String, String> response = new HashMap<>();
         try {
             String address = cardanoJBuildAddress.addressGen(
                     cliPath,
-                    addressRequest.getResourcePath(),
+                    resourcePathFromProp,
                     addressRequest.getName(),
                     addressRequest.getNetwork(),
                     addressRequest.getNetworkId()

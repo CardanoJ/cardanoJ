@@ -21,19 +21,23 @@ public class TransactionController {
     @Value("${cardano.socket.path}")
     private String socketPath;
 
+    @Value("${resource.path}")
+    private String resourcePathFromProp;
+
     @PostMapping("/transaction/direct")
     public ResponseEntity<Map<String, String>> generateAddress(@RequestBody TransactionRequest request) {
         logger.info("cliPath: " + cliPath);
         logger.info("socketPath: " + socketPath);
+        logger.info("resourcePathFromProp: " + resourcePathFromProp);
         CardanoJTransaction cardanoJTransaction = new CardanoJTransaction();
         Map<String, String> response = new HashMap<>();
         try {
-            cardanoJTransaction.buildTransaction(cliPath, socketPath, request.getResourcePath(), request.getSenderAddress(), request.getReceiverAddress(),
+            cardanoJTransaction.buildTransaction(cliPath, socketPath, resourcePathFromProp, request.getSenderAddress(), request.getReceiverAddress(),
                 request.getNetwork(), request.getNetworkId(), request.getLovelaceAmount(), request.getSenderName(), "{}");
 
-            cardanoJTransaction.signTransaction(cliPath, request.getResourcePath(), request.getNetwork(), request.getNetworkId(), request.getSenderName());
+            cardanoJTransaction.signTransaction(cliPath, resourcePathFromProp, request.getNetwork(), request.getNetworkId(), request.getSenderName());
 
-            String res = cardanoJTransaction.submitTransaction(cliPath, socketPath, request.getResourcePath(), request.getNetwork(), request.getNetworkId(), request.getSenderName());
+            String res = cardanoJTransaction.submitTransaction(cliPath, socketPath, resourcePathFromProp, request.getNetwork(), request.getNetworkId(), request.getSenderName());
 
             response.put("content", res);
 

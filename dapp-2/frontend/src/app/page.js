@@ -217,7 +217,7 @@ const CardanoTransactionForm = () => {
 
               <motion.div variants={itemVariants} className="space-y-2">
                 <label className="block text-sm font-semibold text-white">
-                  Signing Key Name
+                  Wallet Name
                 </label>
                 <input
                   type="text"
@@ -225,7 +225,7 @@ const CardanoTransactionForm = () => {
                   value={formData.senderName}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
-                  placeholder="(yourName).skey..."
+                  placeholder="The name of your generated wallet..."
                   required
                 />
                 {formErrors.senderName && (
