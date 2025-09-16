@@ -222,7 +222,8 @@ public class CardanoJTransactionMake {
                     cliPath, "query", "utxo",
                     "--address", address,
                     network.contains("testnet") ? "--testnet-magic" : "--mainnet", networkId,
-                    "--socket-path", socketPath
+                    "--socket-path", socketPath,
+                    "--output-text"
             );
             System.out.println("getTransactionDetails: " + processBuilder.command());
             processBuilder.redirectOutput(new File(resourcePath + "getTransactionDetails.txt"));
