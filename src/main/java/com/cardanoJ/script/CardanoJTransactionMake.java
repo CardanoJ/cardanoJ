@@ -224,7 +224,7 @@ public class CardanoJTransactionMake {
         }
     }
 
-    private String getTransactionDetails(String cliPath, String socketPath, String resourcePath, String address, String network, String networkId) {
+    protected String getTransactionDetails(String cliPath, String socketPath, String resourcePath, String address, String network, String networkId) {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     cliPath, "query", "utxo",

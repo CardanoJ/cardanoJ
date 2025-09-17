@@ -34,13 +34,20 @@ public class CardanoJBuildAddress {
                 Files.createDirectories(dirPath);
             }
 
-            ProcessBuilder keyGenProcessBuilder = new ProcessBuilder(
-                    cliPath, "address", "key-gen",
-                    "--verification-key-file", vkey,
-                    "--signing-key-file", skey
-            );
-            Process keyGenProcess = keyGenProcessBuilder.start();
-            keyGenProcess.waitFor();
+            if (!Files.exists(Paths.get(vkey)) || !Files.exists(Paths.get(skey))) {
+                ProcessBuilder keyGenProcessBuilder = new ProcessBuilder(
+                        cliPath, "address", "key-gen",
+                        "--verification-key-file", vkey,
+                        "--signing-key-file", skey
+                );
+                Process keyGenProcess = keyGenProcessBuilder.start();
+                int exitCode = keyGenProcess.waitFor();
+                if (exitCode != 0) {
+                    throw new RuntimeException("Key generation failed for " + vkey + "/" + skey);
+                }
+            } else {
+                throw new RuntimeException("Wallet Name already exists (.skey, .vkey)");
+            }
 
             // Build address
             ProcessBuilder addressBuildProcessBuilder = new ProcessBuilder(
@@ -50,7 +57,10 @@ public class CardanoJBuildAddress {
                     "--out-file", addrFilePath
             );
             Process addressBuildProcess = addressBuildProcessBuilder.start();
-            addressBuildProcess.waitFor();
+            int exitCode = addressBuildProcess.waitFor();
+            if (exitCode != 0) {
+                throw new RuntimeException("Address build failed for " + addrFilePath);
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

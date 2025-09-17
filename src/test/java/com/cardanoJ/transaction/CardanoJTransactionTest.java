@@ -4,10 +4,54 @@ import org.junit.jupiter.api.Test;
 
 import static com.cardanoJ.transaction.CardanoJConstant.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CardanoJTransactionTest {
 
     String expectDatum = "";
+
+    @Test
+    void buildTransaction_withUTxO() {
+        CardanoJTransaction cardanoJTransaction = new CardanoJTransaction() {
+            @Override
+            public String getTransactionDetails(String cliPath, String socketPath, String resourcePath, String address, String network, String networkId) {
+                return "dummyHash#0"; // fake UTxO
+            }
+        };
+
+        String result = cardanoJTransaction.buildTransaction(
+                CLI_PATH, SOCKET_PATH,
+                "src/main/resources/assets/",
+                "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p",
+                "addr_test1qr864nwnz26egxxzwnuex7danrrrkjl4kl4neevssqu8zlwr2ghnx4q6fql7slk9h0wnw8423pd8frap2kycwxf0hjdqwg0gjq",
+                TESTNET, TESTNET_MAGIC_NUMBER, 5000000,
+                "yourName",
+                "{\"constructor\":0}"
+        );
+
+        assertEquals("src/main/resources/assets/yourName_build.txbody", result);
+    }
+
+    @Test
+    void buildTransaction_withoutUTxO() {
+        CardanoJTransaction cardanoJTransaction = new CardanoJTransaction() {
+            @Override
+            public String getTransactionDetails(String cliPath, String socketPath, String resourcePath, String address, String network, String networkId) {
+                return "null#null"; // simulate no UTxOs
+            }
+        };
+
+        assertThrows(RuntimeException.class, () -> cardanoJTransaction.buildTransaction(
+                CLI_PATH, SOCKET_PATH,
+                "src/main/resources/assets/",
+                "addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p",
+                "addr_test1qr864nwnz26egxxzwnuex7danrrrkjl4kl4neevssqu8zlwr2ghnx4q6fql7slk9h0wnw8423pd8frap2kycwxf0hjdqwg0gjq",
+                TESTNET, TESTNET_MAGIC_NUMBER, 5000000,
+                "yourName",
+                "{\"constructor\":0}"
+        ));
+    }
+
     @Test
     void createDatum(){
         expectDatum = "[{\"constructor\":0,\"list\":[{\"int\":0,\"string\":\"addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2\"}]},{\"constructor\":1,\"list\":[{\"int\":0,\"string\":\"addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2\"}]},{\"constructor\":2,\"list\":[{\"int\":1000000}]}]";
@@ -16,11 +60,11 @@ public class CardanoJTransactionTest {
         assertEquals(expectDatum, cardanoJCreateDatum.create("addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2","addr_test1vpeezznzk0vrft3ehumqdgez8d9m2trwlu6dwm2v3eu975s9ngev2",1000000,getResourcePath()));
     }
 
-    @Test
-    void buildTransaction(){
-        CardanoJTransaction cardanoJTransaction = new CardanoJTransaction();
-        assertEquals("src/main/resources/assets/yourName_build.txbody", cardanoJTransaction.buildTransaction(CLI_PATH, SOCKET_PATH, "src/main/resources/assets/","addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p","addr_test1qr864nwnz26egxxzwnuex7danrrrkjl4kl4neevssqu8zlwr2ghnx4q6fql7slk9h0wnw8423pd8frap2kycwxf0hjdqwg0gjq",TESTNET, TESTNET_MAGIC_NUMBER, 5000000,"yourName","{\"constructor\":0}"));
-    }
+//    @Test
+//    void buildTransaction(){
+//        CardanoJTransaction cardanoJTransaction = new CardanoJTransaction();
+//        assertEquals("src/main/resources/assets/yourName_build.txbody", cardanoJTransaction.buildTransaction(CLI_PATH, SOCKET_PATH, "src/main/resources/assets/","addr_test1vqah3f7zvcjg0ms94ygmmj2n0x35t8gmwdxl2tlkz3jddqs2uqa2p","addr_test1qr864nwnz26egxxzwnuex7danrrrkjl4kl4neevssqu8zlwr2ghnx4q6fql7slk9h0wnw8423pd8frap2kycwxf0hjdqwg0gjq",TESTNET, TESTNET_MAGIC_NUMBER, 5000000,"yourName","{\"constructor\":0}"));
+//    }
 
     @Test
     void signTransaction(){
