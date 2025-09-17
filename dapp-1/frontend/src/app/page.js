@@ -40,12 +40,16 @@ export default function Home() {
         }
       );
 
-      if (!res.ok) throw new Error("Failed to generate address");
+      const data = await res.json().catch(() => ({}));
 
-      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(
+          data.content || data.message || "Failed to generate address"
+        );
+      }
 
       if (data.error) {
-        setError(data.error);
+        setError(data.content || data.message || "Failed to generate address");
       } else {
         setResult(data);
       }

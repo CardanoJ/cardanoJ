@@ -35,11 +35,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.org.cardanoJ</groupId>
+            <groupId>com.cardanoJ</groupId>
             <artifactId>cardanoJ</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/cardanoJ-1.0.jar</systemPath>
         </dependency>
 
         <dependency>
